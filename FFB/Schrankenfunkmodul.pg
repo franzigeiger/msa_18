@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="6be636bb-a7a5-460d-a7ef-6061c0687c98" name="Schrankenfunkmodul" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+  <states>
+    <initialNode Id="c07b30d6-6d4c-477f-a858-49d051604fca" name="InitialNode1">
+      <successors>
+        <transition Id="51d591ed-fc2c-4946-9b86-e92efd5838b7">
+          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Bereit" />
+        </transition>
+      </successors>
+    </initialNode>
+    <state Id="9828fa33-4bdf-4b0d-881d-92e9be25fc42" name="Empfängt">
+      <successors>
+        <transition Id="84187a4f-4000-4c22-8f36-4e48c390c115" guard="Funk=Kein Funk" label="Funk=Kein Funk">
+          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Nachricht Empfangen" />
+        </transition>
+        <transition Id="83b585a6-a2e4-45ed-8b18-c32c6a81920b" guard="Funk= ZugZuBahnübergang &amp;&amp; timeoutCounter &lt; maxTimeout" action="timeoutCounter = timeoutCounter+1" label="Funk= ZugZuBahnübergang &amp;&amp; timeoutCounter &lt; maxTimeout // timeoutCounter = timeoutCounter+1">
+          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Empfängt" />
+        </transition>
+        <transition Id="8bac692d-2a6f-497e-9817-e0d0a04e68d3">
+          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Bereit" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="112a85f4-c111-4282-8819-9786c818644d" name="Nachricht Empfangen">
+      <successors>
+        <transition Id="38059d5a-7273-41dd-a65f-d798c3be0fbc">
+          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Bereit" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="eebfd09f-31d1-48db-ba5e-e53e31a8a9b7" name="Sendet">
+      <successors>
+        <transition Id="94669b25-1262-4c43-bfc3-f8570da52f1c" guard="Funk=Kein Funk" label="Funk=Kein Funk">
+          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Nachricht gesendet" />
+        </transition>
+        <transition Id="abad535e-b9dd-4b06-90cb-d3a3dc08a8fb" guard="timeoutCounter &lt; maxTimeout &amp;&amp; Funk=BahnübergangZuZug" action="timeoutCounter = timeoutCounter+1" label="timeoutCounter &lt; maxTimeout &amp;&amp; Funk=BahnübergangZuZug // timeoutCounter = timeoutCounter+1">
+          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Sendet" />
+        </transition>
+        <transition Id="2a18d9ce-f95e-420b-acf2-fe1f409d7262">
+          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Bereit" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="5b5dfb38-04b9-46e8-9203-44f560930583" name="Nachricht gesendet">
+      <successors>
+        <transition Id="a6022a65-4040-465a-910a-d7a0e6a523c9">
+          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Bereit" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="5e66bc35-43c4-4511-9ac4-a544c196edbf" name="Bereit">
+      <successors>
+        <transition Id="3c8f8fec-566c-4a0c-ab81-9d771087805a" guard="Funk= ZugZuBahnübergang" label="Funk= ZugZuBahnübergang">
+          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Empfängt" />
+        </transition>
+        <transition Id="70c71cd6-84a1-42e5-9d53-2cdc435f4e4e" guard="Funk=BahnübergangZuZug" label="Funk=BahnübergangZuZug">
+          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Sendet" />
+        </transition>
+      </successors>
+    </state>
+  </states>
+  <variables>
+    <programGraphHasVariables Id="2fd67f44-3fd1-485e-8019-0420d4fbb402">
+      <variable Id="73cff1be-596d-490c-bbb3-210c936edc0b" name="timeoutCounter" range="0..100" />
+    </programGraphHasVariables>
+    <programGraphHasVariables Id="05856404-7a9a-4c0e-a79c-4e3e0f222497">
+      <variable Id="502d02cc-d346-4514-b558-afa5cd13c7ab" name="maxtimeOut" range="100" />
+    </programGraphHasVariables>
+  </variables>
+  <importedVariables>
+    <programGraphHasImportedVariables Id="13f6f414-16c4-40d4-aa2c-2b72442c0041">
+      <importedVariable Id="7da5234b-69c1-4042-8177-668c2f51b9e7" name="Funk" range="Kein Funk, ZugZuBahnübergang, BahnübergangZuZug" />
+    </programGraphHasImportedVariables>
+  </importedVariables>
+</programGraph>

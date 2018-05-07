@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="98c1b09a-f6ee-4d5c-8c34-bf48f3d06173" name="Funk" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+  <states>
+    <initialNode Id="928d807a-acae-4303-b8e5-ce2913ec141f" name="InitialNode1">
+      <successors>
+        <transition Id="5486991c-9984-490b-8b83-eb2921f855fe">
+          <stateMoniker name="/98c1b09a-f6ee-4d5c-8c34-bf48f3d06173/Kein Funk" />
+        </transition>
+      </successors>
+    </initialNode>
+    <state Id="77190c05-869c-4164-bcb2-eff54a93b64e" name="Kein Funk">
+      <successors>
+        <transition Id="32eac434-37f0-439a-9e98-46e2775cd0a1">
+          <stateMoniker name="/98c1b09a-f6ee-4d5c-8c34-bf48f3d06173/ZugZuBahnübergang" />
+        </transition>
+        <transition Id="42866cd9-4523-44c1-8a11-9489f1421eca">
+          <stateMoniker name="/98c1b09a-f6ee-4d5c-8c34-bf48f3d06173/BahnübergangZuZug" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="c0131544-ecdb-486d-b473-62e7c2d97b49" name="ZugZuBahnübergang">
+      <successors>
+        <transition Id="4fa501c2-ac84-47be-a5b5-7737461daa43">
+          <stateMoniker name="/98c1b09a-f6ee-4d5c-8c34-bf48f3d06173/Kein Funk" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="2d2ac1a8-75d9-4350-b4f4-c6965bdd795e" name="BahnübergangZuZug">
+      <successors>
+        <transition Id="8ebcf0a2-b3b8-403d-a956-a6d7af2f4f09">
+          <stateMoniker name="/98c1b09a-f6ee-4d5c-8c34-bf48f3d06173/Kein Funk" />
+        </transition>
+      </successors>
+    </state>
+  </states>
+</programGraph>

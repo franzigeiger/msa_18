@@ -9,6 +9,7 @@
       </successors>
     </initialNode>
     <state Id="edf372a0-54a7-46a3-81ac-d36af7f8e1ba" name="Bereit" />
+    <state Id="7986d45e-03f0-4959-94c4-dc15f48cd547" name="Beschleunigt" />
   </states>
   <variables>
     <programGraphHasVariables Id="43e4aef3-6c44-4bc4-897e-c16710560755">

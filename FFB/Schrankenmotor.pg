@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="2cfb5ced-7971-4926-b832-0b53197c75d0" name="Schrankenmotor" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+  <states>
+    <initialNode Id="1df6dde8-e499-4233-be6c-0394b7e6ea29" name="InitialNode1">
+      <successors>
+        <transition Id="94ce032c-e169-4ef3-a187-1c2eab11105e">
+          <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Aus" />
+        </transition>
+      </successors>
+    </initialNode>
+    <state Id="180b0d89-5b7c-49e4-8e68-3a6d69e94e4c" name="Öffnen">
+      <successors>
+        <transition Id="f8f64b66-c6ac-42ef-b30c-3bf77b5c967f">
+          <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Aus" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="97eef938-a61e-4bb2-bb0e-15ada5971399" name="Schließen">
+      <successors>
+        <transition Id="0ca2bc6b-4072-4f1b-b6a0-298188a0bab4">
+          <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Aus" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="7e98e588-0fa7-4da3-82a5-ed2233c88cfc" name="Aus">
+      <successors>
+        <transition Id="d5dab0f8-41be-454f-9840-337e56962451">
+          <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Schließen" />
+        </transition>
+        <transition Id="78e45acb-7e1f-4634-bb04-bff1f0359c28" guard="Schrankensteuerung" label="Schrankensteuerung">
+          <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Öffnen" />
+        </transition>
+      </successors>
+    </state>
+  </states>
+  <variables>
+    <programGraphHasVariables Id="c2531e92-3b87-42c9-9258-50c45cf9d548">
+      <variable Id="ac3ba656-01b6-4b13-ac6e-11e0b21caa2b" name="" />
+    </programGraphHasVariables>
+  </variables>
+  <importedVariables>
+    <programGraphHasImportedVariables Id="697f8863-1d30-4d3e-87f4-3069b9111dff">
+      <importedVariable Id="c140d290-1231-4189-a258-7aef5c9ca5db" name="Schrankensteuerung" range="Bereit" />
+    </programGraphHasImportedVariables>
+  </importedVariables>
+</programGraph>

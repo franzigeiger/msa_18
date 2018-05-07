@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="fe1d8706-7ae8-4ede-8528-183f84a2da24" name="Schranke" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+  <states>
+    <initialNode Id="e1cec811-a563-40ba-8c72-6e0f137ffe49" name="InitialNode1">
+      <successors>
+        <transition Id="cfb2f65d-1cb8-49ad-93e1-9af7bb01aaab" action="Winkel = 90" label="// Winkel = 90">
+          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Offen" />
+        </transition>
+      </successors>
+    </initialNode>
+    <state Id="c39790e6-04fd-4558-989f-da5528e0f3b6" name="Offen">
+      <successors>
+        <transition Id="5f128e2b-4215-4495-a256-26d84cda5279" guard="Winkel &lt; 5" label="Winkel &lt; 5">
+          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Geschlossen" />
+        </transition>
+        <transition Id="e12dcb00-f2ef-4e19-8e69-e4c08f2288a5" guard="Winkel &gt;=5 &amp;&amp; Schrankenmotor = Schließen" action="Winkel = Winkel -1" label="Winkel &gt;=5 &amp;&amp; Schrankenmotor = Schließen // Winkel = Winkel -1">
+          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Offen" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="85254385-1e1c-414e-9471-608507f8d472" name="Geschlossen">
+      <successors>
+        <transition Id="5dee18aa-fa12-4f9e-8a24-0ecb8aa57277" guard="Winkel &gt;85" label="Winkel &gt;85">
+          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Offen" />
+        </transition>
+        <transition Id="3b9e94ea-afe2-40f1-ac70-dea5c764df2f" guard="Schrankenmotor = Öffnen &amp;&amp; Winkel &gt;= 85" action="Winkel = Winkel + 1" label="Schrankenmotor = Öffnen &amp;&amp; Winkel &gt;= 85 // Winkel = Winkel + 1">
+          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Geschlossen" />
+        </transition>
+      </successors>
+    </state>
+  </states>
+  <variables>
+    <programGraphHasVariables Id="5442aac0-e123-4485-b6e0-2fec762a94e2">
+      <variable Id="7e16b6e4-396f-42c3-9d51-525ec7dd6f48" name="Winkel" range="0..90" />
+    </programGraphHasVariables>
+  </variables>
+  <importedVariables>
+    <programGraphHasImportedVariables Id="6a02c126-c6d6-4811-a395-9ea9281f0692">
+      <importedVariable Id="237d5a13-c482-45fb-903f-617b228c50c7" name="Schrankenmotor" range="Aus, An" />
+    </programGraphHasImportedVariables>
+  </importedVariables>
+</programGraph>

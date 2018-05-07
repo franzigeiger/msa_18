@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="f4af3e14-d9f4-4764-a2a5-9420417fe2fa" name="Schrankensteuerung" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+  <states>
+    <initialNode Id="1707726d-7593-42d0-ad0b-ed8c765cb260" name="InitialNode1" />
+    <state Id="d3891291-668d-4876-a70f-be68221098a4" name="Bereit" />
+  </states>
+</programGraph>

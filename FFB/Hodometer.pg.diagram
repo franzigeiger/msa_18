@@ -5,10 +5,10 @@
     <initialStateShape Id="c9133fb7-0078-4520-bf53-361a4f7941f2" absoluteBounds="4.125, 1.875, 0.125, 0.125">
       <initialNodeMoniker name="/f3a5e37e-75b7-448e-b15b-3324c5b69f57/InitialNode1" />
     </initialStateShape>
-    <stateShape Id="4f6ae529-f191-4916-aad0-6cf107c43016" absoluteBounds="3.625, 2.625, 1, 0.5">
+    <stateShape Id="4f6ae529-f191-4916-aad0-6cf107c43016" absoluteBounds="3.75, 3, 1, 0.5">
       <stateMoniker name="/f3a5e37e-75b7-448e-b15b-3324c5b69f57/Bereit" />
     </stateShape>
-    <transitionConnector Id="c3ed7a60-466d-411f-9adc-1e28df029a55" edgePoints="[(4.1875 : 2); (4.1875 : 2.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <transitionConnector Id="c3ed7a60-466d-411f-9adc-1e28df029a55" edgePoints="[(4.1875 : 2); (4.1875 : 3)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <transitionMoniker Id="e7ab9d42-5e1e-4b20-9d3a-6877cbc65798" />
       <relativeChildShapes />
       <nodes>
@@ -16,5 +16,8 @@
         <stateShapeMoniker Id="4f6ae529-f191-4916-aad0-6cf107c43016" />
       </nodes>
     </transitionConnector>
+    <stateShape Id="9348d30f-6b60-4e14-859e-e97ccc897690" absoluteBounds="5.125, 3, 1, 0.5">
+      <stateMoniker name="/f3a5e37e-75b7-448e-b15b-3324c5b69f57/Beschleunigt" />
+    </stateShape>
   </nestedChildShapes>
 </programGraphDslDiagram>

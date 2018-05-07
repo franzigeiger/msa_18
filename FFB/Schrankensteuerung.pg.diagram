@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<programGraphDslDiagram dslVersion="1.0.0.0" Id="98dfcb82-79ec-4b1d-84b8-574512968426" absoluteBounds="0, 0, 11, 8.5" name="Schrankensteuerung">
+  <programGraphMoniker Id="f4af3e14-d9f4-4764-a2a5-9420417fe2fa" />
+  <nestedChildShapes>
+    <initialStateShape Id="6d777926-0501-4497-a5da-bd9c85a9a299" absoluteBounds="3.875, 1.875, 0.125, 0.125">
+      <initialNodeMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/InitialNode1" />
+    </initialStateShape>
+    <stateShape Id="c9a7c6d7-133a-4551-beed-abbd767baf2d" absoluteBounds="3.5, 3.125, 1, 0.5">
+      <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/Bereit" />
+    </stateShape>
+  </nestedChildShapes>
+</programGraphDslDiagram>
