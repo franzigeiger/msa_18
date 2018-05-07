@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="f3a5e37e-75b7-448e-b15b-3324c5b69f57" name="Hodometer" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+  <states>
+    <initialNode Id="38dda409-53f0-4b38-ad5d-2050bbf85f7d" name="InitialNode1">
+      <successors>
+        <transition Id="e7ab9d42-5e1e-4b20-9d3a-6877cbc65798">
+          <stateMoniker name="/f3a5e37e-75b7-448e-b15b-3324c5b69f57/Bereit" />
+        </transition>
+      </successors>
+    </initialNode>
+    <state Id="edf372a0-54a7-46a3-81ac-d36af7f8e1ba" name="Bereit" />
+  </states>
+</programGraph>

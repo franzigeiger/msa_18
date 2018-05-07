@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<programGraphDslDiagram dslVersion="1.0.0.0" Id="61931359-2170-42d5-8781-bebe79b44fae" absoluteBounds="0, 0, 11, 8.5" name="Zugsteuerung">
+  <programGraphMoniker Id="05707b4c-a06c-4e0b-9b05-a1cd7eb4af96" />
+  <nestedChildShapes>
+    <initialStateShape Id="a2807c06-8bf0-44ad-802c-b225c058ba71" absoluteBounds="4.875, 2, 0.125, 0.125">
+      <initialNodeMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/InitialNode1" />
+    </initialStateShape>
+    <stateShape Id="8123e137-7ddd-4338-9a37-3f3aebc175ca" absoluteBounds="4.5, 2.75, 1, 0.5">
+      <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Bereit" />
+    </stateShape>
+    <transitionConnector Id="3c479d6f-e486-49ea-94cf-21eb3fefc348" edgePoints="[(4.9375 : 2.125); (4.9375 : 2.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <transitionMoniker Id="85cd65ed-cad6-4d75-9271-9e7498ae398a" />
+      <relativeChildShapes />
+      <nodes>
+        <initialStateShapeMoniker Id="a2807c06-8bf0-44ad-802c-b225c058ba71" />
+        <stateShapeMoniker Id="8123e137-7ddd-4338-9a37-3f3aebc175ca" />
+      </nodes>
+    </transitionConnector>
+  </nestedChildShapes>
+</programGraphDslDiagram>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61" name="Zugfunkmodul" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+  <states>
+    <state Id="952daed6-db41-4111-8d1d-2158186d5147" name="Bereit">
+      <successors>
+        <transition Id="49fdc94b-e817-4ca0-8e20-3b88b2f351c4">
+          <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Schickt" />
+        </transition>
+        <transition Id="fdfa99da-df42-46d7-b372-031e4464aaee">
+          <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Empfaengt" />
+        </transition>
+      </successors>
+    </state>
+    <initialNode Id="80a16499-dfa5-45e5-89cd-880ddf6ee354" name="InitialNode1">
+      <successors>
+        <transition Id="f80dad15-76d0-48c3-9ccb-9a67ba0b825c">
+          <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Bereit" />
+        </transition>
+      </successors>
+    </initialNode>
+    <state Id="6388fe85-b41c-46db-b8c6-c476ffd573a4" name="Schickt">
+      <successors>
+        <transition Id="92d8229f-b96b-4b86-8322-524ba772a951">
+          <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Bereit" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="b906756e-8ef2-4fbf-87b0-9f58a827cbaf" name="Empfaengt">
+      <successors>
+        <transition Id="832e5d5d-eb6c-480c-a9c0-6a409eb908e1">
+          <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Bereit" />
+        </transition>
+      </successors>
+    </state>
+  </states>
+</programGraph>

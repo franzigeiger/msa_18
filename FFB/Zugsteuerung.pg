@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="05707b4c-a06c-4e0b-9b05-a1cd7eb4af96" name="Zugsteuerung" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+  <states>
+    <initialNode Id="c19c79b5-c85b-4db5-8669-b718c57dc2f0" name="InitialNode1">
+      <successors>
+        <transition Id="85cd65ed-cad6-4d75-9271-9e7498ae398a">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Bereit" />
+        </transition>
+      </successors>
+    </initialNode>
+    <state Id="fd9c61e5-8888-49a4-a3b6-76cfa2fffc27" name="Bereit" />
+  </states>
+</programGraph>
