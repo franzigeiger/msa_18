@@ -3,7 +3,7 @@
   <states>
     <initialNode Id="e1cec811-a563-40ba-8c72-6e0f137ffe49" name="InitialNode1">
       <successors>
-        <transition Id="cfb2f65d-1cb8-49ad-93e1-9af7bb01aaab" action="Winkel = 90" label="// Winkel = 90">
+        <transition Id="cfb2f65d-1cb8-49ad-93e1-9af7bb01aaab" guard="Winkel == 90" label="Winkel == 90">
           <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Offen" />
         </transition>
       </successors>
@@ -13,11 +13,8 @@
         <transition Id="5f128e2b-4215-4495-a256-26d84cda5279" guard="Winkel &lt; 5" label="Winkel &lt; 5">
           <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Geschlossen" />
         </transition>
-        <transition Id="e12dcb00-f2ef-4e19-8e69-e4c08f2288a5" guard="Winkel &gt;=5 &amp;&amp; Schrankenmotor = Schließen" action="Winkel = Winkel - WinkelGeschwindigkeit" label="Winkel &gt;=5 &amp;&amp; Schrankenmotor = Schließen // Winkel = Winkel - WinkelGeschwindigkeit">
-          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Offen" />
-        </transition>
-        <transition Id="b9cc17ce-50e3-4dd6-bfc6-812a516b5b14" guard="Schrankenmotor = Schließen " label="Schrankenmotor = Schließen ">
-          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Schließt" />
+        <transition Id="b9cc17ce-50e3-4dd6-bfc6-812a516b5b14" guard="Schrankenmotor == Schliessen " label="Schrankenmotor == Schliessen ">
+          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Schliesst" />
         </transition>
       </successors>
     </state>
@@ -26,25 +23,25 @@
         <transition Id="5dee18aa-fa12-4f9e-8a24-0ecb8aa57277" guard="Winkel &gt;85" label="Winkel &gt;85">
           <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Offen" />
         </transition>
-        <transition Id="26e60706-8f40-4a9a-acdd-4cb6c345805d" guard="Schrankenmotor == Öffnen" label="Schrankenmotor == Öffnen">
-          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Öffnet" />
+        <transition Id="26e60706-8f40-4a9a-acdd-4cb6c345805d" guard="Schrankenmotor == Oeffnen" label="Schrankenmotor == Oeffnen">
+          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Oeffnet" />
         </transition>
       </successors>
     </state>
-    <state Id="11320977-0b23-43de-ac4e-43dea89fe983" name="Schließt">
+    <state Id="11320977-0b23-43de-ac4e-43dea89fe983" name="Schliesst">
       <successors>
         <transition Id="9675fd1c-d2dd-4b47-afb9-e83b1938f403" guard="Winkel &lt; 5" label="Winkel &lt; 5">
           <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Geschlossen" />
         </transition>
-        <transition Id="d1a1c795-45f0-4439-a575-40737d5a8f8b" guard="Schrankenmotor = Schließen &amp;&amp; Winkel &gt;= 5" action="Winkel = Winkel - Winkelgeschwindigkeit" label="Schrankenmotor = Schließen &amp;&amp; Winkel &gt;= 5 // Winkel = Winkel - Winkelgeschwindigkeit">
-          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Schließt" />
+        <transition Id="d1a1c795-45f0-4439-a575-40737d5a8f8b" guard="Schrankenmotor == Schliessen &amp;&amp; Winkel &gt;= 5" action="Winkel := Winkel - Winkelgeschwindigkeit" label="Schrankenmotor == Schliessen &amp;&amp; Winkel &gt;= 5 // Winkel := Winkel - Winkelgeschwindigkeit" precondition="Winkel  &gt; Winkelgeschwindigkeit">
+          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Schliesst" />
         </transition>
       </successors>
     </state>
-    <state Id="19cb8136-466d-48ee-98ca-726d70d6e66c" name="Öffnet">
+    <state Id="19cb8136-466d-48ee-98ca-726d70d6e66c" name="Oeffnet">
       <successors>
-        <transition Id="cfd8df7a-5d24-422f-85b0-786d08d65f84" guard="Schrankenmotor = Öffnen &amp;&amp; Winkel &lt;= 85" action="Winkel = Winkel + Winkelgeschwindigkeit" label="Schrankenmotor = Öffnen &amp;&amp; Winkel &lt;= 85 // Winkel = Winkel + Winkelgeschwindigkeit">
-          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Öffnet" />
+        <transition Id="cfd8df7a-5d24-422f-85b0-786d08d65f84" guard="Schrankenmotor == Oeffnen &amp;&amp; Winkel &lt;= 85" action="Winkel := Winkel + Winkelgeschwindigkeit" label="Schrankenmotor == Oeffnen &amp;&amp; Winkel &lt;= 85 // Winkel := Winkel + Winkelgeschwindigkeit" precondition="Winkel + Winkelgeschwindigkeit  &lt;= 90 ">
+          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Oeffnet" />
         </transition>
         <transition Id="7036ed37-f7da-4e12-b1cd-95fc0adb6fae" guard="Winkel &gt;85" label="Winkel &gt;85">
           <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Offen" />
@@ -62,7 +59,7 @@
   </variables>
   <importedVariables>
     <programGraphHasImportedVariables Id="6a02c126-c6d6-4811-a395-9ea9281f0692">
-      <importedVariable Id="237d5a13-c482-45fb-903f-617b228c50c7" name="Schrankenmotor" range="Öffnen, Schließen, Aus" />
+      <importedVariable Id="237d5a13-c482-45fb-903f-617b228c50c7" name="Schrankenmotor" range="Oeffnen, Schliessen, Aus" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

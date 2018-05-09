@@ -8,14 +8,14 @@
         </transition>
       </successors>
     </initialNode>
-    <state Id="180b0d89-5b7c-49e4-8e68-3a6d69e94e4c" name="Öffnen">
+    <state Id="180b0d89-5b7c-49e4-8e68-3a6d69e94e4c" name="Oeffnen">
       <successors>
         <transition Id="f8f64b66-c6ac-42ef-b30c-3bf77b5c967f" guard="Schranke == Offen" label="Schranke == Offen">
           <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Aus" />
         </transition>
       </successors>
     </state>
-    <state Id="97eef938-a61e-4bb2-bb0e-15ada5971399" name="Schließen">
+    <state Id="97eef938-a61e-4bb2-bb0e-15ada5971399" name="Schliessen">
       <successors>
         <transition Id="0ca2bc6b-4072-4f1b-b6a0-298188a0bab4" guard="Schranke == Geschlossen" label="Schranke == Geschlossen">
           <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Aus" />
@@ -24,26 +24,21 @@
     </state>
     <state Id="7e98e588-0fa7-4da3-82a5-ed2233c88cfc" name="Aus">
       <successors>
-        <transition Id="d5dab0f8-41be-454f-9840-337e56962451" guard="Schrankensteuerung ==Schranke schließen" label="Schrankensteuerung ==Schranke schließen">
-          <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Schließen" />
+        <transition Id="d5dab0f8-41be-454f-9840-337e56962451" guard="Schrankensteuerung ==SchrankeSchliessen" label="Schrankensteuerung ==SchrankeSchliessen">
+          <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Schliessen" />
         </transition>
-        <transition Id="78e45acb-7e1f-4634-bb04-bff1f0359c28" guard="Schrankensteuerung == Schranke Öffnen" label="Schrankensteuerung == Schranke Öffnen">
-          <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Öffnen" />
+        <transition Id="78e45acb-7e1f-4634-bb04-bff1f0359c28" guard="Schrankensteuerung == SchrankeOeffnen" label="Schrankensteuerung == SchrankeOeffnen">
+          <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Oeffnen" />
         </transition>
       </successors>
     </state>
   </states>
-  <variables>
-    <programGraphHasVariables Id="c2531e92-3b87-42c9-9258-50c45cf9d548">
-      <variable Id="ac3ba656-01b6-4b13-ac6e-11e0b21caa2b" name="" />
-    </programGraphHasVariables>
-  </variables>
   <importedVariables>
     <programGraphHasImportedVariables Id="697f8863-1d30-4d3e-87f4-3069b9111dff">
-      <importedVariable Id="c140d290-1231-4189-a258-7aef5c9ca5db" name="Schrankensteuerung" range="Bereit, SchrankeSchließen, SchrankeGeschlossen, ZugErkannt, SchrankeÖffnen, NachrichtGesendet" />
+      <importedVariable Id="c140d290-1231-4189-a258-7aef5c9ca5db" name="Schrankensteuerung" range="Bereit, SchrankeSchliessen, SchrankeGeschlossen, ZugErkannt, SchrankeOeffnen, NachrichtGesendet" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="3feb544e-de62-4477-b7a1-f8705d9b1b8a">
-      <importedVariable Id="346d95c8-0d28-439d-a1e6-1235ab23c17a" name="Schranke" range="Offen, Geschlossen, Schließt, Öffnet" />
+      <importedVariable Id="346d95c8-0d28-439d-a1e6-1235ab23c17a" name="Schranke" range="Offen, Geschlossen, Schliesst, Oeffnet" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>
