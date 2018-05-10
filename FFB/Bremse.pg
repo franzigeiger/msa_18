@@ -8,7 +8,24 @@
         </transition>
       </successors>
     </initialNode>
-    <state Id="6475bbb5-9e50-4127-94b7-0383697877d0" name="Aus" />
-    <state Id="0311e889-6a80-4d1f-99e6-77c434a0655e" name="State1" />
+    <state Id="6475bbb5-9e50-4127-94b7-0383697877d0" name="Aus">
+      <successors>
+        <transition Id="fb8fed55-7dbc-4ad5-8ebd-6bf1a82736f0" guard="Zugsteuerung == Zwangsbremsung" label="Zugsteuerung == Zwangsbremsung">
+          <stateMoniker name="/ce66fc5a-740c-416a-bc8e-4ded24cfceb0/An" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="0311e889-6a80-4d1f-99e6-77c434a0655e" name="An">
+      <successors>
+        <transition Id="7add30e0-4978-4b79-928b-752e35ca87b8" guard="Zugsteuerung != Zwangsbremsung" label="Zugsteuerung != Zwangsbremsung">
+          <stateMoniker name="/ce66fc5a-740c-416a-bc8e-4ded24cfceb0/Aus" />
+        </transition>
+      </successors>
+    </state>
   </states>
+  <importedVariables>
+    <programGraphHasImportedVariables Id="20a90937-fe84-44e9-92f8-7aae57b6f999">
+      <importedVariable Id="310a06a8-c66a-40e5-9e4b-87870fbcbe04" name="Zugsteuerung" range="Bereit, Zwangsbremsung, SichernNachricht, PruefenNachricht" />
+    </programGraphHasImportedVariables>
+  </importedVariables>
 </programGraph>
