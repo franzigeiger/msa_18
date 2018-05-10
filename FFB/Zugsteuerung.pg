@@ -8,6 +8,64 @@
         </transition>
       </successors>
     </initialNode>
-    <state Id="fd9c61e5-8888-49a4-a3b6-76cfa2fffc27" name="Bereit" />
+    <state Id="fd9c61e5-8888-49a4-a3b6-76cfa2fffc27" name="Bereit">
+      <successors>
+        <transition Id="d61f59f5-67c8-474f-9e88-3ab8f28e33dc" guard="(_EP) == 0" label="(_EP) == 0">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/SichernNachricht" />
+        </transition>
+        <transition Id="bc290c50-91f9-413a-9244-8d9a80b2142c" guard="_EP == 0" label="_EP == 0">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/PruefenNachricht" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="37c7aed4-44b4-475b-980f-f1368bc32c6f" name="Zwangsbremsung" />
+    <state Id="694e707c-ec04-4b29-8f7a-78163d080695" name="SichernNachricht">
+      <successors>
+        <transition Id="0614c2bf-1342-47e9-aef9-7a04b3c29079">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Bereit" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="3ea32165-5b79-47d9-8d53-45e4db0a047e" name="PruefenNachricht">
+      <successors>
+        <transition Id="d2f5a89f-39bd-4073-a5fa-17f189b9c27a">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Bereit" />
+        </transition>
+        <transition Id="f8216dbf-9bb0-448d-9a60-97d669f30f6c" guard="_BEP == 0" label="_BEP == 0">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Zwangsbremsung" />
+        </transition>
+      </successors>
+    </state>
   </states>
+  <macros>
+    <programGraphHasMacros Id="bfa95fed-9776-45cd-922d-2b5902b49608">
+      <macro Id="a4b3edec-c592-4820-8057-17c8177312fc" name="_EP" body="_AP - zug_v * ( _t + _c )" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="6440b470-f45d-45e2-9287-b1c75acc49c7">
+      <macro Id="d8e3e237-bc85-446d-b607-288a85e8a433" name="_AP" body="_BEP - ( 2 * _c  * zug_v )" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="3d9fa14d-09f7-4bdc-86f3-9f1da007049d">
+      <macro Id="365bd8e7-e2c2-4bc1-81ec-430ed86e2225" name="_BEP" body="GP - _z - ( ( zug_v * zug_v )/( 2 *_a ) )" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="b9fff9fb-38aa-4386-8eb7-a30f27370654">
+      <macro Id="89067ca4-b47f-42fe-9617-f1d3bd747841" name="_z" body="10" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="060dbfe6-89d4-4ec8-81f0-8b9beda98cb5">
+      <macro Id="e715ed12-cd99-46e7-85c1-fcab531e54f5" name="_a" body="50" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="add7e62f-9df2-40f4-b12c-1e851c55c6ea">
+      <macro Id="0d7da3df-95e2-41f5-9d7e-392e57120c82" name="_c" body="20" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="2fcc5ea2-c9ec-4ae8-9031-ae8d56550a98">
+      <macro Id="c883db10-af21-481c-aa3d-3b531f7fe6ad" name="_t" body="10" />
+    </programGraphHasMacros>
+  </macros>
+  <importedVariables>
+    <programGraphHasImportedVariables Id="dd150be6-218d-43ab-8aba-c76dfb8871ad">
+      <importedVariable Id="d7bfe62d-53fc-45d5-b914-5d6f717ac4f0" name="Hodometer.zug_v" range="0..144" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="bd759731-9bd8-4957-804b-1499097c136f">
+      <importedVariable Id="992a8d1b-1000-42b8-9569-6fa2c7a35bfb" name="Hodometer.GP" range="0..100" />
+    </programGraphHasImportedVariables>
+  </importedVariables>
 </programGraph>

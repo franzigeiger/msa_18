@@ -4,10 +4,11 @@
     <initialNode Id="a63d5d51-70fd-4e17-af2e-d371d1e4b3df" name="InitialNode1">
       <successors>
         <transition Id="03abc220-c6f8-450a-a8ec-41e6bcd44bfe">
-          <stateMoniker name="/ce66fc5a-740c-416a-bc8e-4ded24cfceb0/Bereit" />
+          <stateMoniker name="/ce66fc5a-740c-416a-bc8e-4ded24cfceb0/Aus" />
         </transition>
       </successors>
     </initialNode>
-    <state Id="6475bbb5-9e50-4127-94b7-0383697877d0" name="Bereit" />
+    <state Id="6475bbb5-9e50-4127-94b7-0383697877d0" name="Aus" />
+    <state Id="0311e889-6a80-4d1f-99e6-77c434a0655e" name="State1" />
   </states>
 </programGraph>

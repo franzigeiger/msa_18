@@ -3,16 +3,69 @@
   <states>
     <initialNode Id="38dda409-53f0-4b38-ad5d-2050bbf85f7d" name="InitialNode1">
       <successors>
-        <transition Id="e7ab9d42-5e1e-4b20-9d3a-6877cbc65798">
-          <stateMoniker name="/f3a5e37e-75b7-448e-b15b-3324c5b69f57/Bereit" />
+        <transition Id="e7ab9d42-5e1e-4b20-9d3a-6877cbc65798" guard="GP == 100 &amp;&amp; zug_v == 0" label="GP == 100 &amp;&amp; zug_v == 0">
+          <stateMoniker name="/f3a5e37e-75b7-448e-b15b-3324c5b69f57/Still" />
         </transition>
       </successors>
     </initialNode>
-    <state Id="edf372a0-54a7-46a3-81ac-d36af7f8e1ba" name="Bereit" />
+    <state Id="edf372a0-54a7-46a3-81ac-d36af7f8e1ba" name="Still">
+      <successors>
+        <transition Id="f401fd9b-8818-478e-b0ad-08cd53258e96">
+          <stateMoniker name="/f3a5e37e-75b7-448e-b15b-3324c5b69f57/Beschleunigt" />
+        </transition>
+        <transition Id="caee231b-a12e-495f-9f1f-e3e9a5512b96">
+          <stateMoniker name="/f3a5e37e-75b7-448e-b15b-3324c5b69f57/Naehert" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="0daf450d-dcb8-4e59-b5de-9baf6c9a30ca" name="Beschleunigt">
+      <successors>
+        <transition Id="7c2a8f3b-b4d4-4bf1-a4f2-ad1c4f09e00d" action="zug_v := zug_v + 1" label="// zug_v := zug_v + 1" precondition="zug_v &lt; 144">
+          <stateMoniker name="/f3a5e37e-75b7-448e-b15b-3324c5b69f57/Beschleunigt" />
+        </transition>
+        <transition Id="ddc295db-a3e4-40c6-bc6d-5868d6d8a8ea">
+          <stateMoniker name="/f3a5e37e-75b7-448e-b15b-3324c5b69f57/Verzoegert" />
+        </transition>
+        <transition Id="776b11d2-a04d-4576-8174-5a5d70051ab3">
+          <stateMoniker name="/f3a5e37e-75b7-448e-b15b-3324c5b69f57/Still" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="128e3975-5ce7-4c37-b5b4-8e0fc6f74746" name="Verzoegert">
+      <successors>
+        <transition Id="991c667c-2ff1-4b7f-a877-4fc13207a0c0">
+          <stateMoniker name="/f3a5e37e-75b7-448e-b15b-3324c5b69f57/Beschleunigt" />
+        </transition>
+        <transition Id="56f8305e-e7d8-4288-bc4f-80a1e447b02d" action="zug_v := zug_v - 1" label="// zug_v := zug_v - 1" precondition="zug_v &gt; 0">
+          <stateMoniker name="/f3a5e37e-75b7-448e-b15b-3324c5b69f57/Verzoegert" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="c741c95b-5ddb-4762-a734-bacd1715ed1c" name="Naehert">
+      <successors>
+        <transition Id="5c127a85-16f6-4551-b479-afe617097921" guard="GP &gt; 0" action="GP := GP - 1" label="GP &gt; 0 // GP := GP - 1" precondition="GP &gt; 0">
+          <stateMoniker name="/f3a5e37e-75b7-448e-b15b-3324c5b69f57/Naehert" />
+        </transition>
+        <transition Id="8e0b7cd8-4a60-4617-a7a9-629953354ab4">
+          <stateMoniker name="/f3a5e37e-75b7-448e-b15b-3324c5b69f57/Still" />
+        </transition>
+        <transition Id="978544c2-ae53-410a-b55a-856425ecce4d" guard="GP == 0" action="GP := 100" label="GP == 0 // GP := 100" precondition="true">
+          <stateMoniker name="/f3a5e37e-75b7-448e-b15b-3324c5b69f57/Naehert" />
+        </transition>
+      </successors>
+    </state>
   </states>
   <variables>
     <programGraphHasVariables Id="43e4aef3-6c44-4bc4-897e-c16710560755">
       <variable Id="91735410-1c3f-4055-80a0-af4c77f82e1f" name="zug_v" range="0..144" />
     </programGraphHasVariables>
+    <programGraphHasVariables Id="2d8d3308-0898-4fbc-851f-75535a55db91">
+      <variable Id="ca9a1830-0675-4682-9ab2-aa6c745c0484" name="GP" range="0..100" />
+    </programGraphHasVariables>
   </variables>
+  <comments>
+    <programGraphHasComments Id="a058f077-3018-4745-9dc1-aa4dfb597767">
+      <comment Id="3814ff1b-31c7-4b44-9557-a80e53740079" text="Welchen Werte haben GP nd zug_v initial" />
+    </programGraphHasComments>
+  </comments>
 </programGraph>
