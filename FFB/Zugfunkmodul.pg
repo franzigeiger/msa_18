@@ -1,36 +1,69 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61" name="Zugfunkmodul" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
   <states>
-    <state Id="952daed6-db41-4111-8d1d-2158186d5147" name="Bereit">
+    <initialNode Id="55bfebd2-1e44-4360-ac95-b577dccda70b" name="InitialNode1">
       <successors>
-        <transition Id="49fdc94b-e817-4ca0-8e20-3b88b2f351c4">
-          <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Schickt" />
-        </transition>
-        <transition Id="fdfa99da-df42-46d7-b372-031e4464aaee">
-          <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Empfaengt" />
-        </transition>
-      </successors>
-    </state>
-    <initialNode Id="80a16499-dfa5-45e5-89cd-880ddf6ee354" name="InitialNode1">
-      <successors>
-        <transition Id="f80dad15-76d0-48c3-9ccb-9a67ba0b825c">
+        <transition Id="6060ffb5-770c-4de1-90a9-fb4866ac22e4">
           <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Bereit" />
         </transition>
       </successors>
     </initialNode>
-    <state Id="6388fe85-b41c-46db-b8c6-c476ffd573a4" name="Schickt">
+    <state Id="8193a414-4495-4eac-a2ba-ed552ecea281" name="Empfängt">
       <successors>
-        <transition Id="92d8229f-b96b-4b86-8322-524ba772a951">
+        <transition Id="22b64710-c34e-49b5-889b-56e0cf7a73c4" guard="Funk=KeinFunk &amp;&amp; timeoutCounter &lt; maxtimeout" label="Funk=KeinFunk &amp;&amp; timeoutCounter &lt; maxtimeout">
+          <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/NachrichtEmpfangen" />
+        </transition>
+        <transition Id="9a3dfc60-1246-4fb5-b415-b02c8b5ac3cd" guard="Funk= ZugZuBahnübergang &amp;&amp; timeoutCounter &lt; maxTimeout" action="timeoutCounter = timeoutCounter+1" label="Funk= ZugZuBahnübergang &amp;&amp; timeoutCounter &lt; maxTimeout // timeoutCounter = timeoutCounter+1">
+          <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Empfängt" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="b91e55e3-099a-4553-b7fa-56cc2e0c1627" name="NachrichtEmpfangen">
+      <successors>
+        <transition Id="36ba8441-4a48-4a3c-8eb8-faa081f1f767">
           <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Bereit" />
         </transition>
       </successors>
     </state>
-    <state Id="b906756e-8ef2-4fbf-87b0-9f58a827cbaf" name="Empfaengt">
+    <state Id="ca5e8389-88ac-4604-8fc3-fb1ef93072b3" name="Sendet">
       <successors>
-        <transition Id="832e5d5d-eb6c-480c-a9c0-6a409eb908e1">
+        <transition Id="6a2d03c7-c2b9-4471-8dbf-f2c4e271a664" guard="Sendezeit == 5" label="Sendezeit == 5">
+          <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/NachrichtGesendet" />
+        </transition>
+        <transition Id="84fca557-2ee0-4372-b072-545973bdbb5d" guard="Sendezeit &lt; 5" action="Sendezeit := Sendezeit + 1" label="Sendezeit &lt; 5 // Sendezeit := Sendezeit + 1">
+          <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Sendet" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="325ee7a5-d7a8-4443-a8c5-e5d6cade40d1" name="NachrichtGesendet">
+      <successors>
+        <transition Id="cb782548-8e0e-4fb3-9fa1-1a20a85d483f" guard="Funk == Kein Funk &amp;&amp; Schrankensteuerung == NachrichtGesendet " label="Funk == Kein Funk &amp;&amp; Schrankensteuerung == NachrichtGesendet ">
           <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Bereit" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="dbcef2de-f399-4627-bd21-5c3f668d4e78" name="Bereit">
+      <successors>
+        <transition Id="2b585213-6fcd-48ea-8534-b733b46a1d18" guard="Funk= ZugZuBahnübergang" action="timeoutCounter := 0" label="Funk= ZugZuBahnübergang // timeoutCounter := 0">
+          <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Empfängt" />
+        </transition>
+        <transition Id="47c9a519-dda9-433a-82b9-e82597c0398a" guard="true" action="Sendezeit := 0" label="true // Sendezeit := 0">
+          <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Sendet" />
         </transition>
       </successors>
     </state>
   </states>
+  <variables>
+    <programGraphHasVariables Id="aa8d0e22-1ecd-4fe2-a7ef-792869864154">
+      <variable Id="b4eab537-0ee6-44c8-bd73-21203e487af2" name="timeoutCounter" range="0..100" />
+    </programGraphHasVariables>
+    <programGraphHasVariables Id="f5596968-393e-4f03-bce3-7a504c9ecc1c">
+      <variable Id="56180f04-ceca-4b40-9fb3-a720cb15929f" name="maxtimeout" range="100" />
+    </programGraphHasVariables>
+  </variables>
+  <importedVariables>
+    <programGraphHasImportedVariables Id="cd276887-b1f0-4868-a63a-c4ba5aa6264b">
+      <importedVariable Id="6c5e1cbe-90b3-496c-ba7f-5205aa29e2ae" />
+    </programGraphHasImportedVariables>
+  </importedVariables>
 </programGraph>

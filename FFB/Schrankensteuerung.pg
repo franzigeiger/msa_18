@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="f4af3e14-d9f4-4764-a2a5-9420417fe2fa" name="Schrankensteuerung" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+  <states>
+    <initialNode Id="1707726d-7593-42d0-ad0b-ed8c765cb260" name="InitialNode1">
+      <successors>
+        <transition Id="104495ed-e45c-4027-9352-dd0762d2777d">
+          <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/Bereit" />
+        </transition>
+      </successors>
+    </initialNode>
+    <state Id="d3891291-668d-4876-a70f-be68221098a4" name="Bereit">
+      <successors>
+        <transition Id="443f8ca0-34ae-4796-9adc-891d04203db7" guard="Schrankenfunkmodul == NachrichtEmpfangen" action="WaitTime := 0" label="Schrankenfunkmodul == NachrichtEmpfangen // WaitTime := 0" precondition="WaitTime &lt;= 30">
+          <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/SchrankeSchliessen" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="26adb93a-b3f2-47bc-b036-7ae8a62aa649" name="SchrankeSchliessen">
+      <successors>
+        <transition Id="c2e38306-c0f9-4b33-92ca-ca47b476db42" guard="Schranke == Geschlossen &amp;&amp; WaitTime &lt; 20" label="Schranke == Geschlossen &amp;&amp; WaitTime &lt; 20">
+          <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/SchrankeGeschlossen" />
+        </transition>
+        <transition Id="379fe495-55fa-4a84-b916-bc8f7ef453c7" action="WaitTime := WaitTime  + 1" label="// WaitTime := WaitTime  + 1" precondition="WaitTime &lt; 30">
+          <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/SchrankeSchliessen" />
+        </transition>
+        <transition Id="025dc32d-ddff-4320-ab1f-200260a484b1" guard="Schranke != Geschlossen &amp;&amp; WaitTime == 20" label="Schranke != Geschlossen &amp;&amp; WaitTime == 20">
+          <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/SchrankeOeffnen" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="0ec1167f-c234-45a1-8ea6-d1d860d511af" name="SchrankeGeschlossen">
+      <successors>
+        <transition Id="efb65d51-1d07-46cd-9d5c-d328def01dbc" guard="Schrankenfunkmodul == NachrichtGesendet" label="Schrankenfunkmodul == NachrichtGesendet">
+          <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/NachrichtGesendet" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="fd542bce-a45c-4ff1-b50e-f0094e3b7510" name="ZugErkannt">
+      <successors>
+        <transition Id="22d31dfb-a7eb-46d9-b175-e7ba6fa67a73" guard="WaitTime == 120 || Zugsensor == Zug" label="WaitTime == 120 || Zugsensor == Zug">
+          <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/SchrankeOeffnen" />
+        </transition>
+        <transition Id="75b372bb-7504-4102-916d-0a00e8d44936" action="WaitTime := WaitTime + 1" label="// WaitTime := WaitTime + 1" precondition="WaitTime &lt; 30">
+          <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/ZugErkannt" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="e1d38e11-0fdd-458c-95dd-79a7ca2c8081" name="SchrankeOeffnen">
+      <successors>
+        <transition Id="6c8f6875-1d5a-4e1e-9e6f-8cfb91388354" guard="Schranke == Offen" label="Schranke == Offen">
+          <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/Bereit" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="da21a1ba-e38f-4976-8835-e2353514f5f8" name="NachrichtGesendet">
+      <successors>
+        <transition Id="fef155d4-144b-4732-90ea-e17542d0cd4f" action="WaitTime :=0" label="// WaitTime :=0" precondition="WaitTime &lt; 30">
+          <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/ZugErkannt" />
+        </transition>
+      </successors>
+    </state>
+  </states>
+  <variables>
+    <programGraphHasVariables Id="72288ad3-a86f-4f6b-8299-87179d8e001d">
+      <variable Id="875cf5d8-379c-43b3-aabe-ba4fa7282de2" name="WaitTime" range="0..120" />
+    </programGraphHasVariables>
+  </variables>
+  <importedVariables>
+    <programGraphHasImportedVariables Id="ea495673-34df-4b2f-b0ac-0cfb2a0dd06b">
+      <importedVariable Id="c6f5e583-5b34-4400-9dd8-ac8b12faf787" name="Schranke" range="Offen, Geschlossen, Schliesst, Oeffnet" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="dde48b25-f5fe-4f2f-8713-df3985aa1a70">
+      <importedVariable Id="b1410c5c-9571-4c86-bf53-31641846c8be" name="Zugsensor" range="KeinZug, Zug" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="511aa373-1190-4dbe-916c-4f8fce1298da">
+      <importedVariable Id="11a90f82-63f5-4296-8532-ac9e78536552" name="Schrankenfunkmodul" range="Empfaengt, NachrichtEmpfangen, Sendet, NachrichtGesendet, Bereit" />
+    </programGraphHasImportedVariables>
+  </importedVariables>
+</programGraph>

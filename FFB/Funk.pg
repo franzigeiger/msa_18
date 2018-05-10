@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="98c1b09a-f6ee-4d5c-8c34-bf48f3d06173" name="Funk" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+  <states>
+    <initialNode Id="928d807a-acae-4303-b8e5-ce2913ec141f" name="InitialNode1">
+      <successors>
+        <transition Id="5486991c-9984-490b-8b83-eb2921f855fe">
+          <stateMoniker name="/98c1b09a-f6ee-4d5c-8c34-bf48f3d06173/KeinFunk" />
+        </transition>
+      </successors>
+    </initialNode>
+    <state Id="77190c05-869c-4164-bcb2-eff54a93b64e" name="KeinFunk">
+      <successors>
+        <transition Id="32eac434-37f0-439a-9e98-46e2775cd0a1" guard="Zugfunkmodul == NachrichtGesendet" label="Zugfunkmodul == NachrichtGesendet">
+          <stateMoniker name="/98c1b09a-f6ee-4d5c-8c34-bf48f3d06173/ZugZuBahnübergang" />
+        </transition>
+        <transition Id="211f54d3-49c1-4122-94da-af5ac0100bcc" guard="Schrankenfunkmodul == Sendet" label="Schrankenfunkmodul == Sendet">
+          <stateMoniker name="/98c1b09a-f6ee-4d5c-8c34-bf48f3d06173/BahnübergangZuZug" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="c0131544-ecdb-486d-b473-62e7c2d97b49" name="ZugZuBahnübergang">
+      <successors>
+        <transition Id="4fa501c2-ac84-47be-a5b5-7737461daa43" guard="Zugfunkmodul == Sendet" label="Zugfunkmodul == Sendet">
+          <stateMoniker name="/98c1b09a-f6ee-4d5c-8c34-bf48f3d06173/KeinFunk" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="2d2ac1a8-75d9-4350-b4f4-c6965bdd795e" name="BahnübergangZuZug">
+      <successors>
+        <transition Id="8ebcf0a2-b3b8-403d-a956-a6d7af2f4f09" guard="Schrankenfunkmodul == NachrichtGesendet" label="Schrankenfunkmodul == NachrichtGesendet">
+          <stateMoniker name="/98c1b09a-f6ee-4d5c-8c34-bf48f3d06173/KeinFunk" />
+        </transition>
+      </successors>
+    </state>
+  </states>
+  <importedVariables>
+    <programGraphHasImportedVariables Id="33a0509f-d88c-4052-8535-f838ce0bf8b4">
+      <importedVariable Id="df4b0af9-1372-4971-8e62-7576a199455d" name="Schrankenfunkmodul" range="Empfängt, NachrichtEmpfangen, Sendet, NachrichtGesendet, Bereit" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="b7bfe79c-3990-40b6-b54a-b4403e14d78d">
+      <importedVariable Id="192f53bf-bedf-4c8f-b7a9-cbbddea9977e" />
+    </programGraphHasImportedVariables>
+  </importedVariables>
+</programGraph>

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="fe1d8706-7ae8-4ede-8528-183f84a2da24" name="Schranke" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+  <states>
+    <initialNode Id="e1cec811-a563-40ba-8c72-6e0f137ffe49" name="InitialNode1">
+      <successors>
+        <transition Id="cfb2f65d-1cb8-49ad-93e1-9af7bb01aaab" guard="Winkel == 90" label="Winkel == 90">
+          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Offen" />
+        </transition>
+      </successors>
+    </initialNode>
+    <state Id="c39790e6-04fd-4558-989f-da5528e0f3b6" name="Offen">
+      <successors>
+        <transition Id="5f128e2b-4215-4495-a256-26d84cda5279" guard="Winkel &lt; 5" label="Winkel &lt; 5">
+          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Geschlossen" />
+        </transition>
+        <transition Id="b9cc17ce-50e3-4dd6-bfc6-812a516b5b14" guard="Schrankenmotor == Schliessen " label="Schrankenmotor == Schliessen ">
+          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Schliesst" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="85254385-1e1c-414e-9471-608507f8d472" name="Geschlossen">
+      <successors>
+        <transition Id="5dee18aa-fa12-4f9e-8a24-0ecb8aa57277" guard="Winkel &gt;85" label="Winkel &gt;85">
+          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Offen" />
+        </transition>
+        <transition Id="26e60706-8f40-4a9a-acdd-4cb6c345805d" guard="Schrankenmotor == Oeffnen" label="Schrankenmotor == Oeffnen">
+          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Oeffnet" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="11320977-0b23-43de-ac4e-43dea89fe983" name="Schliesst">
+      <successors>
+        <transition Id="9675fd1c-d2dd-4b47-afb9-e83b1938f403" guard="Winkel &lt; 5" label="Winkel &lt; 5">
+          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Geschlossen" />
+        </transition>
+        <transition Id="d1a1c795-45f0-4439-a575-40737d5a8f8b" guard="Schrankenmotor == Schliessen &amp;&amp; Winkel &gt;= 5" action="Winkel := Winkel - Winkelgeschwindigkeit" label="Schrankenmotor == Schliessen &amp;&amp; Winkel &gt;= 5 // Winkel := Winkel - Winkelgeschwindigkeit" precondition="Winkel  &gt; Winkelgeschwindigkeit">
+          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Schliesst" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="19cb8136-466d-48ee-98ca-726d70d6e66c" name="Oeffnet">
+      <successors>
+        <transition Id="cfd8df7a-5d24-422f-85b0-786d08d65f84" guard="Schrankenmotor == Oeffnen &amp;&amp; Winkel &lt;= 85" action="Winkel := Winkel + Winkelgeschwindigkeit" label="Schrankenmotor == Oeffnen &amp;&amp; Winkel &lt;= 85 // Winkel := Winkel + Winkelgeschwindigkeit" precondition="Winkel + Winkelgeschwindigkeit  &lt;= 90 ">
+          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Oeffnet" />
+        </transition>
+        <transition Id="7036ed37-f7da-4e12-b1cd-95fc0adb6fae" guard="Winkel &gt;85" label="Winkel &gt;85">
+          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Offen" />
+        </transition>
+      </successors>
+    </state>
+  </states>
+  <variables>
+    <programGraphHasVariables Id="5442aac0-e123-4485-b6e0-2fec762a94e2">
+      <variable Id="7e16b6e4-396f-42c3-9d51-525ec7dd6f48" name="Winkel" range="0..90" />
+    </programGraphHasVariables>
+    <programGraphHasVariables Id="09ce1666-c7f5-437d-8ead-4072d0bdd265">
+      <variable Id="a3ce7764-f7e2-4132-af1e-50e472943daa" name="Winkelgeschwindigkeit" range="10" />
+    </programGraphHasVariables>
+  </variables>
+  <importedVariables>
+    <programGraphHasImportedVariables Id="6a02c126-c6d6-4811-a395-9ea9281f0692">
+      <importedVariable Id="237d5a13-c482-45fb-903f-617b228c50c7" name="Schrankenmotor" range="Oeffnen, Schliessen, Aus" />
+    </programGraphHasImportedVariables>
+  </importedVariables>
+</programGraph>
