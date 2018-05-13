@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="847cbdc1-9aa8-4422-95d0-cb91c466b3a7" name="HodometerGW" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+  <states>
+    <initialNode Id="9cddbd82-7541-4094-8411-cb50f8bf6ede" name="InitialNode1">
+      <successors>
+        <transition Id="a852c0d5-e7df-4810-b2ff-c4b7900512ba" guard="zug_v == 0" label="zug_v == 0">
+          <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Still" />
+        </transition>
+      </successors>
+    </initialNode>
+    <state Id="99332472-75a3-4bf7-8dfa-ae48e6557fa1" name="Still">
+      <successors>
+        <transition Id="548e4238-ad93-4b87-9445-f78a132ec563" action="zug_v := zug_v + 1" label="// zug_v := zug_v + 1" precondition="zug_v &lt; 144">
+          <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Beschleunigt" />
+        </transition>
+        <transition Id="03523be5-559f-4793-b79e-f9a8ea7e8fc2" action="zug_v := zug_v - 1" label="// zug_v := zug_v - 1" precondition="zug_v &gt; 0">
+          <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Verzoegert" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="7024f2b8-6a36-4626-9c75-3fb488ddafd2" name="Beschleunigt">
+      <successors>
+        <transition Id="ce229fed-77e4-4aa3-97f8-73d671212107" action="zug_v := zug_v - 1" label="// zug_v := zug_v - 1" precondition="zug_v &gt; 0">
+          <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Verzoegert" />
+        </transition>
+        <transition Id="bbae6b77-e846-4448-a562-a4b965754025">
+          <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Still" />
+        </transition>
+        <transition Id="d083c8b1-c99d-4ebe-9d93-e082dacdb3ca" action="zug_v := zug_v + 1" label="// zug_v := zug_v + 1" precondition="zug_v &lt; 144">
+          <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Beschleunigt" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="f1b2c943-4f04-444e-ba5d-b47a0196bc4a" name="Verzoegert">
+      <successors>
+        <transition Id="400f4d23-b02d-4200-bbe6-2e7fbbc5c0e0">
+          <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Beschleunigt" />
+        </transition>
+        <transition Id="a388a3d4-8b20-4d61-bd0e-afbc3ce72c8b">
+          <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Still" />
+        </transition>
+        <transition Id="82273d55-404f-4931-8885-9e00d7288e2e" action="zug_v := zug_v - 1" label="// zug_v := zug_v - 1" precondition="zug_v &gt; 0">
+          <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Verzoegert" />
+        </transition>
+      </successors>
+    </state>
+  </states>
+  <variables>
+    <programGraphHasVariables Id="49d6339b-108e-4c79-91eb-7d5a9482d01d">
+      <variable Id="25c981f9-e00d-48e3-bf00-38c4da57835a" name="zug_v" range="0..144" />
+    </programGraphHasVariables>
+  </variables>
+</programGraph>
