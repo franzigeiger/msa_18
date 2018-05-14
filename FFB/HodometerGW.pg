@@ -4,17 +4,20 @@
     <initialNode Id="9cddbd82-7541-4094-8411-cb50f8bf6ede" name="InitialNode1">
       <successors>
         <transition Id="a852c0d5-e7df-4810-b2ff-c4b7900512ba" guard="zug_v == 0" label="zug_v == 0">
-          <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Still" />
+          <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Konstant" />
         </transition>
       </successors>
     </initialNode>
-    <state Id="99332472-75a3-4bf7-8dfa-ae48e6557fa1" name="Still">
+    <state Id="99332472-75a3-4bf7-8dfa-ae48e6557fa1" name="Konstant">
       <successors>
         <transition Id="548e4238-ad93-4b87-9445-f78a132ec563" action="zug_v := zug_v + 1" label="// zug_v := zug_v + 1" precondition="zug_v &lt; 144">
           <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Beschleunigt" />
         </transition>
         <transition Id="03523be5-559f-4793-b79e-f9a8ea7e8fc2" action="zug_v := zug_v - 1" label="// zug_v := zug_v - 1" precondition="zug_v &gt; 0">
           <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Verzoegert" />
+        </transition>
+        <transition Id="47838667-1c74-4e65-8c1b-7804814b9c53">
+          <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Konstant" />
         </transition>
       </successors>
     </state>
@@ -24,7 +27,7 @@
           <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Verzoegert" />
         </transition>
         <transition Id="bbae6b77-e846-4448-a562-a4b965754025">
-          <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Still" />
+          <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Konstant" />
         </transition>
         <transition Id="d083c8b1-c99d-4ebe-9d93-e082dacdb3ca" action="zug_v := zug_v + 1" label="// zug_v := zug_v + 1" precondition="zug_v &lt; 144">
           <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Beschleunigt" />
@@ -37,7 +40,7 @@
           <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Beschleunigt" />
         </transition>
         <transition Id="a388a3d4-8b20-4d61-bd0e-afbc3ce72c8b">
-          <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Still" />
+          <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Konstant" />
         </transition>
         <transition Id="82273d55-404f-4931-8885-9e00d7288e2e" action="zug_v := zug_v - 1" label="// zug_v := zug_v - 1" precondition="zug_v &gt; 0">
           <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Verzoegert" />

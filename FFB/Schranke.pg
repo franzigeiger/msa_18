@@ -16,15 +16,18 @@
         <transition Id="b9cc17ce-50e3-4dd6-bfc6-812a516b5b14" guard="Schrankenmotor == Schliessen " label="Schrankenmotor == Schliessen ">
           <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Schliesst" />
         </transition>
+        <transition Id="af2f98ff-33dd-4b8f-9b06-2288983a8f1c" guard="Schrankenmotor != Schliessen " label="Schrankenmotor != Schliessen ">
+          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Offen" />
+        </transition>
       </successors>
     </state>
     <state Id="85254385-1e1c-414e-9471-608507f8d472" name="Geschlossen">
       <successors>
-        <transition Id="5dee18aa-fa12-4f9e-8a24-0ecb8aa57277" guard="Winkel &gt;85" label="Winkel &gt;85">
-          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Offen" />
-        </transition>
         <transition Id="26e60706-8f40-4a9a-acdd-4cb6c345805d" guard="Schrankenmotor == Oeffnen" label="Schrankenmotor == Oeffnen">
           <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Oeffnet" />
+        </transition>
+        <transition Id="52a6f3ff-9bce-4d2e-ab22-9229552db185" guard="Schrankenmotor != Oeffnen" label="Schrankenmotor != Oeffnen">
+          <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Geschlossen" />
         </transition>
       </successors>
     </state>

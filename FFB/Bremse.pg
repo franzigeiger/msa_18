@@ -13,12 +13,18 @@
         <transition Id="fb8fed55-7dbc-4ad5-8ebd-6bf1a82736f0" guard="Zugsteuerung == Zwangsbremsung" label="Zugsteuerung == Zwangsbremsung">
           <stateMoniker name="/ce66fc5a-740c-416a-bc8e-4ded24cfceb0/An" />
         </transition>
+        <transition Id="80648597-e6b9-4a5b-b03c-69a65463a0af" guard="Zugsteuerung != Zwangsbremsung" label="Zugsteuerung != Zwangsbremsung">
+          <stateMoniker name="/ce66fc5a-740c-416a-bc8e-4ded24cfceb0/Aus" />
+        </transition>
       </successors>
     </state>
     <state Id="0311e889-6a80-4d1f-99e6-77c434a0655e" name="An">
       <successors>
         <transition Id="7add30e0-4978-4b79-928b-752e35ca87b8" guard="zug_v == 0" label="zug_v == 0">
           <stateMoniker name="/ce66fc5a-740c-416a-bc8e-4ded24cfceb0/Aus" />
+        </transition>
+        <transition Id="0bc10ac7-bc18-4b63-a0de-08a057d7976b" guard="zug_v != 0" label="zug_v != 0">
+          <stateMoniker name="/ce66fc5a-740c-416a-bc8e-4ded24cfceb0/An" />
         </transition>
       </successors>
     </state>

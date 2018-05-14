@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="f3a5e37e-75b7-448e-b15b-3324c5b69f57" name="Hodometer" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="f3a5e37e-75b7-448e-b15b-3324c5b69f57" name="HodometerPosition" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
   <states>
     <initialNode Id="38dda409-53f0-4b38-ad5d-2050bbf85f7d" name="InitialNode1">
       <successors>
@@ -12,6 +12,9 @@
       <successors>
         <transition Id="caee231b-a12e-495f-9f1f-e3e9a5512b96">
           <stateMoniker name="/f3a5e37e-75b7-448e-b15b-3324c5b69f57/Naehert" />
+        </transition>
+        <transition Id="fdb63bc0-7c1b-486d-a241-f2c36a551cf3">
+          <stateMoniker name="/f3a5e37e-75b7-448e-b15b-3324c5b69f57/Still" />
         </transition>
       </successors>
     </state>
@@ -39,4 +42,9 @@
       <comment Id="3814ff1b-31c7-4b44-9557-a80e53740079" text="Welchen Werte haben GP nd zug_v initial" />
     </programGraphHasComments>
   </comments>
+  <importedVariables>
+    <programGraphHasImportedVariables Id="bf13965b-8374-47d8-bd83-e5f1f68c94de">
+      <importedVariable Id="b8484033-70cb-4b38-91a7-5d03e95fe43a" name="HodometerPosition" range="Still, Naehert" />
+    </programGraphHasImportedVariables>
+  </importedVariables>
 </programGraph>

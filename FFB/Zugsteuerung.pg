@@ -16,7 +16,7 @@
         <transition Id="bc290c50-91f9-413a-9244-8d9a80b2142c" guard="_AP == 0" label="_AP == 0">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/PruefenNachricht" />
         </transition>
-        <transition Id="bdafd1a3-32f3-4e65-bf02-307fc69c9d73">
+        <transition Id="bdafd1a3-32f3-4e65-bf02-307fc69c9d73" guard="_EP != 0 &amp;&amp; _AP != 0" label="_EP != 0 &amp;&amp; _AP != 0">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Bereit" />
         </transition>
       </successors>
@@ -94,7 +94,7 @@
       <importedVariable Id="d7bfe62d-53fc-45d5-b914-5d6f717ac4f0" name="HodometerGW.zug_v" range="0..144" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="bd759731-9bd8-4957-804b-1499097c136f">
-      <importedVariable Id="992a8d1b-1000-42b8-9569-6fa2c7a35bfb" name="Hodometer.GP" range="0..100" />
+      <importedVariable Id="992a8d1b-1000-42b8-9569-6fa2c7a35bfb" name="HodometerPosition.GP" range="0..100" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="2ba5e245-c7ae-4369-9f62-25fcabd550ba">
       <importedVariable Id="656a78f9-affc-4705-9b7c-e5b06d0a279e" name="Zugfunkmodul" range="Empfaengt, NachrichtEmpfangen, Sendet, NachrichtGesendet, Bereit" />

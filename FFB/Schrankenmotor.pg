@@ -13,12 +13,18 @@
         <transition Id="f8f64b66-c6ac-42ef-b30c-3bf77b5c967f" guard="Schranke == Offen" label="Schranke == Offen">
           <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Aus" />
         </transition>
+        <transition Id="06c73887-716a-479f-824b-507e9d6dbb16" guard="Schranke != Offen" label="Schranke != Offen">
+          <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Oeffnen" />
+        </transition>
       </successors>
     </state>
     <state Id="97eef938-a61e-4bb2-bb0e-15ada5971399" name="Schliessen">
       <successors>
         <transition Id="0ca2bc6b-4072-4f1b-b6a0-298188a0bab4" guard="Schranke == Geschlossen" label="Schranke == Geschlossen">
           <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Aus" />
+        </transition>
+        <transition Id="71248adc-0d45-4f2f-ad64-a4ebf6b00650" guard="Schranke != Geschlossen" label="Schranke != Geschlossen">
+          <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Schliessen" />
         </transition>
       </successors>
     </state>
@@ -30,12 +36,15 @@
         <transition Id="78e45acb-7e1f-4634-bb04-bff1f0359c28" guard="Schrankensteuerung == SchrankeOeffnen" label="Schrankensteuerung == SchrankeOeffnen">
           <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Oeffnen" />
         </transition>
+        <transition Id="ff31a068-0f05-496a-9eea-5f1e4ac9e47e" guard="Schrankensteuerung != SchrankeOeffnen &amp;&amp; Schrankensteuerung != SchrankeSchliessen" label="Schrankensteuerung != SchrankeOeffnen &amp;&amp; Schrankensteuerung != SchrankeSchliessen">
+          <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Aus" />
+        </transition>
       </successors>
     </state>
   </states>
   <importedVariables>
     <programGraphHasImportedVariables Id="697f8863-1d30-4d3e-87f4-3069b9111dff">
-      <importedVariable Id="c140d290-1231-4189-a258-7aef5c9ca5db" name="Schrankensteuerung" range="Bereit, SchrankeSchliessen, SchrankeGeschlossen, ZugErkannt, SchrankeOeffnen, NachrichtGesendet" />
+      <importedVariable Id="c140d290-1231-4189-a258-7aef5c9ca5db" name="Schrankensteuerung" range="Bereit, SchrankeSchliessen, SchrankeGeschlossen, ZugErkannt, SchrankeOeffnen, ZweiteNachricht" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="3feb544e-de62-4477-b7a1-f8705d9b1b8a">
       <importedVariable Id="346d95c8-0d28-439d-a1e6-1235ab23c17a" name="Schranke" range="Offen, Geschlossen, Schliesst, Oeffnet" />

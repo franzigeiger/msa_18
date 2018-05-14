@@ -13,6 +13,9 @@
         <transition Id="443f8ca0-34ae-4796-9adc-891d04203db7" guard="Schrankenfunkmodul == NachrichtEmpfangen" action="WaitTime := 0" label="Schrankenfunkmodul == NachrichtEmpfangen // WaitTime := 0" precondition="WaitTime &lt;= 30">
           <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/SchrankeSchliessen" />
         </transition>
+        <transition Id="431088f3-cc0c-4ad4-9777-e3f6aae79173" guard="Schrankenfunkmodul != NachrichtEmpfangen" label="Schrankenfunkmodul != NachrichtEmpfangen">
+          <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/Bereit" />
+        </transition>
       </successors>
     </state>
     <state Id="26adb93a-b3f2-47bc-b036-7ae8a62aa649" name="SchrankeSchliessen">
@@ -20,7 +23,7 @@
         <transition Id="c2e38306-c0f9-4b33-92ca-ca47b476db42" guard="Schranke == Geschlossen &amp;&amp; WaitTime &lt; 20" label="Schranke == Geschlossen &amp;&amp; WaitTime &lt; 20">
           <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/SchrankeGeschlossen" />
         </transition>
-        <transition Id="379fe495-55fa-4a84-b916-bc8f7ef453c7" action="WaitTime := WaitTime  + 1" label="// WaitTime := WaitTime  + 1" precondition="WaitTime &lt; 30">
+        <transition Id="379fe495-55fa-4a84-b916-bc8f7ef453c7" guard="Schranke != Geschlossen &amp;&amp; WaitTime &lt; 20" action="WaitTime := WaitTime  + 1" label="Schranke != Geschlossen &amp;&amp; WaitTime &lt; 20 // WaitTime := WaitTime  + 1" precondition="WaitTime &lt; 30">
           <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/SchrankeSchliessen" />
         </transition>
         <transition Id="025dc32d-ddff-4320-ab1f-200260a484b1" guard="Schranke != Geschlossen &amp;&amp; WaitTime == 20" label="Schranke != Geschlossen &amp;&amp; WaitTime == 20">
@@ -32,6 +35,9 @@
       <successors>
         <transition Id="efb65d51-1d07-46cd-9d5c-d328def01dbc" guard="Schrankenfunkmodul == NachrichtEmpfangen" label="Schrankenfunkmodul == NachrichtEmpfangen">
           <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/ZweiteNachricht" />
+        </transition>
+        <transition Id="1c0c4461-2644-4566-9683-4af55b107d28" guard="Schrankenfunkmodul != NachrichtEmpfangen" label="Schrankenfunkmodul != NachrichtEmpfangen">
+          <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/SchrankeGeschlossen" />
         </transition>
       </successors>
     </state>

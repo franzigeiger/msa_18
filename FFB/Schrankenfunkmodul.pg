@@ -23,7 +23,7 @@
     </state>
     <state Id="112a85f4-c111-4282-8819-9786c818644d" name="NachrichtEmpfangen">
       <successors>
-        <transition Id="91663d7c-5f89-435a-abe2-a773485106d7" guard="Schrankensteuerung== SchrankeSchliessen || Schrankensteuerung ==ZweiteNachricht" label="Schrankensteuerung== SchrankeSchliessen || Schrankensteuerung ==ZweiteNachricht">
+        <transition Id="91663d7c-5f89-435a-abe2-a773485106d7">
           <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Bereit" />
         </transition>
       </successors>
@@ -40,7 +40,7 @@
     </state>
     <state Id="5b5dfb38-04b9-46e8-9203-44f560930583" name="NachrichtGesendet">
       <successors>
-        <transition Id="a6022a65-4040-465a-910a-d7a0e6a523c9" guard="Funk == KeinFunk &amp;&amp; Schrankensteuerung == NachrichtGesendet " label="Funk == KeinFunk &amp;&amp; Schrankensteuerung == NachrichtGesendet ">
+        <transition Id="a6022a65-4040-465a-910a-d7a0e6a523c9">
           <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Bereit" />
         </transition>
       </successors>
@@ -52,6 +52,9 @@
         </transition>
         <transition Id="70c71cd6-84a1-42e5-9d53-2cdc435f4e4e" guard="Schrankensteuerung == ZweiteNachricht" action="Sendezeit := 0" label="Schrankensteuerung == ZweiteNachricht // Sendezeit := 0" precondition="Sendezeit &lt;= 5">
           <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Sendet" />
+        </transition>
+        <transition Id="c2008a0c-38ed-4c58-9dd8-5d919742bf24" guard="Funk != ZugZuBahnuebergang &amp;&amp; Schrankensteuerung != ZweiteNachricht " label="Funk != ZugZuBahnuebergang &amp;&amp; Schrankensteuerung != ZweiteNachricht ">
+          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Bereit" />
         </transition>
       </successors>
     </state>
