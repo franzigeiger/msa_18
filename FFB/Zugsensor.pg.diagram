@@ -38,5 +38,21 @@
         <stateShapeMoniker Id="5c0b2d5b-d71e-4cf3-8ece-6c8bbb141324" />
       </nodes>
     </transitionConnector>
+    <transitionConnector Id="591ebd8a-fbf7-4db8-a642-8fa54ae6a753" edgePoints="[(4.09653846153846 : 3.875); (4.09653846153846 : 4.125); (4.41076923076923 : 4.125); (4.41076923076923 : 3.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <transitionMoniker Id="6f118e94-85cc-4c4e-a295-8ddef5c3ac5c" />
+      <relativeChildShapes />
+      <nodes>
+        <stateShapeMoniker Id="5c0b2d5b-d71e-4cf3-8ece-6c8bbb141324" />
+        <stateShapeMoniker Id="5c0b2d5b-d71e-4cf3-8ece-6c8bbb141324" />
+      </nodes>
+    </transitionConnector>
+    <transitionConnector Id="b0b43a31-6751-4f96-ac1d-0ebb4b5d8510" edgePoints="[(6.25 : 2.55230769230769); (6.5 : 2.55230769230769); (6.5 : 2.70115384615385); (6.25 : 2.70115384615385)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <transitionMoniker Id="2ea64f31-282d-4436-8f54-47d0eded09ab" />
+      <relativeChildShapes />
+      <nodes>
+        <stateShapeMoniker Id="f080ae24-78f1-4e70-ad76-22d2b55e2aca" />
+        <stateShapeMoniker Id="f080ae24-78f1-4e70-ad76-22d2b55e2aca" />
+      </nodes>
+    </transitionConnector>
   </nestedChildShapes>
 </programGraphDslDiagram>

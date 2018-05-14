@@ -13,12 +13,18 @@
         <transition Id="ba79a666-5f4c-4889-9552-efc3ec5fc5ab">
           <stateMoniker name="/c3864fa7-33f3-4793-81a8-a7fb8ae6f675/Zug" />
         </transition>
+        <transition Id="2ea64f31-282d-4436-8f54-47d0eded09ab">
+          <stateMoniker name="/c3864fa7-33f3-4793-81a8-a7fb8ae6f675/KeinZug" />
+        </transition>
       </successors>
     </state>
     <state Id="8f6054a2-2648-4ead-81c2-4f186dee8b87" name="Zug">
       <successors>
         <transition Id="ceec6021-109f-46cd-8a15-1f2e2b1e0def">
           <stateMoniker name="/c3864fa7-33f3-4793-81a8-a7fb8ae6f675/KeinZug" />
+        </transition>
+        <transition Id="6f118e94-85cc-4c4e-a295-8ddef5c3ac5c">
+          <stateMoniker name="/c3864fa7-33f3-4793-81a8-a7fb8ae6f675/Zug" />
         </transition>
       </successors>
     </state>

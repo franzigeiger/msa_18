@@ -16,14 +16,20 @@
         <transition Id="bc290c50-91f9-413a-9244-8d9a80b2142c" guard="_AP == 0" label="_AP == 0">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/PruefenNachricht" />
         </transition>
-      </successors>
-    </state>
-    <state Id="37c7aed4-44b4-475b-980f-f1368bc32c6f" name="Zwangsbremsung" />
-    <state Id="694e707c-ec04-4b29-8f7a-78163d080695" name="SichernNachricht">
-      <successors>
-        <transition Id="0614c2bf-1342-47e9-aef9-7a04b3c29079">
+        <transition Id="bdafd1a3-32f3-4e65-bf02-307fc69c9d73">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Bereit" />
         </transition>
+      </successors>
+    </state>
+    <state Id="37c7aed4-44b4-475b-980f-f1368bc32c6f" name="Zwangsbremsung">
+      <successors>
+        <transition Id="b7b9480a-5497-4469-893f-1c43da8473a3">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Zwangsbremsung" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="694e707c-ec04-4b29-8f7a-78163d080695" name="SichernNachricht">
+      <successors>
         <transition Id="7cd191b3-9bed-47c3-bc5a-2f255958786f">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/SichernNachrichtGesendet" />
         </transition>

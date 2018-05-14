@@ -13,8 +13,11 @@
         <transition Id="22b64710-c34e-49b5-889b-56e0cf7a73c4" guard="Funk ==KeinFunk &amp;&amp; timeoutCounter &lt; maxTimeout" label="Funk ==KeinFunk &amp;&amp; timeoutCounter &lt; maxTimeout">
           <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/NachrichtEmpfangen" />
         </transition>
-        <transition Id="9a3dfc60-1246-4fb5-b415-b02c8b5ac3cd" guard="Funk == ZugZuBahnuebergang &amp;&amp; timeoutCounter &lt; maxTimeout" action="timeoutCounter := timeoutCounter+1" label="Funk == ZugZuBahnuebergang &amp;&amp; timeoutCounter &lt; maxTimeout // timeoutCounter := timeoutCounter+1" precondition="timeoutCounter &lt; 100">
+        <transition Id="9a3dfc60-1246-4fb5-b415-b02c8b5ac3cd" guard="Funk ==BahnuebergangZuZug &amp;&amp; timeoutCounter &lt; maxTimeout" action="timeoutCounter := timeoutCounter+1" label="Funk ==BahnuebergangZuZug &amp;&amp; timeoutCounter &lt; maxTimeout // timeoutCounter := timeoutCounter+1" precondition="timeoutCounter &lt; 10">
           <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Empfaengt" />
+        </transition>
+        <transition Id="5587ea25-a397-4b39-abae-0da15e1a88d3" guard="timeoutCounter == maxTimeout" label="timeoutCounter == maxTimeout">
+          <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Bereit" />
         </transition>
       </successors>
     </state>
@@ -27,10 +30,10 @@
     </state>
     <state Id="ca5e8389-88ac-4604-8fc3-fb1ef93072b3" name="Sendet">
       <successors>
-        <transition Id="6a2d03c7-c2b9-4471-8dbf-f2c4e271a664" guard="Funk == KeinFunk &amp;&amp; Sendezeit == 5" label="Funk == KeinFunk &amp;&amp; Sendezeit == 5">
+        <transition Id="6a2d03c7-c2b9-4471-8dbf-f2c4e271a664" guard="Sendezeit &lt;= 5" label="Sendezeit &lt;= 5">
           <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/NachrichtGesendet" />
         </transition>
-        <transition Id="84fca557-2ee0-4372-b072-545973bdbb5d" action="Sendezeit := Sendezeit + 1" label="// Sendezeit := Sendezeit + 1" precondition="Sendezeit &lt; 5">
+        <transition Id="84fca557-2ee0-4372-b072-545973bdbb5d" guard="Sendezeit &lt; 5" action="Sendezeit := Sendezeit + 1" label="Sendezeit &lt; 5 // Sendezeit := Sendezeit + 1" precondition="Sendezeit &lt; 5">
           <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Sendet" />
         </transition>
       </successors>
@@ -55,13 +58,13 @@
   </states>
   <variables>
     <programGraphHasVariables Id="aa8d0e22-1ecd-4fe2-a7ef-792869864154">
-      <variable Id="b4eab537-0ee6-44c8-bd73-21203e487af2" name="timeoutCounter" range="0..100" />
+      <variable Id="b4eab537-0ee6-44c8-bd73-21203e487af2" name="timeoutCounter" range="0..10" />
     </programGraphHasVariables>
     <programGraphHasVariables Id="ccce5654-0f3a-4ee4-bb1b-2b3896768dd5">
       <variable Id="0e5ee172-540e-4011-9997-33f4f4c93948" name="Sendezeit" range="0..5" />
     </programGraphHasVariables>
     <programGraphHasVariables Id="ea4b6bab-f6bd-4934-8b02-0aa0bcc57853">
-      <variable Id="b1a9eeab-a686-41cc-9070-9e7a94e8aa01" name="maxTimeout" range="100" />
+      <variable Id="b1a9eeab-a686-41cc-9070-9e7a94e8aa01" name="maxTimeout" range="10" />
     </programGraphHasVariables>
   </variables>
   <importedVariables>
