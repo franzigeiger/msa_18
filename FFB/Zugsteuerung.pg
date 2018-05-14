@@ -24,8 +24,8 @@
         <transition Id="0614c2bf-1342-47e9-aef9-7a04b3c29079">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Bereit" />
         </transition>
-        <transition Id="5ef31513-650c-4d26-8b6d-3425f3d8945e">
-          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/NachrichtGesendet" />
+        <transition Id="7cd191b3-9bed-47c3-bc5a-2f255958786f">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/SichernNachrichtGesendet" />
         </transition>
       </successors>
     </state>
@@ -37,14 +37,24 @@
         <transition Id="f8216dbf-9bb0-448d-9a60-97d669f30f6c" guard="_BEP == 0" label="_BEP == 0">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Zwangsbremsung" />
         </transition>
-        <transition Id="046c1fe7-c965-466b-bec0-a424f031a787">
-          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/NachrichtGesendet" />
+        <transition Id="046c1fe7-c965-466b-bec0-a424f031a787" guard="Zugfunkmodul == NachrichtGesendet" label="Zugfunkmodul == NachrichtGesendet">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/PruefenNachrichtGesendet" />
         </transition>
       </successors>
     </state>
-    <state Id="e8568c3e-05c1-4434-a13a-73eac9e9c09d" name="NachrichtGesendet">
+    <state Id="e8568c3e-05c1-4434-a13a-73eac9e9c09d" name="PruefenNachrichtGesendet">
       <successors>
-        <transition Id="85a3a9a2-f931-4be9-8047-baf995cb5d0f">
+        <transition Id="a90605ee-0d62-43ce-a148-8413cc4d55e8" guard="_BEP == 0" label="_BEP == 0">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Zwangsbremsung" />
+        </transition>
+        <transition Id="2fdd310e-40fd-4108-aac3-e18474ce8a57" guard="Zugfunkmodul == NachrichtEmpfangen" label="Zugfunkmodul == NachrichtEmpfangen">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Bereit" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="1cca6928-7ad6-4216-ad85-af4d0c35b688" name="SichernNachrichtGesendet">
+      <successors>
+        <transition Id="f733c587-d9e5-4470-ab48-353a5d748679">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Bereit" />
         </transition>
       </successors>
