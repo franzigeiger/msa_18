@@ -47,7 +47,7 @@
     </state>
     <state Id="5e66bc35-43c4-4511-9ac4-a544c196edbf" name="Bereit">
       <successors>
-        <transition Id="3c8f8fec-566c-4a0c-ab81-9d771087805a" guard="Funk == ZugZuBahnübergang" action="timeoutCounter := 0" label="Funk == ZugZuBahnübergang // timeoutCounter := 0" precondition="timeoutCounter &lt; 100">
+        <transition Id="3c8f8fec-566c-4a0c-ab81-9d771087805a" guard="Funk == ZugZuBahnuebergang" action="timeoutCounter := 0" label="Funk == ZugZuBahnuebergang // timeoutCounter := 0" precondition="timeoutCounter &lt; 100">
           <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Empfaengt" />
         </transition>
         <transition Id="70c71cd6-84a1-42e5-9d53-2cdc435f4e4e" guard="Schrankensteuerung == SchrankeGeschlossen" action="Sendezeit := 0" label="Schrankensteuerung == SchrankeGeschlossen // Sendezeit := 0" precondition="Sendezeit &lt;= 5">
@@ -69,7 +69,7 @@
   </variables>
   <importedVariables>
     <programGraphHasImportedVariables Id="aa6fc6d2-7f2e-4af9-ad93-7b9a59ec509a">
-      <importedVariable Id="b12edc8f-4f37-4d43-9648-b27c4a07d625" name="Schrankensteuerung" range="Bereit, SchrankeSchliessen, SchrankeGeschlossen, ZugErkannt, SchrankeOeffnen, NachrichtGesendet" />
+      <importedVariable Id="b12edc8f-4f37-4d43-9648-b27c4a07d625" name="Schrankensteuerung" range="Bereit, SchrankeSchliessen, SchrankeGeschlossen, ZugErkannt, SchrankeOeffnen, ZweiteNachricht" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="4f560efb-2a19-420c-b8d8-825c540df046">
       <importedVariable Id="7ae4e20d-727e-4612-9a66-f0aff65f8bfc" name="Funk" range="KeinFunk, ZugZuBahnübergang, BahnübergangZuZug" />
