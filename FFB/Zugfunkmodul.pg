@@ -8,19 +8,19 @@
         </transition>
       </successors>
     </initialNode>
-    <state Id="8193a414-4495-4eac-a2ba-ed552ecea281" name="Empfängt">
+    <state Id="8193a414-4495-4eac-a2ba-ed552ecea281" name="Empfaengt">
       <successors>
-        <transition Id="22b64710-c34e-49b5-889b-56e0cf7a73c4" guard="Funk=KeinFunk &amp;&amp; timeoutCounter &lt; maxtimeout" label="Funk=KeinFunk &amp;&amp; timeoutCounter &lt; maxtimeout">
+        <transition Id="22b64710-c34e-49b5-889b-56e0cf7a73c4" guard="Funk ==KeinFunk &amp;&amp; timeoutCounter &lt; maxTimeout" label="Funk ==KeinFunk &amp;&amp; timeoutCounter &lt; maxTimeout">
           <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/NachrichtEmpfangen" />
         </transition>
-        <transition Id="9a3dfc60-1246-4fb5-b415-b02c8b5ac3cd" guard="Funk= ZugZuBahnübergang &amp;&amp; timeoutCounter &lt; maxTimeout" action="timeoutCounter = timeoutCounter+1" label="Funk= ZugZuBahnübergang &amp;&amp; timeoutCounter &lt; maxTimeout // timeoutCounter = timeoutCounter+1">
-          <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Empfängt" />
+        <transition Id="9a3dfc60-1246-4fb5-b415-b02c8b5ac3cd" guard="Funk == ZugZuBahnuebergang &amp;&amp; timeoutCounter &lt; maxTimeout" action="timeoutCounter := timeoutCounter+1" label="Funk == ZugZuBahnuebergang &amp;&amp; timeoutCounter &lt; maxTimeout // timeoutCounter := timeoutCounter+1" precondition="timeoutCounter &lt; 100">
+          <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Empfaengt" />
         </transition>
       </successors>
     </state>
     <state Id="b91e55e3-099a-4553-b7fa-56cc2e0c1627" name="NachrichtEmpfangen">
       <successors>
-        <transition Id="36ba8441-4a48-4a3c-8eb8-faa081f1f767">
+        <transition Id="36ba8441-4a48-4a3c-8eb8-faa081f1f767" guard="Zugsteuerung == Bereit" label="Zugsteuerung == Bereit">
           <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Bereit" />
         </transition>
       </successors>
@@ -30,24 +30,24 @@
         <transition Id="6a2d03c7-c2b9-4471-8dbf-f2c4e271a664" guard="Sendezeit == 5" label="Sendezeit == 5">
           <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/NachrichtGesendet" />
         </transition>
-        <transition Id="84fca557-2ee0-4372-b072-545973bdbb5d" guard="Sendezeit &lt; 5" action="Sendezeit := Sendezeit + 1" label="Sendezeit &lt; 5 // Sendezeit := Sendezeit + 1">
+        <transition Id="84fca557-2ee0-4372-b072-545973bdbb5d" action="Sendezeit := Sendezeit + 1" label="// Sendezeit := Sendezeit + 1" precondition="Sendezeit &lt; 5">
           <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Sendet" />
         </transition>
       </successors>
     </state>
     <state Id="325ee7a5-d7a8-4443-a8c5-e5d6cade40d1" name="NachrichtGesendet">
       <successors>
-        <transition Id="cb782548-8e0e-4fb3-9fa1-1a20a85d483f" guard="Funk == Kein Funk &amp;&amp; Schrankensteuerung == NachrichtGesendet " label="Funk == Kein Funk &amp;&amp; Schrankensteuerung == NachrichtGesendet ">
+        <transition Id="cb782548-8e0e-4fb3-9fa1-1a20a85d483f" guard="Funk == KeinFunk &amp;&amp; Zugsteuerung == NachrichtGesendet " label="Funk == KeinFunk &amp;&amp; Zugsteuerung == NachrichtGesendet ">
           <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Bereit" />
         </transition>
       </successors>
     </state>
     <state Id="dbcef2de-f399-4627-bd21-5c3f668d4e78" name="Bereit">
       <successors>
-        <transition Id="2b585213-6fcd-48ea-8534-b733b46a1d18" guard="Funk= ZugZuBahnübergang" action="timeoutCounter := 0" label="Funk= ZugZuBahnübergang // timeoutCounter := 0">
-          <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Empfängt" />
+        <transition Id="2b585213-6fcd-48ea-8534-b733b46a1d18" guard="Funk == BahnuebergangZuZug" action="timeoutCounter := 0" label="Funk == BahnuebergangZuZug // timeoutCounter := 0" precondition="timeoutCounter &gt; 0">
+          <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Empfaengt" />
         </transition>
-        <transition Id="47c9a519-dda9-433a-82b9-e82597c0398a" guard="true" action="Sendezeit := 0" label="true // Sendezeit := 0">
+        <transition Id="47c9a519-dda9-433a-82b9-e82597c0398a" guard="Zugsteuerung == PruefenNachricht || Zugsteuerung == SichernNachricht" action="Sendezeit := 0" label="Zugsteuerung == PruefenNachricht || Zugsteuerung == SichernNachricht // Sendezeit := 0" precondition="Sendezeit &gt; 0">
           <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Sendet" />
         </transition>
       </successors>
@@ -57,13 +57,19 @@
     <programGraphHasVariables Id="aa8d0e22-1ecd-4fe2-a7ef-792869864154">
       <variable Id="b4eab537-0ee6-44c8-bd73-21203e487af2" name="timeoutCounter" range="0..100" />
     </programGraphHasVariables>
-    <programGraphHasVariables Id="f5596968-393e-4f03-bce3-7a504c9ecc1c">
-      <variable Id="56180f04-ceca-4b40-9fb3-a720cb15929f" name="maxtimeout" range="100" />
+    <programGraphHasVariables Id="ccce5654-0f3a-4ee4-bb1b-2b3896768dd5">
+      <variable Id="0e5ee172-540e-4011-9997-33f4f4c93948" name="Sendezeit" range="0..5" />
+    </programGraphHasVariables>
+    <programGraphHasVariables Id="ea4b6bab-f6bd-4934-8b02-0aa0bcc57853">
+      <variable Id="b1a9eeab-a686-41cc-9070-9e7a94e8aa01" name="maxTimeout" range="100" />
     </programGraphHasVariables>
   </variables>
   <importedVariables>
-    <programGraphHasImportedVariables Id="cd276887-b1f0-4868-a63a-c4ba5aa6264b">
-      <importedVariable Id="6c5e1cbe-90b3-496c-ba7f-5205aa29e2ae" />
+    <programGraphHasImportedVariables Id="f3c6b624-1dd2-4f75-8bdf-675d8fa621ba">
+      <importedVariable Id="caff00d8-c3b5-410d-87a1-2d82512e8ab9" name="Zugsteuerung" range="Bereit, Zwangsbremsung, SichernNachricht, PruefenNachricht, NachrichtGesendet" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="32cc7980-561c-4ab3-92c8-e7dfddcc471b">
+      <importedVariable Id="e91666ed-6a39-4d0d-abbb-40b9946c0fd8" name="Funk" range="KeinFunk, ZugZuBahnuebergang, BahnuebergangZuZug" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

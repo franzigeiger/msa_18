@@ -60,10 +60,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-
     <None Include="Funk.pg" />
     <None Include="Funk.pg.diagram">
       <DependentUpon>Funk.pg</DependentUpon>
+    </None>
+    <None Include="HodometerGW.pg" />
+    <None Include="HodometerGW.pg.diagram">
+      <DependentUpon>HodometerGW.pg</DependentUpon>
     </None>
     <None Include="Schranke.pg" />
     <None Include="Schranke.pg.diagram">
@@ -84,7 +87,8 @@
     <None Include="Zugsensor.pg" />
     <None Include="Zugsensor.pg.diagram">
       <DependentUpon>Zugsensor.pg</DependentUpon>
-    </None>    <None Include="Bremse.pg">
+    </None>
+    <None Include="Bremse.pg">
       <SubType>Designer</SubType>
     </None>
     <None Include="Bremse.pg.diagram">

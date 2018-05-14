@@ -13,7 +13,7 @@
         <transition Id="d61f59f5-67c8-474f-9e88-3ab8f28e33dc" guard="(_EP) == 0" label="(_EP) == 0">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/SichernNachricht" />
         </transition>
-        <transition Id="bc290c50-91f9-413a-9244-8d9a80b2142c" guard="_EP == 0" label="_EP == 0">
+        <transition Id="bc290c50-91f9-413a-9244-8d9a80b2142c" guard="_AP == 0" label="_AP == 0">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/PruefenNachricht" />
         </transition>
       </successors>
@@ -24,15 +24,28 @@
         <transition Id="0614c2bf-1342-47e9-aef9-7a04b3c29079">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Bereit" />
         </transition>
+        <transition Id="5ef31513-650c-4d26-8b6d-3425f3d8945e">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/NachrichtGesendet" />
+        </transition>
       </successors>
     </state>
     <state Id="3ea32165-5b79-47d9-8d53-45e4db0a047e" name="PruefenNachricht">
       <successors>
-        <transition Id="d2f5a89f-39bd-4073-a5fa-17f189b9c27a">
+        <transition Id="d2f5a89f-39bd-4073-a5fa-17f189b9c27a" guard="Zugfunkmodul == NachrichtEmpfangen" label="Zugfunkmodul == NachrichtEmpfangen">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Bereit" />
         </transition>
         <transition Id="f8216dbf-9bb0-448d-9a60-97d669f30f6c" guard="_BEP == 0" label="_BEP == 0">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Zwangsbremsung" />
+        </transition>
+        <transition Id="046c1fe7-c965-466b-bec0-a424f031a787">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/NachrichtGesendet" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="e8568c3e-05c1-4434-a13a-73eac9e9c09d" name="NachrichtGesendet">
+      <successors>
+        <transition Id="85a3a9a2-f931-4be9-8047-baf995cb5d0f">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Bereit" />
         </transition>
       </successors>
     </state>
@@ -62,10 +75,13 @@
   </macros>
   <importedVariables>
     <programGraphHasImportedVariables Id="dd150be6-218d-43ab-8aba-c76dfb8871ad">
-      <importedVariable Id="d7bfe62d-53fc-45d5-b914-5d6f717ac4f0" name="Hodometer.zug_v" range="0..144" />
+      <importedVariable Id="d7bfe62d-53fc-45d5-b914-5d6f717ac4f0" name="HodometerGW.zug_v" range="0..144" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="bd759731-9bd8-4957-804b-1499097c136f">
       <importedVariable Id="992a8d1b-1000-42b8-9569-6fa2c7a35bfb" name="Hodometer.GP" range="0..100" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="2ba5e245-c7ae-4369-9f62-25fcabd550ba">
+      <importedVariable Id="656a78f9-affc-4705-9b7c-e5b06d0a279e" name="Zugfunkmodul" range="Empfaengt, NachrichtEmpfangen, Sendet, NachrichtGesendet, Bereit" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>
