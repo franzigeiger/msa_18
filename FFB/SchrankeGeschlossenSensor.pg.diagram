@@ -6,10 +6,10 @@
       <initialNodeMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/InitialNode1" />
     </initialStateShape>
     <stateShape Id="3110814c-d656-4b46-8c88-56e636446cd8" absoluteBounds="4.125, 2.75, 1.875, 0.5">
-      <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Schranke Nicht Geschlossen" />
+      <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/SchrankeNichtGeschlossen" />
     </stateShape>
     <stateShape Id="547b9b2d-bc1b-4bec-b8f1-93dfdf59b994" absoluteBounds="4.25, 4, 1.625, 0.5">
-      <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Schranke Geschlossen" />
+      <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/SchrankeGeschlossen" />
     </stateShape>
     <transitionConnector Id="4c7d9200-0ed1-4fe8-894b-09accd34ee18" edgePoints="[(5.0625 : 2.125); (5.0625 : 2.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <transitionMoniker Id="12ebf746-2ec5-4d50-bd71-e79a33b70901" />
@@ -23,7 +23,7 @@
       <transitionMoniker Id="352045f5-da90-41a5-82ed-bb29b4d1ee97" />
       <relativeChildShapes />
       <moveableDecoratorHostShapes>
-        <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="3.8125, 3.5, 0.74460852146148682, 0.181884765625" shapeFieldName="Label" />
+        <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="3.82611083984375, 3.5, 0.71738684177398682, 0.181884765625" shapeFieldName="Label" />
       </moveableDecoratorHostShapes>
       <nodes>
         <stateShapeMoniker Id="3110814c-d656-4b46-8c88-56e636446cd8" />
@@ -34,7 +34,7 @@
       <transitionMoniker Id="c22a6bb7-9531-4db8-99e0-f7fd2ade9b55" />
       <relativeChildShapes />
       <moveableDecoratorHostShapes>
-        <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="5.6875, 3.4375, 0.69309484958648682, 0.181884765625" shapeFieldName="Label" />
+        <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="5.75, 3.5625, 0.66587316989898682, 0.181884765625" shapeFieldName="Label" />
       </moveableDecoratorHostShapes>
       <nodes>
         <stateShapeMoniker Id="547b9b2d-bc1b-4bec-b8f1-93dfdf59b994" />

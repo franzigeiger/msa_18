@@ -4,51 +4,33 @@
     <initialNode Id="c19c79b5-c85b-4db5-8669-b718c57dc2f0" name="InitialNode1">
       <successors>
         <transition Id="12ebf746-2ec5-4d50-bd71-e79a33b70901">
-          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Schranke Nicht Geschlossen" />
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/SchrankeNichtGeschlossen" />
         </transition>
       </successors>
     </initialNode>
-    <state Id="d996149b-7a02-4986-90af-f1738896a221" name="Schranke Nicht Geschlossen">
+    <state Id="d996149b-7a02-4986-90af-f1738896a221" name="SchrankeNichtGeschlossen">
       <successors>
-        <transition Id="352045f5-da90-41a5-82ed-bb29b4d1ee97" guard="Winkel == 0" label="Winkel == 0">
-          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Schranke Geschlossen" />
+        <transition Id="352045f5-da90-41a5-82ed-bb29b4d1ee97" guard="winkel == 0" label="winkel == 0">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/SchrankeGeschlossen" />
         </transition>
       </successors>
     </state>
-    <state Id="96ab215a-4f7d-4067-914f-dc26d41edd45" name="Schranke Geschlossen">
+    <state Id="96ab215a-4f7d-4067-914f-dc26d41edd45" name="SchrankeGeschlossen">
       <successors>
-        <transition Id="c22a6bb7-9531-4db8-99e0-f7fd2ade9b55" guard="Winkel != 0" label="Winkel != 0">
-          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Schranke Nicht Geschlossen" />
+        <transition Id="c22a6bb7-9531-4db8-99e0-f7fd2ade9b55" guard="winkel != 0" label="winkel != 0">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/SchrankeNichtGeschlossen" />
         </transition>
       </successors>
     </state>
   </states>
   <macros>
     <programGraphHasMacros Id="bfa95fed-9776-45cd-922d-2b5902b49608">
-      <macro Id="a4b3edec-c592-4820-8057-17c8177312fc" />
-    </programGraphHasMacros>
-    <programGraphHasMacros Id="6440b470-f45d-45e2-9287-b1c75acc49c7">
-      <macro Id="d8e3e237-bc85-446d-b607-288a85e8a433" />
-    </programGraphHasMacros>
-    <programGraphHasMacros Id="3d9fa14d-09f7-4bdc-86f3-9f1da007049d">
-      <macro Id="365bd8e7-e2c2-4bc1-81ec-430ed86e2225" />
-    </programGraphHasMacros>
-    <programGraphHasMacros Id="b9fff9fb-38aa-4386-8eb7-a30f27370654">
-      <macro Id="89067ca4-b47f-42fe-9617-f1d3bd747841" />
-    </programGraphHasMacros>
-    <programGraphHasMacros Id="060dbfe6-89d4-4ec8-81f0-8b9beda98cb5">
-      <macro Id="e715ed12-cd99-46e7-85c1-fcab531e54f5" />
-    </programGraphHasMacros>
-    <programGraphHasMacros Id="add7e62f-9df2-40f4-b12c-1e851c55c6ea">
-      <macro Id="0d7da3df-95e2-41f5-9d7e-392e57120c82" />
-    </programGraphHasMacros>
-    <programGraphHasMacros Id="2fcc5ea2-c9ec-4ae8-9031-ae8d56550a98">
-      <macro Id="c883db10-af21-481c-aa3d-3b531f7fe6ad" />
+      <macro Id="a4b3edec-c592-4820-8057-17c8177312fc" name="w_sgs_in" body="winkel" />
     </programGraphHasMacros>
   </macros>
   <importedVariables>
     <programGraphHasImportedVariables Id="40637120-5ac1-450c-907f-994f48edd5ea">
-      <importedVariable Id="758af65c-2e78-481e-aeac-b124dea64501" name="SchrankenBaum.Winkel" range="unresolved import" />
+      <importedVariable Id="758af65c-2e78-481e-aeac-b124dea64501" name="SchrankenBaum.winkel" range="0..90" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

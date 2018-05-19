@@ -10,7 +10,7 @@
     </initialNode>
     <state Id="e5fcef29-b6a7-4d3d-a2ef-19fc979c8ea7" name="Hodometer">
       <successors>
-        <transition Id="5f7b4242-b098-443d-ab31-705e1a51793c" action="geschwindigkeit := geschwindigkeit + bremskraft || position := position + geschwindigkeit" label="// geschwindigkeit := geschwindigkeit + bremskraft || position := position + geschwindigkeit" precondition="diskreteGeschwindigkeit &lt;= 160 &amp;&amp; diskreteGeschwindigkeit &gt;= 0 &amp;&amp; diskretePosition &lt;= 100 &amp;&amp; diskretePosition &gt;= 0">
+        <transition Id="5f7b4242-b098-443d-ab31-705e1a51793c" action="diskreteGeschwindigkeit := geschwindigkeit | diskretePosition := position" label="// diskreteGeschwindigkeit := geschwindigkeit | diskretePosition := position" precondition="diskreteGeschwindigkeit &lt;= 160 &amp;&amp; diskreteGeschwindigkeit &gt;= 0 &amp;&amp; diskretePosition &lt;= 100 &amp;&amp; diskretePosition &gt;= 0">
           <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Hodometer" />
         </transition>
       </successors>
@@ -24,4 +24,20 @@
       <variable Id="60b41d78-add6-4810-a23e-99f671bd7913" name="diskretePosition" range="0..100" />
     </programGraphHasVariables>
   </variables>
+  <macros>
+    <programGraphHasMacros Id="a82fbe96-fb2f-4c7b-a934-83372ba39017">
+      <macro Id="73883d83-14c1-4c05-b27a-f66841f94c1f" name="g_h_in" body="geschwindigkeit" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="ae568e08-8913-4d74-b0c1-5e69525b62c2">
+      <macro Id="63dad851-0389-4afa-8496-e50301cfcfe2" name="p_h_in" body="position" />
+    </programGraphHasMacros>
+  </macros>
+  <importedVariables>
+    <programGraphHasImportedVariables Id="cec98154-f613-468e-8969-12915cbbc69f">
+      <importedVariable Id="069f41e1-92f7-47a4-b675-87f292efee51" name="Zug.geschwindigkeit" range="0..160" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="bf1c1d3e-c0ef-4ce4-ac86-591a4a729b8c">
+      <importedVariable Id="a770e052-92b8-4767-a7de-36e07ce807fa" name="Zug.position" range="0..100" />
+    </programGraphHasImportedVariables>
+  </importedVariables>
 </programGraph>

@@ -26,7 +26,7 @@
   </variables>
   <importedVariables>
     <programGraphHasImportedVariables Id="339306de-7117-4abf-9220-1301c04aea59">
-      <importedVariable Id="fa594272-d91b-4f49-9edd-4d97d66f3867" name="Bremse.Bremskraft" range="-1..0" />
+      <importedVariable Id="fa594272-d91b-4f49-9edd-4d97d66f3867" name="Bremse.bremskraft" range="-1..0" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

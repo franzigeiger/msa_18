@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="fe1d8706-7ae8-4ede-8528-183f84a2da24" name="SchranknBaum" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="fe1d8706-7ae8-4ede-8528-183f84a2da24" name="SchrankenBaum" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
   <states>
     <initialNode Id="e1cec811-a563-40ba-8c72-6e0f137ffe49" name="InitialNode1">
       <successors>
-        <transition Id="2b54a18e-4d4f-44f9-a6fa-039431bc3801" guard="Winkel != 0" label="Winkel != 0">
+        <transition Id="2b54a18e-4d4f-44f9-a6fa-039431bc3801" guard="winkel != 0" label="winkel != 0">
           <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Schranke" />
         </transition>
       </successors>
     </initialNode>
     <state Id="c39790e6-04fd-4558-989f-da5528e0f3b6" name="Schranke">
       <successors>
-        <transition Id="85055822-d7ef-4c48-9e65-8376a9a0e9f2" guard="SchrankenMotor == An" action="Winkel := Winkel + Winkelgeschwindigkeit" label="SchrankenMotor == An // Winkel := Winkel + Winkelgeschwindigkeit">
+        <transition Id="85055822-d7ef-4c48-9e65-8376a9a0e9f2" guard="SchrankenMotor == Öffnen || SchrankenMotor == Schließen" action="winkel := winkel + winkelgeschwindigkeit" label="SchrankenMotor == Öffnen || SchrankenMotor == Schließen // winkel := winkel + winkelgeschwindigkeit" precondition="winkelgeschwindigkeit == 0 || (winkelgeschwindigkeit &lt; 0 &amp;&amp; winkel &gt; 0) || (winkelgeschwindigkeit &gt; 0 &amp;&amp; winkel &lt; 90)">
           <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Schranke" />
         </transition>
       </successors>
@@ -18,12 +18,20 @@
   </states>
   <variables>
     <programGraphHasVariables Id="5442aac0-e123-4485-b6e0-2fec762a94e2">
-      <variable Id="7e16b6e4-396f-42c3-9d51-525ec7dd6f48" name="Winkel" range="0..90" />
+      <variable Id="7e16b6e4-396f-42c3-9d51-525ec7dd6f48" name="winkel" range="0..90" />
     </programGraphHasVariables>
   </variables>
+  <macros>
+    <programGraphHasMacros Id="7b8ef04c-6a39-410e-bdfd-8dd3b24b4eac">
+      <macro Id="7c6cd329-7af0-4011-918e-a2eda4df91b2" name="wg_in" body="winkelgeschwindigkeit" />
+    </programGraphHasMacros>
+  </macros>
   <importedVariables>
     <programGraphHasImportedVariables Id="7106c65b-6bd8-4794-b8b3-a01961e64fab">
-      <importedVariable Id="e2ad37ad-8bd7-4393-b712-e593b8cd7ef8" name="SchrankenMotor" range="unresolved import" />
+      <importedVariable Id="e2ad37ad-8bd7-4393-b712-e593b8cd7ef8" name="SchrankenMotor" range="Aus, Öffnen, Schließen" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="21a2834b-bd0f-4c90-8cbe-7ecc092457ef">
+      <importedVariable Id="a03b27aa-dc0b-4c34-9689-cec94e0ff514" name="SchrankenMotor.winkelgeschwindigkeit" range="-1..1" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>
