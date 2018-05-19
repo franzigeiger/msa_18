@@ -1,30 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="c3864fa7-33f3-4793-81a8-a7fb8ae6f675" name="Zugsensor" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="c3864fa7-33f3-4793-81a8-a7fb8ae6f675" name="ZugSensor" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
   <states>
     <initialNode Id="658be1a9-f661-49fd-bebb-88778c12aadf" name="InitialNode1">
       <successors>
         <transition Id="d93bd6ea-326e-4022-9589-2c390c02ab35">
-          <stateMoniker name="/c3864fa7-33f3-4793-81a8-a7fb8ae6f675/KeinZug" />
+          <stateMoniker name="/c3864fa7-33f3-4793-81a8-a7fb8ae6f675/KeinZugErkannt" />
         </transition>
       </successors>
     </initialNode>
-    <state Id="159a861f-8ca8-4406-8920-6d0405ca4bc7" name="KeinZug">
+    <state Id="159a861f-8ca8-4406-8920-6d0405ca4bc7" name="KeinZugErkannt">
       <successors>
         <transition Id="ba79a666-5f4c-4889-9552-efc3ec5fc5ab">
-          <stateMoniker name="/c3864fa7-33f3-4793-81a8-a7fb8ae6f675/Zug" />
-        </transition>
-        <transition Id="2ea64f31-282d-4436-8f54-47d0eded09ab">
-          <stateMoniker name="/c3864fa7-33f3-4793-81a8-a7fb8ae6f675/KeinZug" />
+          <stateMoniker name="/c3864fa7-33f3-4793-81a8-a7fb8ae6f675/ZugErkannt" />
         </transition>
       </successors>
     </state>
-    <state Id="8f6054a2-2648-4ead-81c2-4f186dee8b87" name="Zug">
+    <state Id="8f6054a2-2648-4ead-81c2-4f186dee8b87" name="ZugErkannt">
       <successors>
         <transition Id="ceec6021-109f-46cd-8a15-1f2e2b1e0def">
-          <stateMoniker name="/c3864fa7-33f3-4793-81a8-a7fb8ae6f675/KeinZug" />
-        </transition>
-        <transition Id="6f118e94-85cc-4c4e-a295-8ddef5c3ac5c">
-          <stateMoniker name="/c3864fa7-33f3-4793-81a8-a7fb8ae6f675/Zug" />
+          <stateMoniker name="/c3864fa7-33f3-4793-81a8-a7fb8ae6f675/KeinZugErkannt" />
         </transition>
       </successors>
     </state>

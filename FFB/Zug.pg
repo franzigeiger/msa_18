@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="05707b4c-a06c-4e0b-9b05-a1cd7eb4af96" name="Zug" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+  <states>
+    <initialNode Id="c19c79b5-c85b-4db5-8669-b718c57dc2f0" name="InitialNode1">
+      <successors>
+        <transition Id="3be53165-3e9a-4d4a-90b7-8a122c49ef06" guard="geschwindigkeit != 160 &amp;&amp; position == 100 " label="geschwindigkeit != 160 &amp;&amp; position == 100 ">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Zug" />
+        </transition>
+      </successors>
+    </initialNode>
+    <state Id="73b17d66-ae44-402f-9896-3de0aa7b9b5c" name="Zug">
+      <successors>
+        <transition Id="266c764c-1442-4f5f-892a-6f27a6db7e5a" action="geschwindigkeit := geschwindigkeit | position := position" label="// geschwindigkeit := geschwindigkeit | position := position" precondition="geschwindigkeit &gt;= 0 &amp;&amp; geschwindigkeit &lt;= 160 &amp;&amp; position &gt;= 0 &amp;&amp; position &lt;= 100">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Zug" />
+        </transition>
+      </successors>
+    </state>
+  </states>
+  <variables>
+    <programGraphHasVariables Id="620b6d0b-a25b-4052-ae29-9cc66e20fbae">
+      <variable Id="9dd9497d-36d9-4293-a0fb-6c346cde4d8b" name="geschwindigkeit" range="0..160" />
+    </programGraphHasVariables>
+    <programGraphHasVariables Id="3bf74b59-9681-41b6-a51a-ac7a6215cd5a">
+      <variable Id="b6573be2-b5e0-4c5b-ac26-7d5d455d3c10" name="position" range="0..100" />
+    </programGraphHasVariables>
+  </variables>
+  <importedVariables>
+    <programGraphHasImportedVariables Id="339306de-7117-4abf-9220-1301c04aea59">
+      <importedVariable Id="fa594272-d91b-4f49-9edd-4d97d66f3867" name="Bremse.Bremskraft" range="-1..0" />
+    </programGraphHasImportedVariables>
+  </importedVariables>
+</programGraph>

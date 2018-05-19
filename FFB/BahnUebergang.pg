@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="05707b4c-a06c-4e0b-9b05-a1cd7eb4af96" name="BahnUebergang" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+  <states>
+    <initialNode Id="c19c79b5-c85b-4db5-8669-b718c57dc2f0" name="InitialNode1">
+      <successors>
+        <transition Id="3eab065d-fac7-46e5-b899-b3155a63e141">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Ungesichert" />
+        </transition>
+      </successors>
+    </initialNode>
+    <state Id="0b91f66b-8daa-4a51-b5f1-adb85dbf59ce" name="Gesichert">
+      <successors>
+        <transition Id="47f3eb10-a4ee-4dde-aa0c-a5ddff8646a0" guard="Winkel != 0" label="Winkel != 0">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Ungesichert" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="a49039ec-4157-4062-a502-38a36b60b3ec" name="Ungesichert">
+      <successors>
+        <transition Id="f6364536-d0ec-4ff3-86da-743848c0ee09" guard="Winkel == 0" label="Winkel == 0">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Gesichert" />
+        </transition>
+      </successors>
+    </state>
+  </states>
+  <macros>
+    <programGraphHasMacros Id="bfa95fed-9776-45cd-922d-2b5902b49608">
+      <macro Id="a4b3edec-c592-4820-8057-17c8177312fc" name="_EP" body="_AP - zug_v * ( _t + _c )" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="6440b470-f45d-45e2-9287-b1c75acc49c7">
+      <macro Id="d8e3e237-bc85-446d-b607-288a85e8a433" name="_AP" body="_BEP - ( 2 * _c  * zug_v )" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="3d9fa14d-09f7-4bdc-86f3-9f1da007049d">
+      <macro Id="365bd8e7-e2c2-4bc1-81ec-430ed86e2225" name="_BEP" body="GP - _z - ( ( zug_v * zug_v )/( 2 *_a ) )" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="b9fff9fb-38aa-4386-8eb7-a30f27370654">
+      <macro Id="89067ca4-b47f-42fe-9617-f1d3bd747841" name="_z" body="10" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="060dbfe6-89d4-4ec8-81f0-8b9beda98cb5">
+      <macro Id="e715ed12-cd99-46e7-85c1-fcab531e54f5" name="_a" body="50" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="add7e62f-9df2-40f4-b12c-1e851c55c6ea">
+      <macro Id="0d7da3df-95e2-41f5-9d7e-392e57120c82" name="_c" body="20" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="2fcc5ea2-c9ec-4ae8-9031-ae8d56550a98">
+      <macro Id="c883db10-af21-481c-aa3d-3b531f7fe6ad" name="_t" body="10" />
+    </programGraphHasMacros>
+  </macros>
+  <importedVariables>
+    <programGraphHasImportedVariables Id="51bd5ed5-114d-484b-9680-b299e57ddc83">
+      <importedVariable Id="68e60f1a-7c79-49f9-9773-d0a4e8dfa109" name="SchrankenBaum.Winkel" range="unresolved import" />
+    </programGraphHasImportedVariables>
+  </importedVariables>
+</programGraph>

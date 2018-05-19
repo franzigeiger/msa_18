@@ -3,38 +3,37 @@
   <states>
     <initialNode Id="a63d5d51-70fd-4e17-af2e-d371d1e4b3df" name="InitialNode1">
       <successors>
-        <transition Id="03abc220-c6f8-450a-a8ec-41e6bcd44bfe">
+        <transition Id="03abc220-c6f8-450a-a8ec-41e6bcd44bfe" guard="Bremskraft == 0" label="Bremskraft == 0" precondition="Bremskraft == 0">
           <stateMoniker name="/ce66fc5a-740c-416a-bc8e-4ded24cfceb0/Aus" />
         </transition>
       </successors>
     </initialNode>
     <state Id="6475bbb5-9e50-4127-94b7-0383697877d0" name="Aus">
       <successors>
-        <transition Id="fb8fed55-7dbc-4ad5-8ebd-6bf1a82736f0" guard="Zugsteuerung == Zwangsbremsung" label="Zugsteuerung == Zwangsbremsung">
+        <transition Id="b7325ac3-a020-4d2c-9ddb-55c56bc4b53f" guard="ZugSteuerung == Zwangsbremsung" action="Bremskraft := -1" label="ZugSteuerung == Zwangsbremsung // Bremskraft := -1" precondition="Bremskraft == 0">
           <stateMoniker name="/ce66fc5a-740c-416a-bc8e-4ded24cfceb0/An" />
-        </transition>
-        <transition Id="80648597-e6b9-4a5b-b03c-69a65463a0af" guard="Zugsteuerung != Zwangsbremsung" label="Zugsteuerung != Zwangsbremsung">
-          <stateMoniker name="/ce66fc5a-740c-416a-bc8e-4ded24cfceb0/Aus" />
         </transition>
       </successors>
     </state>
     <state Id="0311e889-6a80-4d1f-99e6-77c434a0655e" name="An">
       <successors>
-        <transition Id="7add30e0-4978-4b79-928b-752e35ca87b8" guard="zug_v == 0" label="zug_v == 0">
+        <transition Id="91934e7e-6019-4b39-a2e7-523b0ba3443f" guard="Zugsteuerung != Zwangsbremsung || diskreteGeschwindigkeit == 0" action="Bremskraft := 0" label="Zugsteuerung != Zwangsbremsung || diskreteGeschwindigkeit == 0 // Bremskraft := 0" precondition="Bremskraft == 1">
           <stateMoniker name="/ce66fc5a-740c-416a-bc8e-4ded24cfceb0/Aus" />
-        </transition>
-        <transition Id="0bc10ac7-bc18-4b63-a0de-08a057d7976b" guard="zug_v != 0" label="zug_v != 0">
-          <stateMoniker name="/ce66fc5a-740c-416a-bc8e-4ded24cfceb0/An" />
         </transition>
       </successors>
     </state>
   </states>
+  <variables>
+    <programGraphHasVariables Id="9c8dbadf-7447-410b-890b-237ae83f5652">
+      <variable Id="07de4d59-d401-4fcc-b21e-8214df4c0b1b" name="Bremskraft" range="-1..0" />
+    </programGraphHasVariables>
+  </variables>
   <importedVariables>
-    <programGraphHasImportedVariables Id="20a90937-fe84-44e9-92f8-7aae57b6f999">
-      <importedVariable Id="310a06a8-c66a-40e5-9e4b-87870fbcbe04" name="Zugsteuerung" range="Bereit, Zwangsbremsung, SichernNachricht, PruefenNachricht, PruefenNachrichtGesendet, SichernNachrichtGesendet" />
+    <programGraphHasImportedVariables Id="e8b1802e-458e-487a-ae6e-ef274b6c514e">
+      <importedVariable Id="bd0ce7df-c36c-4b50-a7c0-e9589620efa7" name="ZugSteuerung" range="unresolved import" />
     </programGraphHasImportedVariables>
-    <programGraphHasImportedVariables Id="434c6f74-2b86-442c-a349-92559a9285b1">
-      <importedVariable Id="1389c223-454e-4be7-910c-0945b45c2861" name="HodometerGW.zug_v" range="0..144" />
+    <programGraphHasImportedVariables Id="8a57aada-456b-4976-827d-e16cc8869b20">
+      <importedVariable Id="a0633c42-0c47-4817-a554-84e738db91df" name="Hodometer.diskreteGeschwindigkeit" range="unresolved import" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="f4af3e14-d9f4-4764-a2a5-9420417fe2fa" name="Schrankensteuerung" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="f4af3e14-d9f4-4764-a2a5-9420417fe2fa" name="BahnUebergangSteuerung" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
   <states>
     <initialNode Id="1707726d-7593-42d0-ad0b-ed8c765cb260" name="InitialNode1">
       <successors>
@@ -73,10 +73,10 @@
   </variables>
   <importedVariables>
     <programGraphHasImportedVariables Id="ea495673-34df-4b2f-b0ac-0cfb2a0dd06b">
-      <importedVariable Id="c6f5e583-5b34-4400-9dd8-ac8b12faf787" name="Schranke" range="Offen, Geschlossen, Schliesst, Oeffnet" />
+      <importedVariable Id="c6f5e583-5b34-4400-9dd8-ac8b12faf787" name="Schranke" range="Schranke" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="dde48b25-f5fe-4f2f-8713-df3985aa1a70">
-      <importedVariable Id="b1410c5c-9571-4c86-bf53-31641846c8be" name="Zugsensor" range="KeinZug, Zug" />
+      <importedVariable Id="b1410c5c-9571-4c86-bf53-31641846c8be" name="Zugsensor" range="KeinZugErkannt, ZugErkannt" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="511aa373-1190-4dbe-916c-4f8fce1298da">
       <importedVariable Id="11a90f82-63f5-4296-8532-ac9e78536552" name="Schrankenfunkmodul" range="Empfaengt, NachrichtEmpfangen, Sendet, NachrichtGesendet, Bereit" />

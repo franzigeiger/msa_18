@@ -60,33 +60,33 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Funk.pg" />
-    <None Include="Funk.pg.diagram">
-      <DependentUpon>Funk.pg</DependentUpon>
+    <None Include="FunkKanal.pg" />
+    <None Include="FunkKanal.pg.diagram">
+      <DependentUpon>FunkKanal.pg</DependentUpon>
     </None>
-    <None Include="HodometerGW.pg" />
-    <None Include="HodometerGW.pg.diagram">
-      <DependentUpon>HodometerGW.pg</DependentUpon>
+    <None Include="Hodometer.pg" />
+    <None Include="Hodometer.pg.diagram">
+      <DependentUpon>Hodometer.pg</DependentUpon>
     </None>
-    <None Include="Schranke.pg" />
-    <None Include="Schranke.pg.diagram">
-      <DependentUpon>Schranke.pg</DependentUpon>
+    <None Include="SchrankenBaum.pg" />
+    <None Include="SchrankenBaum.pg.diagram">
+      <DependentUpon>SchrankenBaum.pg</DependentUpon>
     </None>
-    <None Include="Schrankenfunkmodul.pg" />
-    <None Include="Schrankenfunkmodul.pg.diagram">
-      <DependentUpon>Schrankenfunkmodul.pg</DependentUpon>
+    <None Include="BahnFunkModul.pg" />
+    <None Include="BahnFunkModul.pg.diagram">
+      <DependentUpon>BahnFunkModul.pg</DependentUpon>
     </None>
-    <None Include="Schrankenmotor.pg" />
-    <None Include="Schrankenmotor.pg.diagram">
-      <DependentUpon>Schrankenmotor.pg</DependentUpon>
+    <None Include="SchrankenMotor.pg" />
+    <None Include="SchrankenMotor.pg.diagram">
+      <DependentUpon>SchrankenMotor.pg</DependentUpon>
     </None>
-    <None Include="Schrankensteuerung.pg" />
-    <None Include="Schrankensteuerung.pg.diagram">
-      <DependentUpon>Schrankensteuerung.pg</DependentUpon>
+    <None Include="BahnUebergangsSteuerung.pg" />
+    <None Include="BahnUebergangsSteuerung.pg.diagram">
+      <DependentUpon>BahnUebergangsSteuerung.pg</DependentUpon>
     </None>
-    <None Include="Zugsensor.pg" />
-    <None Include="Zugsensor.pg.diagram">
-      <DependentUpon>Zugsensor.pg</DependentUpon>
+    <None Include="ZugSensor.pg" />
+    <None Include="ZugSensor.pg.diagram">
+      <DependentUpon>ZugSensor.pg</DependentUpon>
     </None>
     <None Include="Bremse.pg">
       <SubType>Designer</SubType>
@@ -94,17 +94,31 @@
     <None Include="Bremse.pg.diagram">
       <DependentUpon>Bremse.pg</DependentUpon>
     </None>
-    <None Include="HodometerPosition.pg" />
-    <None Include="HodometerPosition.pg.diagram">
-      <DependentUpon>HodometerPosition.pg</DependentUpon>
+    <None Include="ZugFunkModul.pg" />
+    <None Include="ZugFunkModul.pg.diagram">
+      <DependentUpon>ZugFunkModul.pg</DependentUpon>
     </None>
-    <None Include="Zugfunkmodul.pg" />
-    <None Include="Zugfunkmodul.pg.diagram">
-      <DependentUpon>Zugfunkmodul.pg</DependentUpon>
+    <None Include="Zug.pg" />
+    <None Include="Zug.pg.diagram">
+      <DependentUpon>Zug.pg</DependentUpon>
     </None>
-    <None Include="Zugsteuerung.pg" />
-    <None Include="Zugsteuerung.pg.diagram">
-      <DependentUpon>Zugsteuerung.pg</DependentUpon>
+    <None Include="BahnUebergang.pg" />
+    <None Include="BahnUebergang.pg.diagram">
+      <DependentUpon>BahnUebergang.pg</DependentUpon>
+    </None>
+    <None Include="SchrankeGeschlossenSensor.pg">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SchrankeGeschlossenSensor.pg.diagram">
+      <DependentUpon>SchrankeGeschlossenSensor.pg</DependentUpon>
+    </None>
+    <None Include="SchrankeOffenSensor.pg" />
+    <None Include="SchrankeOffenSensor.pg.diagram">
+      <DependentUpon>SchrankeOffenSensor.pg</DependentUpon>
+    </None>
+    <None Include="ZugSteuerung.pg" />
+    <None Include="ZugSteuerung.pg.diagram">
+      <DependentUpon>ZugSteuerung.pg</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

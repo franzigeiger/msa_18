@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="6be636bb-a7a5-460d-a7ef-6061c0687c98" name="Schrankenfunkmodul" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="6be636bb-a7a5-460d-a7ef-6061c0687c98" name="BahnFunkModul" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
   <states>
     <initialNode Id="c07b30d6-6d4c-477f-a858-49d051604fca" name="InitialNode1">
       <successors>

@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61" name="Zugfunkmodul" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61" name="ZugFunkModul" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
   <states>
     <initialNode Id="55bfebd2-1e44-4360-ac95-b577dccda70b" name="InitialNode1">
       <successors>
-        <transition Id="6060ffb5-770c-4de1-90a9-fb4866ac22e4">
+        <transition Id="59487c78-f106-4d65-8d87-223071a6b053">
           <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Bereit" />
         </transition>
       </successors>
@@ -69,7 +69,7 @@
   </variables>
   <importedVariables>
     <programGraphHasImportedVariables Id="f3c6b624-1dd2-4f75-8bdf-675d8fa621ba">
-      <importedVariable Id="caff00d8-c3b5-410d-87a1-2d82512e8ab9" name="Zugsteuerung" range="Bereit, Zwangsbremsung, SichernNachricht, PruefenNachricht, PruefenNachrichtGesendet, SichernNachrichtGesendet" />
+      <importedVariable Id="caff00d8-c3b5-410d-87a1-2d82512e8ab9" name="Zugsteuerung" range="Gesichert, Ungesichert" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="32cc7980-561c-4ab3-92c8-e7dfddcc471b">
       <importedVariable Id="e91666ed-6a39-4d0d-abbb-40b9946c0fd8" name="Funk" range="KeinFunk, ZugZuBahnuebergang, BahnuebergangZuZug" />

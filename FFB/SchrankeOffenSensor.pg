@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="05707b4c-a06c-4e0b-9b05-a1cd7eb4af96" name="SchrankeOffenSensor" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+  <states>
+    <initialNode Id="c19c79b5-c85b-4db5-8669-b718c57dc2f0" name="InitialNode1">
+      <successors>
+        <transition Id="61a404d7-277f-4aaf-825e-917940864d0a">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Schranke Offen" />
+        </transition>
+      </successors>
+    </initialNode>
+    <state Id="6ae6c0ab-bd07-4f12-9555-4a863245cb5b" name="Schranke Offen">
+      <successors>
+        <transition Id="af3bbde8-2d42-4831-a4a4-2736f905df04" guard="Winkel != 90" label="Winkel != 90">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Schranke Nicht Offen" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="b29bed69-547d-4edf-9eee-14ee46cfe319" name="Schranke Nicht Offen">
+      <successors>
+        <transition Id="4e831af7-a7df-4f0b-9130-669f843d4566" guard="Winkel == 90" label="Winkel == 90">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Schranke Offen" />
+        </transition>
+      </successors>
+    </state>
+  </states>
+  <macros>
+    <programGraphHasMacros Id="bfa95fed-9776-45cd-922d-2b5902b49608">
+      <macro Id="a4b3edec-c592-4820-8057-17c8177312fc" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="6440b470-f45d-45e2-9287-b1c75acc49c7">
+      <macro Id="d8e3e237-bc85-446d-b607-288a85e8a433" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="3d9fa14d-09f7-4bdc-86f3-9f1da007049d">
+      <macro Id="365bd8e7-e2c2-4bc1-81ec-430ed86e2225" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="b9fff9fb-38aa-4386-8eb7-a30f27370654">
+      <macro Id="89067ca4-b47f-42fe-9617-f1d3bd747841" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="060dbfe6-89d4-4ec8-81f0-8b9beda98cb5">
+      <macro Id="e715ed12-cd99-46e7-85c1-fcab531e54f5" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="add7e62f-9df2-40f4-b12c-1e851c55c6ea">
+      <macro Id="0d7da3df-95e2-41f5-9d7e-392e57120c82" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="2fcc5ea2-c9ec-4ae8-9031-ae8d56550a98">
+      <macro Id="c883db10-af21-481c-aa3d-3b531f7fe6ad" />
+    </programGraphHasMacros>
+  </macros>
+  <importedVariables>
+    <programGraphHasImportedVariables Id="5e9d0b11-cd82-44a4-a5b7-a349e10600af">
+      <importedVariable Id="997d3708-1678-410b-b88f-b4c62febfcc6" name="SchrankenBaum.Winkel" range="unresolved import" />
+    </programGraphHasImportedVariables>
+  </importedVariables>
+</programGraph>

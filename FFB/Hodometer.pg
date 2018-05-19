@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="847cbdc1-9aa8-4422-95d0-cb91c466b3a7" name="Hodometer" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+  <states>
+    <initialNode Id="9cddbd82-7541-4094-8411-cb50f8bf6ede" name="InitialNode1">
+      <successors>
+        <transition Id="cebeca8e-dd0d-4210-8156-062fe3554ebb" guard="diskreteGeschwindigkeit == 160 &amp;&amp; diskretePosition == 100" label="diskreteGeschwindigkeit == 160 &amp;&amp; diskretePosition == 100">
+          <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Hodometer" />
+        </transition>
+      </successors>
+    </initialNode>
+    <state Id="e5fcef29-b6a7-4d3d-a2ef-19fc979c8ea7" name="Hodometer">
+      <successors>
+        <transition Id="5f7b4242-b098-443d-ab31-705e1a51793c" action="geschwindigkeit := geschwindigkeit + bremskraft || position := position + geschwindigkeit" label="// geschwindigkeit := geschwindigkeit + bremskraft || position := position + geschwindigkeit" precondition="diskreteGeschwindigkeit &lt;= 160 &amp;&amp; diskreteGeschwindigkeit &gt;= 0 &amp;&amp; diskretePosition &lt;= 100 &amp;&amp; diskretePosition &gt;= 0">
+          <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Hodometer" />
+        </transition>
+      </successors>
+    </state>
+  </states>
+  <variables>
+    <programGraphHasVariables Id="49d6339b-108e-4c79-91eb-7d5a9482d01d">
+      <variable Id="25c981f9-e00d-48e3-bf00-38c4da57835a" name="diskreteGeschwindigkeit" range="0..160" />
+    </programGraphHasVariables>
+    <programGraphHasVariables Id="c1e035ad-eb01-4be7-a959-fb179cd6428f">
+      <variable Id="60b41d78-add6-4810-a23e-99f671bd7913" name="diskretePosition" range="0..100" />
+    </programGraphHasVariables>
+  </variables>
+</programGraph>
