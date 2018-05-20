@@ -10,24 +10,24 @@
     </initialNode>
     <state Id="0524992a-5edb-460f-9332-b1abdbe3f870" name="Bereit">
       <successors>
-        <transition Id="a0db0fa8-8f20-4ae1-8ce5-252d5925d75a">
+        <transition Id="a0db0fa8-8f20-4ae1-8ce5-252d5925d75a" guard="_EP == 0" label="_EP == 0">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Einschalten" />
         </transition>
       </successors>
     </state>
     <state Id="1dbfac7b-2d34-44e7-bf51-b60f05fbffbf" name="Einschalten">
       <successors>
-        <transition Id="bdb904a8-7c70-478c-b1e0-31658e4ccbf3">
+        <transition Id="bdb904a8-7c70-478c-b1e0-31658e4ccbf3" guard="_AP == 0" label="_AP == 0">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Anfragen" />
         </transition>
       </successors>
     </state>
     <state Id="e70c3fad-93e9-4382-95ff-9b03e3fc5041" name="Anfragen">
       <successors>
-        <transition Id="519da02a-dd0f-4a2d-8831-a49961df3324">
+        <transition Id="519da02a-dd0f-4a2d-8831-a49961df3324" guard="_BEP == 0" label="_BEP == 0">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Zwangsbremsung" />
         </transition>
-        <transition Id="13f37047-070e-42e0-8b6a-77abf9f38d6e">
+        <transition Id="13f37047-070e-42e0-8b6a-77abf9f38d6e" guard="ZugFunkModul == EmpfangenAbgeschlossen" label="ZugFunkModul == EmpfangenAbgeschlossen">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Bereit" />
         </transition>
       </successors>
@@ -58,6 +58,9 @@
     </programGraphHasMacros>
     <programGraphHasMacros Id="9c6718d1-b934-46de-bdcc-a2b921d4319e">
       <macro Id="e2c2621f-535f-49c9-b378-f190366362b5" name="dg_zs_in" body="diskreteGeschwindigkeit" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="8f726f7d-c75e-4aa4-a4e5-4198dba7291c">
+      <macro Id="fa441772-cb18-47aa-b5f2-bd98edcc19df" name="GP" body="161" />
     </programGraphHasMacros>
   </macros>
   <importedVariables>
