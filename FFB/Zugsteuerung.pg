@@ -10,21 +10,21 @@
     </initialNode>
     <state Id="0524992a-5edb-460f-9332-b1abdbe3f870" name="Bereit">
       <successors>
-        <transition Id="a0db0fa8-8f20-4ae1-8ce5-252d5925d75a" guard="_EP == 0" label="_EP == 0">
+        <transition Id="a0db0fa8-8f20-4ae1-8ce5-252d5925d75a" guard="_EP &lt;= 0" label="_EP &lt;= 0">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Einschalten" />
         </transition>
       </successors>
     </state>
     <state Id="1dbfac7b-2d34-44e7-bf51-b60f05fbffbf" name="Einschalten">
       <successors>
-        <transition Id="bdb904a8-7c70-478c-b1e0-31658e4ccbf3" guard="_AP == 0" label="_AP == 0">
+        <transition Id="bdb904a8-7c70-478c-b1e0-31658e4ccbf3" guard="_AP &lt;= 0" label="_AP &lt;= 0">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Anfragen" />
         </transition>
       </successors>
     </state>
     <state Id="e70c3fad-93e9-4382-95ff-9b03e3fc5041" name="Anfragen">
       <successors>
-        <transition Id="519da02a-dd0f-4a2d-8831-a49961df3324" guard="_BEP == 0" label="_BEP == 0">
+        <transition Id="519da02a-dd0f-4a2d-8831-a49961df3324" guard="_BEP &lt;= 0" label="_BEP &lt;= 0">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Zwangsbremsung" />
         </transition>
         <transition Id="13f37047-070e-42e0-8b6a-77abf9f38d6e" guard="ZugFunkModul == EmpfangenAbgeschlossen" label="ZugFunkModul == EmpfangenAbgeschlossen">
@@ -36,42 +36,39 @@
   </states>
   <macros>
     <programGraphHasMacros Id="bfa95fed-9776-45cd-922d-2b5902b49608">
-      <macro Id="a4b3edec-c592-4820-8057-17c8177312fc" name="_EP" body="_AP - diskreteGeschwindigkeit * ( _t + _c )" />
+      <macro Id="a4b3edec-c592-4820-8057-17c8177312fc" name="_EP" body="_AP - diskreteGeschwindigkeit * ( t + c )" />
     </programGraphHasMacros>
     <programGraphHasMacros Id="6440b470-f45d-45e2-9287-b1c75acc49c7">
-      <macro Id="d8e3e237-bc85-446d-b607-288a85e8a433" name="_AP" body="_BEP - ( 2 * _c  * diskreteGeschwindigkeit )" />
+      <macro Id="d8e3e237-bc85-446d-b607-288a85e8a433" name="_AP" body="_BEP - ( 2 * c  * diskreteGeschwindigkeit )" />
     </programGraphHasMacros>
     <programGraphHasMacros Id="3d9fa14d-09f7-4bdc-86f3-9f1da007049d">
-      <macro Id="365bd8e7-e2c2-4bc1-81ec-430ed86e2225" name="_BEP" body="GP - _z - ( ( diskreteGeschwindigkeit * diskreteGeschwindigkeit )/( 2 *_a ) )" />
-    </programGraphHasMacros>
-    <programGraphHasMacros Id="b9fff9fb-38aa-4386-8eb7-a30f27370654">
-      <macro Id="89067ca4-b47f-42fe-9617-f1d3bd747841" name="_z" body="10" />
-    </programGraphHasMacros>
-    <programGraphHasMacros Id="060dbfe6-89d4-4ec8-81f0-8b9beda98cb5">
-      <macro Id="e715ed12-cd99-46e7-85c1-fcab531e54f5" name="_a" body="50" />
-    </programGraphHasMacros>
-    <programGraphHasMacros Id="add7e62f-9df2-40f4-b12c-1e851c55c6ea">
-      <macro Id="0d7da3df-95e2-41f5-9d7e-392e57120c82" name="_c" body="20" />
-    </programGraphHasMacros>
-    <programGraphHasMacros Id="2fcc5ea2-c9ec-4ae8-9031-ae8d56550a98">
-      <macro Id="c883db10-af21-481c-aa3d-3b531f7fe6ad" name="_t" body="10" />
+      <macro Id="365bd8e7-e2c2-4bc1-81ec-430ed86e2225" name="_BEP" body="gp - z - ( ( diskreteGeschwindigkeit * diskreteGeschwindigkeit )/( 2 *a ) )" />
     </programGraphHasMacros>
     <programGraphHasMacros Id="9c6718d1-b934-46de-bdcc-a2b921d4319e">
       <macro Id="e2c2621f-535f-49c9-b378-f190366362b5" name="dg_zs_in" body="diskreteGeschwindigkeit" />
     </programGraphHasMacros>
-    <programGraphHasMacros Id="8f726f7d-c75e-4aa4-a4e5-4198dba7291c">
-      <macro Id="fa441772-cb18-47aa-b5f2-bd98edcc19df" name="GP" body="161" />
-    </programGraphHasMacros>
   </macros>
   <importedVariables>
     <programGraphHasImportedVariables Id="dd150be6-218d-43ab-8aba-c76dfb8871ad">
-      <importedVariable Id="d7bfe62d-53fc-45d5-b914-5d6f717ac4f0" name="Hodometer.diskreteGeschwindigkeit" range="0..160" />
-    </programGraphHasImportedVariables>
-    <programGraphHasImportedVariables Id="bd759731-9bd8-4957-804b-1499097c136f">
-      <importedVariable Id="992a8d1b-1000-42b8-9569-6fa2c7a35bfb" name="Hodometer.diskretePosition" range="0..100" />
+      <importedVariable Id="d7bfe62d-53fc-45d5-b914-5d6f717ac4f0" name="Einheiten.diskreteGeschwindigkeit" range="0..45" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="2ba5e245-c7ae-4369-9f62-25fcabd550ba">
       <importedVariable Id="656a78f9-affc-4705-9b7c-e5b06d0a279e" name="ZugFunkModul" range="Bereit, Senden, SendenAbgeschlossen, Empfangen, EmpfangenAbgeschlossen" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="176d3927-dca7-455d-bb4c-fa36c20cf764">
+      <importedVariable Id="9e152945-3ee1-4c89-bea4-dc7c6f3baff6" name="Einheiten.t" range="25" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="8b881f9b-34fb-4b56-a990-956be9dc8c0f">
+      <importedVariable Id="2155ba30-7697-487c-8af8-133dbeb4105f" name="Einheiten.c" range="13" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="5d40befe-7a86-4324-bab7-803f00649628">
+      <importedVariable Id="7b2c89ac-710b-44fe-a7a5-8346c0e92c9b" name="Einheiten.a" range="9" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="9963da8e-117c-468b-a2ab-40aaac9cd965">
+      <importedVariable Id="56a84b9a-1892-4a36-ba06-2749ab457f74" name="Einheiten.gp" range="3010" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="51835bbf-55c3-435b-840d-469b53212f32">
+      <importedVariable Id="3be44183-b430-4d8b-9b5e-6d3c5fcdcce6" name="Einheiten.z" range="10" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

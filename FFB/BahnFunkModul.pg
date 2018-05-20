@@ -56,14 +56,14 @@
       </successors>
     </state>
   </states>
-  <variables>
-    <programGraphHasVariables Id="89461190-3b6a-48ed-8cce-81e343101791">
-      <variable Id="1b47c873-2faa-4b5f-841c-e449498247c4" name="sendezeit" range="0..5" />
-    </programGraphHasVariables>
-    <programGraphHasVariables Id="585ac12b-f684-445f-a207-c3566ad3a3bb">
-      <variable Id="818a7ff8-2eb3-4b3e-af00-4be2da953bcf" name="maxSendezeit" range="5" />
-    </programGraphHasVariables>
-  </variables>
+  <macros>
+    <programGraphHasMacros Id="259b6ba9-f440-47d2-b86f-9b82857c1e3f">
+      <macro Id="6168f2bc-7edd-4ab2-9291-1be06f547d4e" name="s_bfm_in" body="sendezeit" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="8691a2ba-ee34-42fa-bcf9-3972c88d9ec7">
+      <macro Id="dd3cd671-3a85-420f-b86a-c1e7436d64ac" name="ms_bfm_in" body="maxSendezeit" />
+    </programGraphHasMacros>
+  </macros>
   <importedVariables>
     <programGraphHasImportedVariables Id="68339413-6461-45ff-80f3-707f81cc71a6">
       <importedVariable Id="03fc45f5-2633-46ad-8ce5-2d9cc740ddc4" name="FunkKanal" range="KeinFunk, ZugZuBahnuebergang, BahnuebergangZuZug" />
@@ -73,6 +73,12 @@
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="fb7b4403-bfba-4e48-8975-e16a4f70039a">
       <importedVariable Id="0578e7aa-1e1c-4f48-a238-777caa72ca07" name="BahnUebergangsSteuerung" range="Bereit, Sichern, Bestaetigen, Warten, Entsichern" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="fb109e9b-91a0-4de8-b5aa-5e836ed062eb">
+      <importedVariable Id="718b1668-c991-4354-9da0-69f45bc2265c" name="Einheiten.sendezeit" range="0..5" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="b8d434b3-3805-45b0-a6ba-534d5b648486">
+      <importedVariable Id="77a9d08b-c1bd-4393-954a-b8d6cf1384b8" name="Einheiten.maxSendezeit" range="5" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

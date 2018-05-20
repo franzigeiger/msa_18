@@ -10,7 +10,7 @@
     </initialNode>
     <state Id="6475bbb5-9e50-4127-94b7-0383697877d0" name="Aus">
       <successors>
-        <transition Id="b7325ac3-a020-4d2c-9ddb-55c56bc4b53f" guard="ZugSteuerung == Zwangsbremsung" action="bremskraft := -1" label="ZugSteuerung == Zwangsbremsung // bremskraft := -1" precondition="bremskraft == 0">
+        <transition Id="b7325ac3-a020-4d2c-9ddb-55c56bc4b53f" guard="ZugSteuerung == Zwangsbremsung" action="bremskraft := -5" label="ZugSteuerung == Zwangsbremsung // bremskraft := -5" precondition="bremskraft == 0">
           <stateMoniker name="/ce66fc5a-740c-416a-bc8e-4ded24cfceb0/An" />
         </transition>
       </successors>
@@ -23,22 +23,23 @@
       </successors>
     </state>
   </states>
-  <variables>
-    <programGraphHasVariables Id="9c8dbadf-7447-410b-890b-237ae83f5652">
-      <variable Id="07de4d59-d401-4fcc-b21e-8214df4c0b1b" name="bremskraft" range="-1..0" />
-    </programGraphHasVariables>
-  </variables>
   <macros>
     <programGraphHasMacros Id="1224be50-c795-4b94-84d4-63bd9539e705">
-      <macro Id="1cbbdbd3-8d22-432f-8328-e4690946f887" name="dg_in" body="diskreteGeschwindigkeit" />
+      <macro Id="1cbbdbd3-8d22-432f-8328-e4690946f887" name="dg_b_in" body="diskreteGeschwindigkeit" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="39169970-39c2-4129-9549-71a0879ed805">
+      <macro Id="4e4b3e76-0845-4c75-8c58-0f2a8615654d" name="b_b_in" body="bremskraft" />
     </programGraphHasMacros>
   </macros>
   <importedVariables>
     <programGraphHasImportedVariables Id="e8b1802e-458e-487a-ae6e-ef274b6c514e">
-      <importedVariable Id="bd0ce7df-c36c-4b50-a7c0-e9589620efa7" name="ZugSteuerung" range="Bereit, Zwangsbremsung, SichernNachricht, PruefenNachricht, PruefenNachrichtGesendet, SichernNachrichtGesendet" />
+      <importedVariable Id="bd0ce7df-c36c-4b50-a7c0-e9589620efa7" name="ZugSteuerung" range="Bereit, Einschalten, Anfragen, Zwangsbremsung" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="8a57aada-456b-4976-827d-e16cc8869b20">
-      <importedVariable Id="a0633c42-0c47-4817-a554-84e738db91df" name="Hodometer.diskreteGeschwindigkeit" range="0..160" />
+      <importedVariable Id="a0633c42-0c47-4817-a554-84e738db91df" name="Einheiten.diskreteGeschwindigkeit" range="0..45" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="43d4c985-0ce5-47ff-99f4-5515ff5b32b4">
+      <importedVariable Id="18247ddc-a6d4-48bd-9d05-aa143a5d8080" name="Einheiten.bremskraft" range="-5..5" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

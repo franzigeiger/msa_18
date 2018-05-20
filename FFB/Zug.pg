@@ -3,30 +3,45 @@
   <states>
     <initialNode Id="c19c79b5-c85b-4db5-8669-b718c57dc2f0" name="InitialNode1">
       <successors>
-        <transition Id="3be53165-3e9a-4d4a-90b7-8a122c49ef06" guard="geschwindigkeit != 160 &amp;&amp; position == 100 " label="geschwindigkeit != 160 &amp;&amp; position == 100 ">
+        <transition Id="3be53165-3e9a-4d4a-90b7-8a122c49ef06" guard="geschwindigkeit == 45 &amp;&amp; position == 100 " label="geschwindigkeit == 45 &amp;&amp; position == 100 ">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Zug" />
         </transition>
       </successors>
     </initialNode>
     <state Id="73b17d66-ae44-402f-9896-3de0aa7b9b5c" name="Zug">
       <successors>
-        <transition Id="266c764c-1442-4f5f-892a-6f27a6db7e5a" action="geschwindigkeit := geschwindigkeit | position := position" label="// geschwindigkeit := geschwindigkeit | position := position" precondition="geschwindigkeit &gt;= 0 &amp;&amp; geschwindigkeit &lt;= 160 &amp;&amp; position &gt;= 0 &amp;&amp; position &lt;= 100">
+        <transition Id="266c764c-1442-4f5f-892a-6f27a6db7e5a" action="geschwindigkeit := geschwindigkeit + bremskraft | position := position + geschwindigkeit" label="// geschwindigkeit := geschwindigkeit + bremskraft | position := position + geschwindigkeit" precondition="(bremskraft &lt; 0 &amp;&amp; geschwindigkeit &gt; -1*bremskraft &amp;&amp; position &lt;= 3015-geschwindigkeit ) || (bremskraft &gt;= 0 &amp;&amp; geschwindigkeit &lt;= maxGeschwindigkeit - bremskraft &amp;&amp; position &lt;= 3015 - geschwindigkeit)">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Zug" />
         </transition>
       </successors>
     </state>
   </states>
-  <variables>
-    <programGraphHasVariables Id="620b6d0b-a25b-4052-ae29-9cc66e20fbae">
-      <variable Id="9dd9497d-36d9-4293-a0fb-6c346cde4d8b" name="geschwindigkeit" range="0..160" />
-    </programGraphHasVariables>
-    <programGraphHasVariables Id="3bf74b59-9681-41b6-a51a-ac7a6215cd5a">
-      <variable Id="b6573be2-b5e0-4c5b-ac26-7d5d455d3c10" name="position" range="0..100" />
-    </programGraphHasVariables>
-  </variables>
+  <macros>
+    <programGraphHasMacros Id="92cc20e9-43e6-421f-9ce5-5a9398029a11">
+      <macro Id="2ea98603-1df7-4fe8-82ea-2cdb1c02fe47" name="b_z_in" body="bremskraft" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="14daa41e-1ed9-4761-9f78-dcb94ff2c454">
+      <macro Id="53adc697-7f5b-4954-bf13-bfd2e4f19fb7" name="g_z_in" body="geschwindigkeit" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="0075e249-5017-4b85-90aa-d8f8f81bafbc">
+      <macro Id="39ce1f82-1a13-4188-9bba-b291d3749678" name="p_z_in" body="position" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="250f4eae-a590-4048-90c2-5c23a8840ead">
+      <macro Id="3f7f52fc-5917-4828-9495-01b0f6045f7b" name="mg_z_in" body="maxGeschwindigkeit" />
+    </programGraphHasMacros>
+  </macros>
   <importedVariables>
-    <programGraphHasImportedVariables Id="339306de-7117-4abf-9220-1301c04aea59">
-      <importedVariable Id="fa594272-d91b-4f49-9edd-4d97d66f3867" name="Bremse.bremskraft" range="-1..0" />
+    <programGraphHasImportedVariables Id="4cc3a0d3-4cd1-4cf0-8233-53fd06e745d1">
+      <importedVariable Id="d2801ed5-c52c-4097-a451-3064c84b4cfe" name="Einheiten.bremskraft" range="-5..5" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="e525c483-ee75-4b87-be19-3b01dae10d57">
+      <importedVariable Id="f0f63549-c551-4075-814e-aa6809331dc6" name="Einheiten.geschwindigkeit" range="0..45" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="4de62144-2fe5-4c3a-a206-f4355c371d0b">
+      <importedVariable Id="4e379124-fe7a-458d-8ec5-a8b4d2a906c2" name="Einheiten.position" range="0..3015" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="2f8974b0-bc7c-41c9-8de6-2b41b512e550">
+      <importedVariable Id="98c187ab-6b16-4c62-ac46-b6c25d175886" name="Einheiten.maxGeschwindigkeit" range="45" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

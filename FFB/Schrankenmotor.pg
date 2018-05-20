@@ -10,10 +10,10 @@
     </initialNode>
     <state Id="7e98e588-0fa7-4da3-82a5-ed2233c88cfc" name="Aus">
       <successors>
-        <transition Id="35a13906-649d-4e1d-810a-21e1c30ad2bd" guard="BahnUebergangsSteuerung == Sichern" action="winkelgeschwindigkeit := 1" label="BahnUebergangsSteuerung == Sichern // winkelgeschwindigkeit := 1" precondition="winkelgeschwindigkeit == 0">
+        <transition Id="35a13906-649d-4e1d-810a-21e1c30ad2bd" guard="BahnUebergangsSteuerung == Entsichern" action="winkelgeschwindigkeit := -10" label="BahnUebergangsSteuerung == Entsichern // winkelgeschwindigkeit := -10" precondition="winkelgeschwindigkeit == 0">
           <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Oeffnen" />
         </transition>
-        <transition Id="4f96cbbf-461c-4910-9558-586cea0ff4d0" guard="BahnUebergangsSteuerung == Entsichern" action="winkelgeschwindigkeit := -1" label="BahnUebergangsSteuerung == Entsichern // winkelgeschwindigkeit := -1" precondition="winkelgeschwindigkeit == 0">
+        <transition Id="4f96cbbf-461c-4910-9558-586cea0ff4d0" guard="BahnUebergangsSteuerung == Sichern" action="winkelgeschwindigkeit := 10" label="BahnUebergangsSteuerung == Sichern // winkelgeschwindigkeit := 10" precondition="winkelgeschwindigkeit == 0">
           <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Schliessen" />
         </transition>
       </successors>
@@ -33,20 +33,23 @@
       </successors>
     </state>
   </states>
-  <variables>
-    <programGraphHasVariables Id="b56b8a59-bf21-4a03-a712-9240b249c6a9">
-      <variable Id="84a67e4a-f0a2-4f85-a625-c5b3d91f709a" name="winkelgeschwindigkeit" range="-1..1" />
-    </programGraphHasVariables>
-  </variables>
+  <macros>
+    <programGraphHasMacros Id="79eb7bcc-d037-489a-9edf-248bc08fa182">
+      <macro Id="7eb25bb9-7a1b-4693-8fd3-3b99d4c766a2" name="wg_sm_in" body="winkelgeschwindigkeit" />
+    </programGraphHasMacros>
+  </macros>
   <importedVariables>
     <programGraphHasImportedVariables Id="697f8863-1d30-4d3e-87f4-3069b9111dff">
-      <importedVariable Id="c140d290-1231-4189-a258-7aef5c9ca5db" name="BahnUebergangsSteuerung" range="Bereit, SchrankeSchliessen, SchrankeGeschlossen, ZugErkannt, SchrankeOeffnen, ZweiteNachricht" />
+      <importedVariable Id="c140d290-1231-4189-a258-7aef5c9ca5db" name="BahnUebergangsSteuerung" range="Bereit, Sichern, Bestaetigen, Warten, Entsichern" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="3feb544e-de62-4477-b7a1-f8705d9b1b8a">
       <importedVariable Id="346d95c8-0d28-439d-a1e6-1235ab23c17a" name="SchrankeOffenSensor" range="SchrankeOffen, SchrankeNichtOffen" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="e000f0c5-1ed0-4e4f-86e9-ec2b8a1bd2c3">
       <importedVariable Id="9880ac95-5f91-4a55-95ca-b2d47a8613ee" name="SchrankeGeschlossenSensor" range="SchrankeNichtGeschlossen, SchrankeGeschlossen" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="811d5ab7-47b7-4779-8b89-5501bb9fcb8d">
+      <importedVariable Id="400294b1-6d07-4ecb-bd12-8ea5e803de6e" name="Einheiten.winkelgeschwindigkeit" range="-10..10" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

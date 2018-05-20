@@ -16,14 +16,6 @@
       </successors>
     </state>
   </states>
-  <variables>
-    <programGraphHasVariables Id="49d6339b-108e-4c79-91eb-7d5a9482d01d">
-      <variable Id="25c981f9-e00d-48e3-bf00-38c4da57835a" name="diskreteGeschwindigkeit" range="0..160" />
-    </programGraphHasVariables>
-    <programGraphHasVariables Id="c1e035ad-eb01-4be7-a959-fb179cd6428f">
-      <variable Id="60b41d78-add6-4810-a23e-99f671bd7913" name="diskretePosition" range="0..100" />
-    </programGraphHasVariables>
-  </variables>
   <macros>
     <programGraphHasMacros Id="a82fbe96-fb2f-4c7b-a934-83372ba39017">
       <macro Id="73883d83-14c1-4c05-b27a-f66841f94c1f" name="g_h_in" body="geschwindigkeit" />
@@ -31,13 +23,25 @@
     <programGraphHasMacros Id="ae568e08-8913-4d74-b0c1-5e69525b62c2">
       <macro Id="63dad851-0389-4afa-8496-e50301cfcfe2" name="p_h_in" body="position" />
     </programGraphHasMacros>
+    <programGraphHasMacros Id="ec7f1d7c-31c7-4eda-9534-05874f4b2b42">
+      <macro Id="c2ab5858-9400-48a6-835e-57e74cb5fb11" name="dg_h_in" body="diskreteGeschwindigkeit" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="93af6602-ffe8-4852-9342-f4b4da3ea296">
+      <macro Id="ae8b8f40-ed8b-4f80-a1d7-4fee5302f477" name="dp_h_in" body="diskretePosition" />
+    </programGraphHasMacros>
   </macros>
   <importedVariables>
     <programGraphHasImportedVariables Id="cec98154-f613-468e-8969-12915cbbc69f">
-      <importedVariable Id="069f41e1-92f7-47a4-b675-87f292efee51" name="Zug.geschwindigkeit" range="0..160" />
+      <importedVariable Id="069f41e1-92f7-47a4-b675-87f292efee51" name="Einheiten.geschwindigkeit" range="0..45" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="bf1c1d3e-c0ef-4ce4-ac86-591a4a729b8c">
-      <importedVariable Id="a770e052-92b8-4767-a7de-36e07ce807fa" name="Zug.position" range="0..100" />
+      <importedVariable Id="a770e052-92b8-4767-a7de-36e07ce807fa" name="Einheiten.position" range="0..3015" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="7733f6f5-58d1-4d1a-94ae-9c5beae00f61">
+      <importedVariable Id="d6ad8bf7-43b7-49f3-b29e-0b9c90bc44c5" name="Einheiten.diskreteGeschwindigkeit" range="0..45" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="7dac8a4e-7e91-43a7-91e6-94dfe8cab312">
+      <importedVariable Id="9793180e-6dc7-400e-a2b5-47ed068090de" name="Einheiten.diskretePosition" range="0..3015" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

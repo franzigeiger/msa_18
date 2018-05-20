@@ -59,14 +59,14 @@
       </successors>
     </state>
   </states>
-  <variables>
-    <programGraphHasVariables Id="863daf07-05b6-43d7-8aa2-6d10eedc37dd">
-      <variable Id="a2165ba9-1476-415d-880b-5a471e4bb188" name="wartezeit" range="0..20" />
-    </programGraphHasVariables>
-    <programGraphHasVariables Id="3f9c7d1a-a49f-45e0-ad30-effb4c4f13bd">
-      <variable Id="b92470eb-279b-45ad-b40d-ced8f87d0896" name="maxWartezeit" range="20" />
-    </programGraphHasVariables>
-  </variables>
+  <macros>
+    <programGraphHasMacros Id="c23733d7-370d-4ea1-a705-87babf91d16b">
+      <macro Id="81d8de0d-89e4-4e8f-a44e-1fc79f01e5a9" name="w_bus_in" body="wartezeit" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="0aec5352-ef04-4fe1-9240-b9015d281a93">
+      <macro Id="aecf38ca-e67c-4549-bc3e-303f9f94386d" name="mw_bus_in" body="maxWartezeit" />
+    </programGraphHasMacros>
+  </macros>
   <importedVariables>
     <programGraphHasImportedVariables Id="acce4104-1d56-47bc-a46f-91dc49a65d13">
       <importedVariable Id="c6c3d4d9-cf3f-4285-a5cd-e13c10e7248b" name="BahnFunkModul" range="Bereit, Senden, SendenAbgeschlossen, Empfangen, EmpfangenAbgeschlossen" />
@@ -79,6 +79,12 @@
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="a7c8c4a5-5345-4171-8720-5f2914c79a1d">
       <importedVariable Id="39d01579-ebe1-4d9a-8abd-c3dfafe01aea" name="ZugSensor" range="Bereit, ZugErkannt, ZugPassiert" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="92982399-ff99-43d8-9c16-f71e5d43ad7e">
+      <importedVariable Id="007f9071-fa06-4208-ad40-af763c344747" name="Einheiten.wartezeit" range="0..70" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="214319d8-1bb9-4ff8-9587-6499dfcdf3e0">
+      <importedVariable Id="e0fa694c-989b-44cb-942c-b44cc085ceed" name="Einheiten.maxWartezeit" range="70" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

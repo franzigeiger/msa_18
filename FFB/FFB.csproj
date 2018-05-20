@@ -60,6 +60,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Einheiten.pg" />
+    <None Include="Einheiten.pg.diagram">
+      <DependentUpon>Einheiten.pg</DependentUpon>
+    </None>
     <None Include="FunkKanal.pg" />
     <None Include="FunkKanal.pg.diagram">
       <DependentUpon>FunkKanal.pg</DependentUpon>

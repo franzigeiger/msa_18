@@ -30,7 +30,7 @@
   </macros>
   <importedVariables>
     <programGraphHasImportedVariables Id="51bd5ed5-114d-484b-9680-b299e57ddc83">
-      <importedVariable Id="68e60f1a-7c79-49f9-9773-d0a4e8dfa109" name="SchrankenBaum.winkel" range="0..90" />
+      <importedVariable Id="68e60f1a-7c79-49f9-9773-d0a4e8dfa109" name="Einheiten.winkel" range="0..90" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

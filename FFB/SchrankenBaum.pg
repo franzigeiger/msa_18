@@ -10,28 +10,29 @@
     </initialNode>
     <state Id="c39790e6-04fd-4558-989f-da5528e0f3b6" name="Schranke">
       <successors>
-        <transition Id="85055822-d7ef-4c48-9e65-8376a9a0e9f2" guard="SchrankenMotor == Öffnen || SchrankenMotor == Schließen" action="winkel := winkel + winkelgeschwindigkeit" label="SchrankenMotor == Öffnen || SchrankenMotor == Schließen // winkel := winkel + winkelgeschwindigkeit" precondition="winkelgeschwindigkeit == 0 || (winkelgeschwindigkeit &lt; 0 &amp;&amp; winkel &gt; 0) || (winkelgeschwindigkeit &gt; 0 &amp;&amp; winkel &lt; 90)">
+        <transition Id="85055822-d7ef-4c48-9e65-8376a9a0e9f2" guard="SchrankenMotor == Oeffnen || SchrankenMotor == Schliessen" action="winkel := winkel + winkelgeschwindigkeit" label="SchrankenMotor == Oeffnen || SchrankenMotor == Schliessen // winkel := winkel + winkelgeschwindigkeit" precondition="winkelgeschwindigkeit == 0 || (winkelgeschwindigkeit &lt; 0 &amp;&amp; winkel &gt; 10) || (winkelgeschwindigkeit &gt; 0 &amp;&amp; winkel &lt; 80)">
           <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Schranke" />
         </transition>
       </successors>
     </state>
   </states>
-  <variables>
-    <programGraphHasVariables Id="5442aac0-e123-4485-b6e0-2fec762a94e2">
-      <variable Id="7e16b6e4-396f-42c3-9d51-525ec7dd6f48" name="winkel" range="0..90" />
-    </programGraphHasVariables>
-  </variables>
   <macros>
     <programGraphHasMacros Id="7b8ef04c-6a39-410e-bdfd-8dd3b24b4eac">
-      <macro Id="7c6cd329-7af0-4011-918e-a2eda4df91b2" name="wg_in" body="winkelgeschwindigkeit" />
+      <macro Id="7c6cd329-7af0-4011-918e-a2eda4df91b2" name="wg_sb_in" body="winkelgeschwindigkeit" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="201704fb-d1b1-46c5-8e51-e42d508afde1">
+      <macro Id="4d9058f2-af53-4a52-9161-9a5eb2e6bc17" name="w_sb_in" body="winkel" />
     </programGraphHasMacros>
   </macros>
   <importedVariables>
     <programGraphHasImportedVariables Id="7106c65b-6bd8-4794-b8b3-a01961e64fab">
-      <importedVariable Id="e2ad37ad-8bd7-4393-b712-e593b8cd7ef8" name="SchrankenMotor" range="Aus, Öffnen, Schließen" />
+      <importedVariable Id="e2ad37ad-8bd7-4393-b712-e593b8cd7ef8" name="SchrankenMotor" range="Aus, Oeffnen, Schliessen" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="21a2834b-bd0f-4c90-8cbe-7ecc092457ef">
-      <importedVariable Id="a03b27aa-dc0b-4c34-9689-cec94e0ff514" name="SchrankenMotor.winkelgeschwindigkeit" range="-1..1" />
+      <importedVariable Id="a03b27aa-dc0b-4c34-9689-cec94e0ff514" name="Einheiten.winkelgeschwindigkeit" range="-10..10" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="dab5a4fd-928a-4562-a410-3958fff8b649">
+      <importedVariable Id="c444b09c-90c6-498b-b9c4-3be48d1e91d5" name="Einheiten.winkel" range="0..90" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

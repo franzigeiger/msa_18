@@ -56,14 +56,14 @@
       </successors>
     </state>
   </states>
-  <variables>
-    <programGraphHasVariables Id="44da81ac-b115-42b5-9437-a1e58a96a784">
-      <variable Id="d7347ae1-1a59-49f4-8c6f-f4fde7fba642" name="sendezeit" range="0..5" />
-    </programGraphHasVariables>
-    <programGraphHasVariables Id="0710eb37-4d2c-4044-a5c7-bf656b8e9eec">
-      <variable Id="0ad6f0e2-ba0d-4904-baa0-3b310f188011" name="maxSendezeit" range="5" />
-    </programGraphHasVariables>
-  </variables>
+  <macros>
+    <programGraphHasMacros Id="48c7a965-d141-44ce-b492-d4683b8bf34d">
+      <macro Id="b8eb032c-6503-451b-8bb3-43ed64969b1a" name="s_zfm_in" body="sendezeit" />
+    </programGraphHasMacros>
+    <programGraphHasMacros Id="4bb2d33c-ac67-439e-b1c2-b415490301a1">
+      <macro Id="fcf3e46d-77fc-4ca8-b604-494b0fc4b02a" name="ms_zfm_in" body="maxSendezeit" />
+    </programGraphHasMacros>
+  </macros>
   <importedVariables>
     <programGraphHasImportedVariables Id="9d991839-e103-4722-88bd-1ce2e93b1bd1">
       <importedVariable Id="914ffb5f-88cc-47d2-a22f-44aefab9f364" name="BahnFunkModul" range="Bereit, Senden, SendenAbgeschlossen, Empfangen, EmpfangenAbgeschlossen" />
@@ -73,6 +73,12 @@
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="303afd66-b8c1-409e-b672-cc8b8c8a3d84">
       <importedVariable Id="93d22274-afa9-4635-b389-d005174171e9" name="FunkKanal" range="KeinFunk, ZugZuBahnuebergang, BahnuebergangZuZug" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="aad96cb1-bfe1-4b27-967b-1c838c3119f3">
+      <importedVariable Id="63ebe7ad-c02a-4f23-b1da-4b0e0eec741a" name="Einheiten.sendezeit" range="0..5" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="73cae198-fd19-4704-8a04-d4ecf13fa2ce">
+      <importedVariable Id="86f9fb2b-4439-439d-ab0b-5fdadcda193c" name="Einheiten.maxSendezeit" range="5" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>
