@@ -4,11 +4,11 @@
     <initialNode Id="658be1a9-f661-49fd-bebb-88778c12aadf" name="InitialNode1">
       <successors>
         <transition Id="d93bd6ea-326e-4022-9589-2c390c02ab35">
-          <stateMoniker name="/c3864fa7-33f3-4793-81a8-a7fb8ae6f675/KeinZugErkannt" />
+          <stateMoniker name="/c3864fa7-33f3-4793-81a8-a7fb8ae6f675/Bereit" />
         </transition>
       </successors>
     </initialNode>
-    <state Id="159a861f-8ca8-4406-8920-6d0405ca4bc7" name="KeinZugErkannt">
+    <state Id="159a861f-8ca8-4406-8920-6d0405ca4bc7" name="Bereit">
       <successors>
         <transition Id="ba79a666-5f4c-4889-9552-efc3ec5fc5ab">
           <stateMoniker name="/c3864fa7-33f3-4793-81a8-a7fb8ae6f675/ZugErkannt" />
@@ -17,8 +17,15 @@
     </state>
     <state Id="8f6054a2-2648-4ead-81c2-4f186dee8b87" name="ZugErkannt">
       <successors>
-        <transition Id="ceec6021-109f-46cd-8a15-1f2e2b1e0def">
-          <stateMoniker name="/c3864fa7-33f3-4793-81a8-a7fb8ae6f675/KeinZugErkannt" />
+        <transition Id="345b1b8c-3322-475c-9e16-0629bb3ef25d">
+          <stateMoniker name="/c3864fa7-33f3-4793-81a8-a7fb8ae6f675/ZugPassiert" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="5ba4ab1c-5509-4aaf-8c27-22a46e4e3de8" name="ZugPassiert">
+      <successors>
+        <transition Id="ac94a184-3ce5-4546-9980-d38f7fd39724">
+          <stateMoniker name="/c3864fa7-33f3-4793-81a8-a7fb8ae6f675/Bereit" />
         </transition>
       </successors>
     </state>

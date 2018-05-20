@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="05707b4c-a06c-4e0b-9b05-a1cd7eb4af96" name="SchrangeGeschlossenSensor" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="05707b4c-a06c-4e0b-9b05-a1cd7eb4af96" name="SchrankeGeschlossenSensor" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
   <states>
     <initialNode Id="c19c79b5-c85b-4db5-8669-b718c57dc2f0" name="InitialNode1">
       <successors>

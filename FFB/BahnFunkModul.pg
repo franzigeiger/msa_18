@@ -3,79 +3,76 @@
   <states>
     <initialNode Id="c07b30d6-6d4c-477f-a858-49d051604fca" name="InitialNode1">
       <successors>
-        <transition Id="51d591ed-fc2c-4946-9b86-e92efd5838b7" guard="Sendezeit == 0 &amp;&amp; timeoutCounter == 0" label="Sendezeit == 0 &amp;&amp; timeoutCounter == 0">
+        <transition Id="8ece135c-2467-40c9-8406-ed52585c2436">
           <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Bereit" />
         </transition>
       </successors>
     </initialNode>
-    <state Id="9828fa33-4bdf-4b0d-881d-92e9be25fc42" name="Empfaengt">
+    <state Id="450cab47-e2db-401a-9463-ff0befb532f7" name="Bereit">
       <successors>
-        <transition Id="84187a4f-4000-4c22-8f36-4e48c390c115" guard="Funk==KeinFunk &amp;&amp; timeoutCounter &lt; maxtimeout" label="Funk==KeinFunk &amp;&amp; timeoutCounter &lt; maxtimeout">
-          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/NachrichtEmpfangen" />
+        <transition Id="027e75dc-4711-475d-a208-61715d12ecd9" guard="BahnUebergangsSteuerung == Bestaetigen" action="sendezeit := 0" label="BahnUebergangsSteuerung == Bestaetigen // sendezeit := 0" precondition="sendezeit &gt;= 0 &amp;&amp; sendezeit &lt; maxSendezeit">
+          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Senden" />
         </transition>
-        <transition Id="83b585a6-a2e4-45ed-8b18-c32c6a81920b" guard="Funk == ZugZuBahnuebergang &amp;&amp; timeoutCounter &lt; maxtimeout" action="timeoutCounter := timeoutCounter+1" label="Funk == ZugZuBahnuebergang &amp;&amp; timeoutCounter &lt; maxtimeout // timeoutCounter := timeoutCounter+1" precondition="timeoutCounter &lt; 10">
-          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Empfaengt" />
+        <transition Id="e779e041-6cf8-4cc3-a4e4-7bb80d9e6b52" guard="FunkKanal == ZugZuBahnuebergang" label="FunkKanal == ZugZuBahnuebergang">
+          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Empfangen" />
         </transition>
-        <transition Id="8bac692d-2a6f-497e-9817-e0d0a04e68d3" guard="timeoutCounter == maxtimeout " label="timeoutCounter == maxtimeout ">
+      </successors>
+    </state>
+    <state Id="0eb690d3-bb9d-4b40-b3b2-1e61d64b078b" name="Senden">
+      <successors>
+        <transition Id="3e22a03f-e031-42df-adf2-71f2dcce968d" guard="sendezeit == maxSendezeit" label="sendezeit == maxSendezeit">
+          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Bereit" />
+        </transition>
+        <transition Id="20c32e55-79f8-4f19-9ef4-c8511075c374" guard="sendezeit &lt; maxSendezeit" label="sendezeit &lt; maxSendezeit">
+          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/SendenAbgeschlossen" />
+        </transition>
+        <transition Id="05dcb9e1-6688-45cb-9b36-fee39578dfe0" guard="sendezeit &lt; maxSendezeit" action="sendezeit := sendezeit + 1" label="sendezeit &lt; maxSendezeit // sendezeit := sendezeit + 1" precondition="sendezeit &gt;= 0 &amp;&amp; sendezeit &lt; maxSendezeit">
+          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Senden" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="33cd5f2a-3e89-4baf-a8fa-48e2ecad3395" name="SendenAbgeschlossen">
+      <successors>
+        <transition Id="b8bc0e95-c935-40c8-86aa-6e67a2e5f098">
           <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Bereit" />
         </transition>
       </successors>
     </state>
-    <state Id="112a85f4-c111-4282-8819-9786c818644d" name="NachrichtEmpfangen">
+    <state Id="e1dee179-2dbb-4b83-a063-e38c61b32be3" name="Empfangen">
       <successors>
-        <transition Id="91663d7c-5f89-435a-abe2-a773485106d7">
+        <transition Id="190a68fb-c0db-4fbe-9680-b5d4ada907a6" guard="ZugFunkModul == SendenAbgeschlossen" label="ZugFunkModul == SendenAbgeschlossen">
+          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/EmpfangenAbgeschlossen" />
+        </transition>
+        <transition Id="bb0c39c0-3e6c-4443-9ab5-db6c23fc7ed0" guard="ZugFunkModul == Bereit" label="ZugFunkModul == Bereit">
           <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Bereit" />
         </transition>
       </successors>
     </state>
-    <state Id="eebfd09f-31d1-48db-ba5e-e53e31a8a9b7" name="Sendet">
+    <state Id="96a5847e-2eef-4d04-87ff-1b84a9333e89" name="EmpfangenAbgeschlossen">
       <successors>
-        <transition Id="94669b25-1262-4c43-bfc3-f8570da52f1c" guard="Sendezeit &lt;= 5" label="Sendezeit &lt;= 5">
-          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/NachrichtGesendet" />
-        </transition>
-        <transition Id="abad535e-b9dd-4b06-90cb-d3a3dc08a8fb" guard="Sendezeit &lt; 5" action="Sendezeit := Sendezeit + 1" label="Sendezeit &lt; 5 // Sendezeit := Sendezeit + 1" precondition="Sendezeit &lt; 5">
-          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Sendet" />
-        </transition>
-      </successors>
-    </state>
-    <state Id="5b5dfb38-04b9-46e8-9203-44f560930583" name="NachrichtGesendet">
-      <successors>
-        <transition Id="a6022a65-4040-465a-910a-d7a0e6a523c9">
-          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Bereit" />
-        </transition>
-      </successors>
-    </state>
-    <state Id="5e66bc35-43c4-4511-9ac4-a544c196edbf" name="Bereit">
-      <successors>
-        <transition Id="3c8f8fec-566c-4a0c-ab81-9d771087805a" guard="Funk == ZugZuBahnuebergang" action="timeoutCounter := 0" label="Funk == ZugZuBahnuebergang // timeoutCounter := 0" precondition="timeoutCounter &lt; 100">
-          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Empfaengt" />
-        </transition>
-        <transition Id="70c71cd6-84a1-42e5-9d53-2cdc435f4e4e" guard="Schrankensteuerung == ZweiteNachricht" action="Sendezeit := 0" label="Schrankensteuerung == ZweiteNachricht // Sendezeit := 0" precondition="Sendezeit &lt;= 5">
-          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Sendet" />
-        </transition>
-        <transition Id="c2008a0c-38ed-4c58-9dd8-5d919742bf24" guard="Funk != ZugZuBahnuebergang &amp;&amp; Schrankensteuerung != ZweiteNachricht " label="Funk != ZugZuBahnuebergang &amp;&amp; Schrankensteuerung != ZweiteNachricht ">
+        <transition Id="81137130-3eae-452a-b4b9-03ea982645ad">
           <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Bereit" />
         </transition>
       </successors>
     </state>
   </states>
   <variables>
-    <programGraphHasVariables Id="2fd67f44-3fd1-485e-8019-0420d4fbb402">
-      <variable Id="73cff1be-596d-490c-bbb3-210c936edc0b" name="timeoutCounter" range="0..10" />
+    <programGraphHasVariables Id="89461190-3b6a-48ed-8cce-81e343101791">
+      <variable Id="1b47c873-2faa-4b5f-841c-e449498247c4" name="sendezeit" range="0..5" />
     </programGraphHasVariables>
-    <programGraphHasVariables Id="05856404-7a9a-4c0e-a79c-4e3e0f222497">
-      <variable Id="502d02cc-d346-4514-b558-afa5cd13c7ab" name="maxtimeout" range="10" />
-    </programGraphHasVariables>
-    <programGraphHasVariables Id="48ebd297-8a28-4aab-b482-86b05bc11c1f">
-      <variable Id="fb0e6fb6-ae81-4666-8280-7bcccdb55ef7" name="Sendezeit" range="0..5" />
+    <programGraphHasVariables Id="585ac12b-f684-445f-a207-c3566ad3a3bb">
+      <variable Id="818a7ff8-2eb3-4b3e-af00-4be2da953bcf" name="maxSendezeit" range="5" />
     </programGraphHasVariables>
   </variables>
   <importedVariables>
-    <programGraphHasImportedVariables Id="aa6fc6d2-7f2e-4af9-ad93-7b9a59ec509a">
-      <importedVariable Id="b12edc8f-4f37-4d43-9648-b27c4a07d625" name="Schrankensteuerung" range="Bereit, SchrankeSchliessen, SchrankeGeschlossen, ZugErkannt, SchrankeOeffnen, ZweiteNachricht" />
+    <programGraphHasImportedVariables Id="68339413-6461-45ff-80f3-707f81cc71a6">
+      <importedVariable Id="03fc45f5-2633-46ad-8ce5-2d9cc740ddc4" name="FunkKanal" range="KeinFunk, ZugZuBahnuebergang, BahnuebergangZuZug" />
     </programGraphHasImportedVariables>
-    <programGraphHasImportedVariables Id="4f560efb-2a19-420c-b8d8-825c540df046">
-      <importedVariable Id="7ae4e20d-727e-4612-9a66-f0aff65f8bfc" name="Funk" range="KeinFunk, ZugZuBahnuebergang, BahnuebergangZuZug" />
+    <programGraphHasImportedVariables Id="086c523c-81fd-4b57-8d0f-8df7ad449a4d">
+      <importedVariable Id="2b6b2051-c9d3-47d1-a480-733cbd5ac867" name="ZugFunkModul" range="Bereit, Senden, SendenAbgeschlossen, Empfangen, EmpfangenAbgeschlossen" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="fb7b4403-bfba-4e48-8975-e16a4f70039a">
+      <importedVariable Id="0578e7aa-1e1c-4f48-a238-777caa72ca07" name="BahnUebergangsSteuerung" range="Bereit, Sichern, Bestaetigen, Warten, Entsichern" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

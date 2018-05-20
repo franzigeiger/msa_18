@@ -3,31 +3,31 @@
   <states>
     <initialNode Id="1df6dde8-e499-4233-be6c-0394b7e6ea29" name="InitialNode1">
       <successors>
-        <transition Id="94ce032c-e169-4ef3-a187-1c2eab11105e" guard="winkelgeschwindigkeit := 0" label="winkelgeschwindigkeit := 0">
+        <transition Id="94ce032c-e169-4ef3-a187-1c2eab11105e" guard="winkelgeschwindigkeit == 0" label="winkelgeschwindigkeit == 0">
           <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Aus" />
         </transition>
       </successors>
     </initialNode>
     <state Id="7e98e588-0fa7-4da3-82a5-ed2233c88cfc" name="Aus">
       <successors>
-        <transition Id="35a13906-649d-4e1d-810a-21e1c30ad2bd" guard="BahnUebergangsSteuerung == Sichern" action="winkelgeschwindigkeit := 1" label="BahnUebergangsSteuerung == Sichern // winkelgeschwindigkeit := 1">
-          <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Öffnen" />
+        <transition Id="35a13906-649d-4e1d-810a-21e1c30ad2bd" guard="BahnUebergangsSteuerung == Sichern" action="winkelgeschwindigkeit := 1" label="BahnUebergangsSteuerung == Sichern // winkelgeschwindigkeit := 1" precondition="winkelgeschwindigkeit == 0">
+          <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Oeffnen" />
         </transition>
-        <transition Id="4f96cbbf-461c-4910-9558-586cea0ff4d0" guard="BahnUebergangsSteuerung == Entsichern" action="winkelgeschwindigkeit := -1" label="BahnUebergangsSteuerung == Entsichern // winkelgeschwindigkeit := -1">
-          <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Schließen" />
+        <transition Id="4f96cbbf-461c-4910-9558-586cea0ff4d0" guard="BahnUebergangsSteuerung == Entsichern" action="winkelgeschwindigkeit := -1" label="BahnUebergangsSteuerung == Entsichern // winkelgeschwindigkeit := -1" precondition="winkelgeschwindigkeit == 0">
+          <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Schliessen" />
         </transition>
       </successors>
     </state>
-    <state Id="470267a5-1adb-4501-9f80-694a82265bd7" name="Öffnen">
+    <state Id="470267a5-1adb-4501-9f80-694a82265bd7" name="Oeffnen">
       <successors>
-        <transition Id="40ec4018-4e65-42e7-8a59-b353da076aa4" guard="SchrankeOffenSensor == SchrankeOffen" action="winkelgeschwindigkeit := 0" label="SchrankeOffenSensor == SchrankeOffen // winkelgeschwindigkeit := 0">
+        <transition Id="40ec4018-4e65-42e7-8a59-b353da076aa4" guard="SchrankeOffenSensor == SchrankeOffen" action="winkelgeschwindigkeit := 0" label="SchrankeOffenSensor == SchrankeOffen // winkelgeschwindigkeit := 0" precondition="winkelgeschwindigkeit == 1">
           <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Aus" />
         </transition>
       </successors>
     </state>
-    <state Id="8a11a3e3-196a-47ab-be41-d56cf17047d3" name="Schließen">
+    <state Id="8a11a3e3-196a-47ab-be41-d56cf17047d3" name="Schliessen">
       <successors>
-        <transition Id="7b286bda-5f63-4efb-946c-82bec69f4236" guard="SchrankeGeschlossenSensor == SchrankeGeschlossen" action="winkelgeschwindigkeit := 0" label="SchrankeGeschlossenSensor == SchrankeGeschlossen // winkelgeschwindigkeit := 0">
+        <transition Id="7b286bda-5f63-4efb-946c-82bec69f4236" guard="SchrankeGeschlossenSensor == SchrankeGeschlossen" action="winkelgeschwindigkeit := 0" label="SchrankeGeschlossenSensor == SchrankeGeschlossen // winkelgeschwindigkeit := 0" precondition="winkelgeschwindigkeit == -1">
           <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Aus" />
         </transition>
       </successors>
@@ -40,13 +40,13 @@
   </variables>
   <importedVariables>
     <programGraphHasImportedVariables Id="697f8863-1d30-4d3e-87f4-3069b9111dff">
-      <importedVariable Id="c140d290-1231-4189-a258-7aef5c9ca5db" name="BahnUebergangsSteuerung" range="unresolved import" />
+      <importedVariable Id="c140d290-1231-4189-a258-7aef5c9ca5db" name="BahnUebergangsSteuerung" range="Bereit, SchrankeSchliessen, SchrankeGeschlossen, ZugErkannt, SchrankeOeffnen, ZweiteNachricht" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="3feb544e-de62-4477-b7a1-f8705d9b1b8a">
       <importedVariable Id="346d95c8-0d28-439d-a1e6-1235ab23c17a" name="SchrankeOffenSensor" range="SchrankeOffen, SchrankeNichtOffen" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="e000f0c5-1ed0-4e4f-86e9-ec2b8a1bd2c3">
-      <importedVariable Id="9880ac95-5f91-4a55-95ca-b2d47a8613ee" name="SchrankeGeschlossenSensor" range="unresolved import" />
+      <importedVariable Id="9880ac95-5f91-4a55-95ca-b2d47a8613ee" name="SchrankeGeschlossenSensor" range="SchrankeNichtGeschlossen, SchrankeGeschlossen" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>
