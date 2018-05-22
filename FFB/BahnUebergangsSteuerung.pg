@@ -78,7 +78,7 @@
       <importedVariable Id="86183873-8f24-4496-9040-406d8cd60085" name="SchrankeOffenSensor" range="SchrankeOffen, SchrankeNichtOffen" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="a7c8c4a5-5345-4171-8720-5f2914c79a1d">
-      <importedVariable Id="39d01579-ebe1-4d9a-8abd-c3dfafe01aea" name="ZugSensor" range="Bereit, ZugErkannt, ZugPassiert" />
+      <importedVariable Id="39d01579-ebe1-4d9a-8abd-c3dfafe01aea" name="ZugSensor" range="Bereit, ZugPassiert" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="92982399-ff99-43d8-9c16-f71e5d43ad7e">
       <importedVariable Id="007f9071-fa06-4208-ad40-af763c344747" name="Einheiten.wartezeit" range="0..70" />

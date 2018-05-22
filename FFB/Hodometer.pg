@@ -3,7 +3,7 @@
   <states>
     <initialNode Id="9cddbd82-7541-4094-8411-cb50f8bf6ede" name="InitialNode1">
       <successors>
-        <transition Id="cebeca8e-dd0d-4210-8156-062fe3554ebb" guard="diskreteGeschwindigkeit == 160 &amp;&amp; diskretePosition == 100" label="diskreteGeschwindigkeit == 160 &amp;&amp; diskretePosition == 100">
+        <transition Id="cebeca8e-dd0d-4210-8156-062fe3554ebb" guard="diskreteGeschwindigkeit == 45 &amp;&amp; diskretePosition == 100" label="diskreteGeschwindigkeit == 45 &amp;&amp; diskretePosition == 100">
           <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Hodometer" />
         </transition>
       </successors>
@@ -41,7 +41,7 @@
       <importedVariable Id="d6ad8bf7-43b7-49f3-b29e-0b9c90bc44c5" name="Einheiten.diskreteGeschwindigkeit" range="0..45" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="7dac8a4e-7e91-43a7-91e6-94dfe8cab312">
-      <importedVariable Id="9793180e-6dc7-400e-a2b5-47ed068090de" name="Einheiten.diskretePosition" range="0..3015" />
+      <importedVariable Id="9793180e-6dc7-400e-a2b5-47ed068090de" name="Einheiten.diskretePosition" range="0..3060" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>
