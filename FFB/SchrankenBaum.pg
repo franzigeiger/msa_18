@@ -3,7 +3,7 @@
   <states>
     <initialNode Id="e1cec811-a563-40ba-8c72-6e0f137ffe49" name="InitialNode1">
       <successors>
-        <transition Id="2b54a18e-4d4f-44f9-a6fa-039431bc3801" guard="winkel != 0" label="winkel != 0">
+        <transition Id="2b54a18e-4d4f-44f9-a6fa-039431bc3801" guard="winkel == 90" label="winkel == 90">
           <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Schranke" />
         </transition>
       </successors>
