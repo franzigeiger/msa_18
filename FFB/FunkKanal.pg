@@ -33,6 +33,11 @@
       </successors>
     </state>
   </states>
+  <comments>
+    <programGraphHasComments Id="f63e6f6b-d83e-4a1d-bd09-f74c7444f71a">
+      <comment Id="8759b87e-4e3c-4af6-8e3f-f3b5d9d526f8" text="Der Funkkanal hat drei Zusände. Entweder er ist in Bereitschaft oder er überträgt gerade eine Nachricht von einem der Funkmodule. Dies ist der Fall, wenn ein FunkModul den Zustand Senden erreicht. Je nachdem welches Modul senden möchte, wird dann in den jeweiligen Richtungs Zustand übergegangen. Wecheslt das ZugFunkModul zum Zustand senden, wird eine Nachricht vom Zug Zum Bahnübergang übertragen. Das BahnFunkModul reagiert auf diesen Zustand und fängt an die Nachricht zu empfangen. Hat der Sender die Nachricht übertragen, ist also im Zustand SendenAbgeschlossen oder Bereit, wecheslt auch der FunkKanal wieder in den Ausgangszustand. Die Übertragung funktioniert in beide Richtungen gleich. " />
+    </programGraphHasComments>
+  </comments>
   <importedVariables>
     <programGraphHasImportedVariables Id="33a0509f-d88c-4052-8535-f838ce0bf8b4">
       <importedVariable Id="df4b0af9-1372-4971-8e62-7576a199455d" name="BahnFunkModul" range="Bereit, Senden, SendenAbgeschlossen, Empfangen, EmpfangenAbgeschlossen" />

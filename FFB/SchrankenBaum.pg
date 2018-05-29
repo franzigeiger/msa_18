@@ -10,7 +10,7 @@
     </initialNode>
     <state Id="c39790e6-04fd-4558-989f-da5528e0f3b6" name="Schranke">
       <successors>
-        <transition Id="85055822-d7ef-4c48-9e65-8376a9a0e9f2" guard="SchrankenMotor == Oeffnen || SchrankenMotor == Schliessen" action="winkel := winkel + winkelgeschwindigkeit" label="SchrankenMotor == Oeffnen || SchrankenMotor == Schliessen // winkel := winkel + winkelgeschwindigkeit" precondition="winkelgeschwindigkeit == 0 || (winkelgeschwindigkeit &lt; 0 &amp;&amp; winkel &gt; 10) || (winkelgeschwindigkeit &gt; 0 &amp;&amp; winkel &lt; 80)">
+        <transition Id="85055822-d7ef-4c48-9e65-8376a9a0e9f2" guard="SchrankenMotor == Oeffnen || SchrankenMotor == Schliessen" action="winkel := winkel + winkelgeschwindigkeit" label="SchrankenMotor == Oeffnen || SchrankenMotor == Schliessen // winkel := winkel + winkelgeschwindigkeit" precondition="winkelgeschwindigkeit == 0 || (winkelgeschwindigkeit &lt; 0 &amp;&amp; winkel &gt; 10) || (winkelgeschwindigkeit &gt; 0 &amp;&amp; winkel &lt; (90 - winkelgeschwindigkeit))">
           <stateMoniker name="/fe1d8706-7ae8-4ede-8528-183f84a2da24/Schranke" />
         </transition>
       </successors>

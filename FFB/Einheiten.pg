@@ -15,13 +15,13 @@
       <variable Id="9a5529cd-be9e-43bb-9bc0-f92383f3d5c0" name="geschwindigkeit" range="0..45" />
     </programGraphHasVariables>
     <programGraphHasVariables Id="4159101d-3bb1-4662-8462-e36be2eba826">
-      <variable Id="67debbeb-5ec1-4df5-b200-9091762bdab1" name="position" range="0..3060" />
+      <variable Id="67debbeb-5ec1-4df5-b200-9091762bdab1" name="position" range="100..3060" />
     </programGraphHasVariables>
     <programGraphHasVariables Id="70d4ce59-c848-47b6-9d6b-f46bfaf8bc84">
       <variable Id="4d3e8e8e-279a-46b1-a71f-a34e0eb537e4" name="winkelgeschwindigkeit" range="-10..10" />
     </programGraphHasVariables>
     <programGraphHasVariables Id="80be6a9d-2daf-44ef-a2a5-3e6abc4a5154">
-      <variable Id="d1dc6a8f-b1ee-48e8-94b5-c61307e7c370" name="bremskraft" range="-5..5" />
+      <variable Id="d1dc6a8f-b1ee-48e8-94b5-c61307e7c370" name="bremskraft" range="-5..0" />
     </programGraphHasVariables>
     <programGraphHasVariables Id="e3d5ae75-0d8d-4bff-a02c-0d5b37498ef3">
       <variable Id="a80a3032-891b-40e0-83ac-03aa7f21f21c" name="maxSendezeit" range="5" />

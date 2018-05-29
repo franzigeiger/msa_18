@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<programGraphDslDiagram dslVersion="1.0.0.0" Id="97359f0a-8d09-4b51-84cc-2a3fbe430af5" absoluteBounds="0, 0, 15.5, 8.5" name="Zugfunkmodul">
+<programGraphDslDiagram dslVersion="1.0.0.0" Id="97359f0a-8d09-4b51-84cc-2a3fbe430af5" absoluteBounds="0, 0, 19.125, 8.5" name="Zugfunkmodul">
   <programGraphMoniker Id="d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61" />
   <nestedChildShapes>
     <initialStateShape Id="e6ec4a24-d599-4cea-9fa2-9af33ebef084" absoluteBounds="8.375, 1.625, 0.125, 0.125">
@@ -28,40 +28,40 @@
         <stateShapeMoniker Id="43110050-698e-4e94-8feb-e531335f51b2" />
       </nodes>
     </transitionConnector>
-    <transitionConnector Id="fc714f3f-257d-4495-b09f-5b188c5699dd" edgePoints="[(8.875 : 2.63267251447105); (13.875 : 2.63267251447105)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <transitionConnector Id="fc714f3f-257d-4495-b09f-5b188c5699dd" edgePoints="[(8.875 : 2.75); (13.875 : 2.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <transitionMoniker Id="0eb6122b-c111-459f-868f-dadd411abc3c" />
       <relativeChildShapes />
       <moveableDecoratorHostShapes>
-        <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="9.36810302734375, 2.3124999999999951, 4.4075112342834473, 0.181884765625" shapeFieldName="Label" />
+        <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="9.0625, 2.8125, 4.4075112342834473, 0.181884765625" shapeFieldName="Label" />
       </moveableDecoratorHostShapes>
       <nodes>
         <stateShapeMoniker Id="43110050-698e-4e94-8feb-e531335f51b2" />
         <stateShapeMoniker Id="a484e540-d35f-4bb2-ab5b-b4e3849a34f5" />
       </nodes>
     </transitionConnector>
-    <transitionConnector Id="b00262f1-8bfa-431d-ab47-6cb9b9d2655e" edgePoints="[(14.375 : 2.5); (14.375 : 2.25); (14.6673164730979 : 2.25); (14.6673164730979 : 2.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <transitionConnector Id="b00262f1-8bfa-431d-ab47-6cb9b9d2655e" edgePoints="[(14.2215384615385 : 3); (14.2215384615385 : 3.25); (14.5357692307692 : 3.25); (14.5357692307692 : 3)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <transitionMoniker Id="8ceea5b3-ead5-4e80-bbde-1a85629b009c" />
       <relativeChildShapes />
       <moveableDecoratorHostShapes>
-        <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="12.46356201171875, 1.875, 3.1883339881896973, 0.181884765625" shapeFieldName="Label" />
+        <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="12.944642461630014, 3.443115234375, 3.1883339881896973, 0.181884765625" shapeFieldName="Label" />
       </moveableDecoratorHostShapes>
       <nodes>
         <stateShapeMoniker Id="a484e540-d35f-4bb2-ab5b-b4e3849a34f5" />
         <stateShapeMoniker Id="a484e540-d35f-4bb2-ab5b-b4e3849a34f5" />
       </nodes>
     </transitionConnector>
-    <transitionConnector Id="6a6072f7-d428-4fd1-a881-89257005fac8" edgePoints="[(14.3748630189149 : 3); (14.3748630189149 : 4.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <transitionConnector Id="6a6072f7-d428-4fd1-a881-89257005fac8" edgePoints="[(13.9857692307692 : 3); (13.9857692307692 : 4.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <transitionMoniker Id="f28530e1-a8fd-4a2b-b4dc-ba3579c4f368" />
       <relativeChildShapes />
       <moveableDecoratorHostShapes>
-        <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="12.8125, 3.875, 1.5262247323989868, 0.181884765625" shapeFieldName="Label" />
+        <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="12.423406211854331, 3.875, 1.5262247323989868, 0.181884765625" shapeFieldName="Label" />
       </moveableDecoratorHostShapes>
       <nodes>
         <stateShapeMoniker Id="a484e540-d35f-4bb2-ab5b-b4e3849a34f5" />
         <stateShapeMoniker Id="fdd68196-2724-4dcf-a089-8a4aec1bd438" />
       </nodes>
     </transitionConnector>
-    <transitionConnector Id="c7683eff-b545-4d47-a5e8-d984afdaffbe" edgePoints="[(13.75 : 4.91605647882979); (8.58864334864988 : 4.91605647882979); (8.58864334864988 : 3)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <transitionConnector Id="c7683eff-b545-4d47-a5e8-d984afdaffbe" edgePoints="[(13.75 : 4.91605647882979); (8.375 : 4.91605647882979); (8.375 : 3)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <transitionMoniker Id="9fb84e3b-914f-42e2-b9dd-55e70c9e026f" />
       <relativeChildShapes />
       <nodes>
@@ -69,7 +69,7 @@
         <stateShapeMoniker Id="43110050-698e-4e94-8feb-e531335f51b2" />
       </nodes>
     </transitionConnector>
-    <transitionConnector Id="0f18baf5-b1ef-4807-b378-a4e7fbd27f92" edgePoints="[(5.125 : 4.92058169685867); (8.14648212310761 : 4.92058169685867); (8.14648212310761 : 3)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <transitionConnector Id="0f18baf5-b1ef-4807-b378-a4e7fbd27f92" edgePoints="[(5.125 : 4.92058169685867); (8.093748 : 4.92058169685867); (8.093748 : 3)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <transitionMoniker Id="9863ae68-1d82-4b96-a217-302adaa27ffa" />
       <relativeChildShapes />
       <nodes>
@@ -110,13 +110,22 @@
         <stateShapeMoniker Id="a524bdc3-92a9-4467-abfb-97c7739ace6e" />
       </nodes>
     </transitionConnector>
-    <transitionConnector Id="db4cf0c2-f84d-4b54-9cc5-b4842dd7dd1f" edgePoints="[(13.875 : 2.87883625723552); (8.875 : 2.87883625723552)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <transitionConnector Id="db4cf0c2-f84d-4b54-9cc5-b4842dd7dd1f" edgePoints="[(13.875 : 2.5625); (8.875 : 2.5625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <transitionMoniker Id="edc13f6a-bc57-4e99-b313-eda521710664" />
       <relativeChildShapes />
+      <moveableDecoratorHostShapes>
+        <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="11.1875, 2.375, 1.6142984628677368, 0.181884765625" shapeFieldName="Label" />
+      </moveableDecoratorHostShapes>
       <nodes>
         <stateShapeMoniker Id="a484e540-d35f-4bb2-ab5b-b4e3849a34f5" />
         <stateShapeMoniker Id="43110050-698e-4e94-8feb-e531335f51b2" />
       </nodes>
     </transitionConnector>
+    <commentBoxShape Id="a731b057-4e30-4f97-8c3e-e2da865e9abd" absoluteBounds="3.5, 0.5, 3.875, 1.25">
+      <commentMoniker Id="941db03f-bd6a-4a76-abd0-888db7d2924c" />
+    </commentBoxShape>
+    <commentBoxShape Id="e3b142e1-6df1-4879-b5e9-65e4109f0a25" absoluteBounds="15.75, 0.625, 3.125, 2.5">
+      <commentMoniker Id="42fd892c-41e1-4ac4-bb2d-b9cfc01cf4c6" />
+    </commentBoxShape>
   </nestedChildShapes>
 </programGraphDslDiagram>

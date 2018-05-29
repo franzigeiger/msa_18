@@ -10,7 +10,7 @@
     </initialNode>
     <state Id="0524992a-5edb-460f-9332-b1abdbe3f870" name="Bereit">
       <successors>
-        <transition Id="a0db0fa8-8f20-4ae1-8ce5-252d5925d75a" guard="diskretePosition &gt;= _EP" label="diskretePosition &gt;= _EP">
+        <transition Id="a0db0fa8-8f20-4ae1-8ce5-252d5925d75a" guard="diskretePosition &gt;= _EP &amp;&amp; diskretePosition &lt; _AP" label="diskretePosition &gt;= _EP &amp;&amp; diskretePosition &lt; _AP">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Einschalten" />
         </transition>
       </successors>

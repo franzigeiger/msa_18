@@ -56,6 +56,14 @@
       </successors>
     </state>
   </states>
+  <comments>
+    <programGraphHasComments Id="14b0ce46-dbcd-4bf3-a74f-5883e91bab74">
+      <comment Id="941db03f-bd6a-4a76-abd0-888db7d2924c" text="Die Funkmodule können Nachrichten senden und empfangen.  Den Empfang einer Nachricht bekommen sie über den FunkKanal mitgeteilt. Fängt dieser an zu senden, wird eine Nachricht empfangen. Daraufhin wartet das Modul bis das gegenüberliegende FunkModul die Nachricht fertig übertragen hat und der Empfang ist abgeschlosssen." />
+    </programGraphHasComments>
+    <programGraphHasComments Id="eb84e375-58c5-4c2a-9602-7ba82a07c0d5">
+      <comment Id="42fd892c-41e1-4ac4-bb2d-b9cfc01cf4c6" text="Falls sich der Zug einem Bahnübergang nähert, will der Zug eine Nachricht senden. In diesem Fall wird, nachdem die Steuerung den entsprechenden Zustand erreicht hat, eine Nachricht gesendet, indem der Automat in den Zustand Senden über geht und dort eine gewisse Sendezeit verweilt. Der Funkkanal reagiert auf diesen Zustand und wechselt in diesem Fall in den Zustand ZugZuBahnuebergang. Darauf kann nund das Funkmodul der Schranke reagieren. Nachdem die Sendezeit erreicht wurde, ist die Nachricht übertragen und das Senden abgeschlossen. Sollte die Zeit des Sendens länger als MaxSendezeit benötigen, wird der Sendevorgang abgebrochen." />
+    </programGraphHasComments>
+  </comments>
   <macros>
     <programGraphHasMacros Id="48c7a965-d141-44ce-b492-d4683b8bf34d">
       <macro Id="b8eb032c-6503-451b-8bb3-43ed64969b1a" name="s_zfm_in" body="sendezeit" />
