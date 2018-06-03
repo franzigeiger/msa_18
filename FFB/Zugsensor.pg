@@ -24,14 +24,14 @@
     </state>
   </states>
   <importedVariables>
-    <programGraphHasImportedVariables Id="8dd3acd0-db22-438e-8614-840ae5cb9a8f">
-      <importedVariable Id="76b6c042-c4d3-4a3a-bc13-df04b754548a" name="Einheiten.position" range="100..3060" />
-    </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="3249ed27-7398-4112-9a31-660b402bb2a1">
       <importedVariable Id="eab19a4f-5f3f-4e43-b8cb-4e6bf0175237" name="Einheiten.sp" range="3040" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="355a5ca5-d532-425c-b5c6-b8a15ae0a5ae">
       <importedVariable Id="3d6f1d65-4f85-4221-b9e8-cfa654be7af0" name="BahnUebergangsSteuerung" range="Bereit, Sichern, Bestaetigen, Warten, Entsichern" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="11705ca2-5df5-412e-98e3-89ae17df93fa">
+      <importedVariable Id="d1a1c59c-1d20-458e-86f6-437b85186ab0" name="Einheiten.position" range="0..3060" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

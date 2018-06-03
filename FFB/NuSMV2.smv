@@ -20,7 +20,7 @@ MODULE _VARS
 		V_bremskraft : -5..0;
 		V_Einheiten : {L_Einheiten};
 		V_geschwindigkeit : 0..45;
-		V_position : 100..3060;
+		V_position : 0..3060;
 		V_winkelgeschwindigkeit : -10..10;
 		V_c : {13};
 		V_t : {25};

@@ -37,11 +37,11 @@
     <programGraphHasImportedVariables Id="e525c483-ee75-4b87-be19-3b01dae10d57">
       <importedVariable Id="f0f63549-c551-4075-814e-aa6809331dc6" name="Einheiten.geschwindigkeit" range="0..45" />
     </programGraphHasImportedVariables>
-    <programGraphHasImportedVariables Id="4de62144-2fe5-4c3a-a206-f4355c371d0b">
-      <importedVariable Id="4e379124-fe7a-458d-8ec5-a8b4d2a906c2" name="Einheiten.position" range="100..3060" />
-    </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="2f8974b0-bc7c-41c9-8de6-2b41b512e550">
       <importedVariable Id="98c187ab-6b16-4c62-ac46-b6c25d175886" name="Einheiten.maxGeschwindigkeit" range="45" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="a04f06cf-2179-429d-8ddc-e65d6c424529">
+      <importedVariable Id="4f0731af-816d-4995-b7fa-5d80453cf75f" name="Einheiten.position" range="0..3060" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

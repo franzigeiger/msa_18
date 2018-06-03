@@ -15,7 +15,7 @@
       <variable Id="9a5529cd-be9e-43bb-9bc0-f92383f3d5c0" name="geschwindigkeit" range="0..45" />
     </programGraphHasVariables>
     <programGraphHasVariables Id="4159101d-3bb1-4662-8462-e36be2eba826">
-      <variable Id="67debbeb-5ec1-4df5-b200-9091762bdab1" name="position" range="100..3060" />
+      <variable Id="67debbeb-5ec1-4df5-b200-9091762bdab1" name="position" range="0..3060" />
     </programGraphHasVariables>
     <programGraphHasVariables Id="70d4ce59-c848-47b6-9d6b-f46bfaf8bc84">
       <variable Id="4d3e8e8e-279a-46b1-a71f-a34e0eb537e4" name="winkelgeschwindigkeit" range="-10..10" />
