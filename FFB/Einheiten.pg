@@ -33,16 +33,16 @@
       <variable Id="bc8e7b42-bf67-4e02-8589-e7209eebf3f4" name="c" range="8" />
     </programGraphHasVariables>
     <programGraphHasVariables Id="e7d10418-1ea8-4d4c-a0d7-62c800b16b2f">
-      <variable Id="88ff4df5-056f-4d0c-98b6-481afb20410e" name="t" range="17" />
+      <variable Id="88ff4df5-056f-4d0c-98b6-481afb20410e" name="t" range="9" />
     </programGraphHasVariables>
     <programGraphHasVariables Id="ee93d095-b6b5-4c56-99d6-9d15b3441b08">
-      <variable Id="4c719505-17a4-4c37-a1ad-34ace6adebd8" name="gp" range="1800" />
+      <variable Id="4c719505-17a4-4c37-a1ad-34ace6adebd8" name="gp" range="1900" />
     </programGraphHasVariables>
     <programGraphHasVariables Id="8163a62d-ce5a-4c54-bb46-c65f6dc2ee8a">
-      <variable Id="452d346f-b976-407c-9594-d158a3f23ad1" name="a" range="9" />
+      <variable Id="452d346f-b976-407c-9594-d158a3f23ad1" name="a" range="5" />
     </programGraphHasVariables>
     <programGraphHasVariables Id="5bfb5a9f-83b8-476a-b402-6caa9dd1bf4f">
-      <variable Id="98456f28-948c-4e47-a161-0e6f88461e25" name="z" range="10" />
+      <variable Id="98456f28-948c-4e47-a161-0e6f88461e25" name="z" range="200" />
     </programGraphHasVariables>
     <programGraphHasVariables Id="255e8659-ec7a-48a5-80e9-c2537e46c1b7">
       <variable Id="4bbeb6f4-b3f4-457c-9531-283d990b7570" name="maxGeschwindigkeit" range="45" />
@@ -66,7 +66,7 @@
       <variable Id="3a75a505-2ce5-46ab-809a-8e3d0734e1d1" name="diskretePosition" range="0..2000" />
     </programGraphHasVariables>
     <programGraphHasVariables Id="9a64a0d5-2503-469a-8809-bd565b0c70b8">
-      <variable Id="dcab9f2a-ef70-43d6-8ceb-9ca0d2d3ad74" name="sp" range="1840" />
+      <variable Id="dcab9f2a-ef70-43d6-8ceb-9ca0d2d3ad74" name="sp" range="1940" />
     </programGraphHasVariables>
     <programGraphHasVariables Id="3bc10301-b216-4c46-ad9d-f11389008a22">
       <variable Id="5ca22ed6-9803-455e-9ca3-4ad9235a8795" name="sendezeitBFM" range="0..5" />

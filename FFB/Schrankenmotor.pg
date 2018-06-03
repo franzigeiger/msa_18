@@ -10,10 +10,10 @@
     </initialNode>
     <state Id="7e98e588-0fa7-4da3-82a5-ed2233c88cfc" name="Aus">
       <successors>
-        <transition Id="35a13906-649d-4e1d-810a-21e1c30ad2bd" guard="BahnUebergangsSteuerung == Entsichern" action="winkelgeschwindigkeit := -10" label="BahnUebergangsSteuerung == Entsichern // winkelgeschwindigkeit := -10" precondition="winkelgeschwindigkeit == 0">
+        <transition Id="35a13906-649d-4e1d-810a-21e1c30ad2bd" guard="BahnUebergangsSteuerung == Entsichern" action="winkelgeschwindigkeit := 10" label="BahnUebergangsSteuerung == Entsichern // winkelgeschwindigkeit := 10" precondition="winkelgeschwindigkeit == 0">
           <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Oeffnen" />
         </transition>
-        <transition Id="4f96cbbf-461c-4910-9558-586cea0ff4d0" guard="BahnUebergangsSteuerung == Sichern" action="winkelgeschwindigkeit := 10" label="BahnUebergangsSteuerung == Sichern // winkelgeschwindigkeit := 10" precondition="winkelgeschwindigkeit == 0">
+        <transition Id="4f96cbbf-461c-4910-9558-586cea0ff4d0" guard="BahnUebergangsSteuerung == Sichern" action="winkelgeschwindigkeit := -10" label="BahnUebergangsSteuerung == Sichern // winkelgeschwindigkeit := -10" precondition="winkelgeschwindigkeit == 0">
           <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Schliessen" />
         </transition>
       </successors>
