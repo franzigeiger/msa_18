@@ -12,7 +12,7 @@
       <transitionMoniker Id="3be53165-3e9a-4d4a-90b7-8a122c49ef06" />
       <relativeChildShapes />
       <moveableDecoratorHostShapes>
-        <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="2.332794189453125, 2.4375, 2.3960976600646973, 0.181884765625" shapeFieldName="Label" />
+        <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="1.82012939453125, 2.4375, 3.4214272499084473, 0.181884765625" shapeFieldName="Label" />
       </moveableDecoratorHostShapes>
       <nodes>
         <initialStateShapeMoniker Id="a2807c06-8bf0-44ad-802c-b225c058ba71" />

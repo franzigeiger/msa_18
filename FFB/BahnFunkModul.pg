@@ -78,7 +78,7 @@
       <importedVariable Id="718b1668-c991-4354-9da0-69f45bc2265c" name="Einheiten.sendezeitBFM" range="0..5" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="b8d434b3-3805-45b0-a6ba-534d5b648486">
-      <importedVariable Id="77a9d08b-c1bd-4393-954a-b8d6cf1384b8" name="Einheiten.maxSendezeit" range="5" />
+      <importedVariable Id="77a9d08b-c1bd-4393-954a-b8d6cf1384b8" name="Einheiten.maxSendezeit" range="2" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

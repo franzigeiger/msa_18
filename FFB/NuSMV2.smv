@@ -6,7 +6,7 @@ MODULE _VARS
 		V_ZugFunkModul : {L_Bereit, L_Senden, L_SendenAbgeschlossen, L_Empfangen, L_EmpfangenAbgeschlossen};
 		V_BahnUebergangsSteuerung : {L_Bereit, L_Sichern, L_Bestaetigen, L_Warten, L_Entsichern};
 		V_sendezeitBFM : 0..5;
-		V_maxSendezeit : {5};
+		V_maxSendezeit : {2};
 		V_BahnUebergang : {L_Gesichert, L_Ungesichert};
 		V_winkel : 0..90;
 		V_SchrankeGeschlossenSensor : {L_SchrankeNichtGeschlossen, L_SchrankeGeschlossen};
@@ -17,21 +17,21 @@ MODULE _VARS
 		V_Bremse : {L_Aus, L_An};
 		V_ZugSteuerung : {L_Bereit, L_Einschalten, L_Anfragen, L_Zwangsbremsung};
 		V_diskreteGeschwindigkeit : 0..45;
-		V_bremskraft : -5..0;
+		V_bremskraft : {-5, 0};
 		V_Einheiten : {L_Einheiten};
 		V_geschwindigkeit : 0..45;
-		V_position : 0..3060;
-		V_winkelgeschwindigkeit : -10..10;
-		V_c : {13};
-		V_t : {25};
-		V_gp : {3010};
+		V_position : 0..2000;
+		V_winkelgeschwindigkeit : {-10, 0, 10};
+		V_c : {8};
+		V_t : {17};
+		V_gp : {1800};
 		V_a : {9};
 		V_z : {10};
 		V_maxGeschwindigkeit : {45};
-		V_maxPosition : {3060};
+		V_maxPosition : {2000};
 		V_sendezeitZFM : 0..5;
-		V_diskretePosition : 0..3060;
-		V_sp : {3040};
+		V_diskretePosition : 0..2000;
+		V_sp : {1840};
 		V_Hodometer : {L_Hodometer};
 		V_SchrankenBaum : {L_Schranke};
 		V_SchrankenMotor : {L_Aus, L_Oeffnen, L_Schliessen};
@@ -140,16 +140,16 @@ MODULE _P_SchrankeOffenSensor(v)
 	INIT
 		(v.V_SchrankeOffenSensor = L_SchrankeOffen) & (TRUE)
 	TRANS
-		 ( v.V_SchrankeOffenSensor = L_SchrankeOffen & next(v.V_SchrankeOffenSensor) = L_SchrankeNichtOffen & (v.V_winkel < (90 + (2 * v.V_winkelgeschwindigkeit))) & (TRUE))  |
-		 ( v.V_SchrankeOffenSensor = L_SchrankeNichtOffen & next(v.V_SchrankeOffenSensor) = L_SchrankeOffen & (v.V_winkel >= (90 + (2 * v.V_winkelgeschwindigkeit))) & (TRUE))  |
-		 ( v.V_SchrankeOffenSensor = L_SchrankeOffen & next(v.V_SchrankeOffenSensor) = L_SchrankeOffen & !(v.V_winkel < (90 + (2 * v.V_winkelgeschwindigkeit))) & (TRUE))  |
-		 ( v.V_SchrankeOffenSensor = L_SchrankeNichtOffen & next(v.V_SchrankeOffenSensor) = L_SchrankeNichtOffen & !(v.V_winkel >= (90 + (2 * v.V_winkelgeschwindigkeit))) & (TRUE));
+		 ( v.V_SchrankeOffenSensor = L_SchrankeOffen & next(v.V_SchrankeOffenSensor) = L_SchrankeNichtOffen & (v.V_winkel < (90 - (2 * v.V_winkelgeschwindigkeit))) & (TRUE))  |
+		 ( v.V_SchrankeOffenSensor = L_SchrankeNichtOffen & next(v.V_SchrankeOffenSensor) = L_SchrankeOffen & (v.V_winkel >= (90 - (2 * v.V_winkelgeschwindigkeit))) & (TRUE))  |
+		 ( v.V_SchrankeOffenSensor = L_SchrankeOffen & next(v.V_SchrankeOffenSensor) = L_SchrankeOffen & !(v.V_winkel < (90 - (2 * v.V_winkelgeschwindigkeit))) & (TRUE))  |
+		 ( v.V_SchrankeOffenSensor = L_SchrankeNichtOffen & next(v.V_SchrankeOffenSensor) = L_SchrankeNichtOffen & !(v.V_winkel >= (90 - (2 * v.V_winkelgeschwindigkeit))) & (TRUE));
 MODULE _P_Zug(v)
 	INIT
-		(v.V_Zug = L_Zug) & (((v.V_geschwindigkeit = 45) & (v.V_position = 0)))
+		(v.V_Zug = L_Zug) & (((v.V_geschwindigkeit = v.V_maxGeschwindigkeit) & (v.V_position = 0)))
 	TRANS
-		 ( v.V_Zug = L_Zug & next(v.V_Zug) = L_Zug & ((((v.V_geschwindigkeit + v.V_bremskraft) >= 0) & ((v.V_geschwindigkeit + v.V_bremskraft) <= 45)) & (((v.V_position + v.V_geschwindigkeit) >= 0) & ((v.V_position + v.V_geschwindigkeit) <= 3015))) & (next(v.V_position) = (v.V_position + v.V_geschwindigkeit) & next(v.V_geschwindigkeit) = (v.V_geschwindigkeit + v.V_bremskraft)))  |
-		 ( v.V_Zug = L_Zug & next(v.V_Zug) = L_Zug & !((((v.V_geschwindigkeit + v.V_bremskraft) >= 0) & ((v.V_geschwindigkeit + v.V_bremskraft) <= 45)) & (((v.V_position + v.V_geschwindigkeit) >= 0) & ((v.V_position + v.V_geschwindigkeit) <= 3015))) & (next(v.V_geschwindigkeit) = v.V_geschwindigkeit & next(v.V_position) = v.V_position));
+		 ( v.V_Zug = L_Zug & next(v.V_Zug) = L_Zug & ((((v.V_geschwindigkeit + v.V_bremskraft) >= 0) & ((v.V_geschwindigkeit + v.V_bremskraft) <= 45)) & (((v.V_position + v.V_geschwindigkeit) >= 0) & ((v.V_position + v.V_geschwindigkeit) <= 2000))) & (next(v.V_position) = (v.V_position + v.V_geschwindigkeit) & next(v.V_geschwindigkeit) = (v.V_geschwindigkeit + v.V_bremskraft)))  |
+		 ( v.V_Zug = L_Zug & next(v.V_Zug) = L_Zug & !((((v.V_geschwindigkeit + v.V_bremskraft) >= 0) & ((v.V_geschwindigkeit + v.V_bremskraft) <= 45)) & (((v.V_position + v.V_geschwindigkeit) >= 0) & ((v.V_position + v.V_geschwindigkeit) <= 2000))) & (next(v.V_geschwindigkeit) = v.V_geschwindigkeit & next(v.V_position) = v.V_position));
 MODULE _P_ZugFunkModul(v)
 	INIT
 		(v.V_ZugFunkModul = L_Bereit) & (TRUE)
@@ -204,5 +204,8 @@ MODULE main
 		p_ZugFunkModul : _P_ZugFunkModul(v);
 		p_ZugSensor : _P_ZugSensor(v);
 		p_ZugSteuerung : _P_ZugSteuerung(v);
+		
 
+LTLSPEC (G v.V_diskreteGeschwindigkeit > 80)
+LTLSPEC (G v.V_diskreteGeschwindigkeit < 80)
 

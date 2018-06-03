@@ -29,7 +29,7 @@
       <importedVariable Id="e2ad37ad-8bd7-4393-b712-e593b8cd7ef8" name="SchrankenMotor" range="Aus, Oeffnen, Schliessen" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="21a2834b-bd0f-4c90-8cbe-7ecc092457ef">
-      <importedVariable Id="a03b27aa-dc0b-4c34-9689-cec94e0ff514" name="Einheiten.winkelgeschwindigkeit" range="-10..10" />
+      <importedVariable Id="a03b27aa-dc0b-4c34-9689-cec94e0ff514" name="Einheiten.winkelgeschwindigkeit" range="-10,0,10" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="dab5a4fd-928a-4562-a410-3958fff8b649">
       <importedVariable Id="c444b09c-90c6-498b-b9c4-3be48d1e91d5" name="Einheiten.winkel" range="0..90" />

@@ -38,7 +38,7 @@
       <importedVariable Id="758af65c-2e78-481e-aeac-b124dea64501" name="Einheiten.winkel" range="0..90" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="e9bc9724-4641-4bcb-a411-bf4f4e01cb89">
-      <importedVariable Id="b4ffc6ae-7a29-43dd-a306-41efad11d09e" name="Einheiten.winkelgeschwindigkeit" range="-10..10" />
+      <importedVariable Id="b4ffc6ae-7a29-43dd-a306-41efad11d09e" name="Einheiten.winkelgeschwindigkeit" range="-10,0,10" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

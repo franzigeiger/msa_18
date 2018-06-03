@@ -56,22 +56,22 @@
       <importedVariable Id="656a78f9-affc-4705-9b7c-e5b06d0a279e" name="ZugFunkModul" range="Bereit, Senden, SendenAbgeschlossen, Empfangen, EmpfangenAbgeschlossen" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="176d3927-dca7-455d-bb4c-fa36c20cf764">
-      <importedVariable Id="9e152945-3ee1-4c89-bea4-dc7c6f3baff6" name="Einheiten.t" range="25" />
+      <importedVariable Id="9e152945-3ee1-4c89-bea4-dc7c6f3baff6" name="Einheiten.t" range="17" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="8b881f9b-34fb-4b56-a990-956be9dc8c0f">
-      <importedVariable Id="2155ba30-7697-487c-8af8-133dbeb4105f" name="Einheiten.c" range="13" />
+      <importedVariable Id="2155ba30-7697-487c-8af8-133dbeb4105f" name="Einheiten.c" range="8" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="5d40befe-7a86-4324-bab7-803f00649628">
       <importedVariable Id="7b2c89ac-710b-44fe-a7a5-8346c0e92c9b" name="Einheiten.a" range="9" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="9963da8e-117c-468b-a2ab-40aaac9cd965">
-      <importedVariable Id="56a84b9a-1892-4a36-ba06-2749ab457f74" name="Einheiten.gp" range="3010" />
+      <importedVariable Id="56a84b9a-1892-4a36-ba06-2749ab457f74" name="Einheiten.gp" range="1800" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="51835bbf-55c3-435b-840d-469b53212f32">
       <importedVariable Id="3be44183-b430-4d8b-9b5e-6d3c5fcdcce6" name="Einheiten.z" range="10" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="9d69f585-f43e-4540-b6c1-a75942f1e958">
-      <importedVariable Id="7dd19df8-2661-4fa6-a787-e9d2c3c8dac0" name="Einheiten.diskretePosition" range="0..3060" />
+      <importedVariable Id="7dd19df8-2661-4fa6-a787-e9d2c3c8dac0" name="Einheiten.diskretePosition" range="0..2000" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

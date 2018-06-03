@@ -86,7 +86,7 @@
       <importedVariable Id="63ebe7ad-c02a-4f23-b1da-4b0e0eec741a" name="Einheiten.sendezeitZFM" range="0..5" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="73cae198-fd19-4704-8a04-d4ecf13fa2ce">
-      <importedVariable Id="86f9fb2b-4439-439d-ab0b-5fdadcda193c" name="Einheiten.maxSendezeit" range="5" />
+      <importedVariable Id="86f9fb2b-4439-439d-ab0b-5fdadcda193c" name="Einheiten.maxSendezeit" range="2" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

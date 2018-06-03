@@ -49,7 +49,7 @@
       <importedVariable Id="9880ac95-5f91-4a55-95ca-b2d47a8613ee" name="SchrankeGeschlossenSensor" range="SchrankeNichtGeschlossen, SchrankeGeschlossen" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="811d5ab7-47b7-4779-8b89-5501bb9fcb8d">
-      <importedVariable Id="400294b1-6d07-4ecb-bd12-8ea5e803de6e" name="Einheiten.winkelgeschwindigkeit" range="-10..10" />
+      <importedVariable Id="400294b1-6d07-4ecb-bd12-8ea5e803de6e" name="Einheiten.winkelgeschwindigkeit" range="-10,0,10" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

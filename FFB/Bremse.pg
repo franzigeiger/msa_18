@@ -39,7 +39,7 @@
       <importedVariable Id="a0633c42-0c47-4817-a554-84e738db91df" name="Einheiten.diskreteGeschwindigkeit" range="0..45" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="840e4135-5c83-4b3a-a940-fbdeee8de44b">
-      <importedVariable Id="549f9792-dac0-4fba-ad69-0442a13e65fe" name="Einheiten.bremskraft" range="-5..0" />
+      <importedVariable Id="549f9792-dac0-4fba-ad69-0442a13e65fe" name="Einheiten.bremskraft" range="-5,0" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

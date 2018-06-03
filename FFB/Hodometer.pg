@@ -38,10 +38,10 @@
       <importedVariable Id="d6ad8bf7-43b7-49f3-b29e-0b9c90bc44c5" name="Einheiten.diskreteGeschwindigkeit" range="0..45" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="7dac8a4e-7e91-43a7-91e6-94dfe8cab312">
-      <importedVariable Id="9793180e-6dc7-400e-a2b5-47ed068090de" name="Einheiten.diskretePosition" range="0..3060" />
+      <importedVariable Id="9793180e-6dc7-400e-a2b5-47ed068090de" name="Einheiten.diskretePosition" range="0..2000" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="1181c479-0659-4462-853d-0829ef53c1b3">
-      <importedVariable Id="894c842b-5e8b-4b2e-bbdd-fd17d9a8feb7" name="Einheiten.position" range="0..3060" />
+      <importedVariable Id="894c842b-5e8b-4b2e-bbdd-fd17d9a8feb7" name="Einheiten.position" range="0..2000" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>
