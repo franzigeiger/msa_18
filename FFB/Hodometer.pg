@@ -3,14 +3,14 @@
   <states>
     <initialNode Id="9cddbd82-7541-4094-8411-cb50f8bf6ede" name="InitialNode1">
       <successors>
-        <transition Id="cebeca8e-dd0d-4210-8156-062fe3554ebb" guard="diskreteGeschwindigkeit == 45 &amp;&amp; diskretePosition == 100" label="diskreteGeschwindigkeit == 45 &amp;&amp; diskretePosition == 100">
+        <transition Id="cebeca8e-dd0d-4210-8156-062fe3554ebb" guard="diskreteGeschwindigkeit == 45 &amp;&amp; diskretePosition == 0" label="diskreteGeschwindigkeit == 45 &amp;&amp; diskretePosition == 0">
           <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Hodometer" />
         </transition>
       </successors>
     </initialNode>
     <state Id="e5fcef29-b6a7-4d3d-a2ef-19fc979c8ea7" name="Hodometer">
       <successors>
-        <transition Id="5f7b4242-b098-443d-ab31-705e1a51793c" action="diskreteGeschwindigkeit := geschwindigkeit | diskretePosition := position" label="// diskreteGeschwindigkeit := geschwindigkeit | diskretePosition := position" precondition="diskreteGeschwindigkeit &lt;= 160 &amp;&amp; diskreteGeschwindigkeit &gt;= 0 &amp;&amp; diskretePosition &lt;= 100 &amp;&amp; diskretePosition &gt;= 0">
+        <transition Id="5f7b4242-b098-443d-ab31-705e1a51793c" action="diskreteGeschwindigkeit := geschwindigkeit | diskretePosition := position" label="// diskreteGeschwindigkeit := geschwindigkeit | diskretePosition := position" precondition="(((geschwindigkeit&gt;=0)&amp;&amp;(geschwindigkeit&lt;=45))&amp;&amp;((position&gt;=0)&amp;&amp;(position&lt;=3060)))">
           <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Hodometer" />
         </transition>
       </successors>
@@ -35,7 +35,7 @@
       <importedVariable Id="069f41e1-92f7-47a4-b675-87f292efee51" name="Einheiten.geschwindigkeit" range="0..45" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="bf1c1d3e-c0ef-4ce4-ac86-591a4a729b8c">
-      <importedVariable Id="a770e052-92b8-4767-a7de-36e07ce807fa" name="Einheiten.position" range="0..3015" />
+      <importedVariable Id="a770e052-92b8-4767-a7de-36e07ce807fa" name="Einheiten.position" range="100..3060" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="7733f6f5-58d1-4d1a-94ae-9c5beae00f61">
       <importedVariable Id="d6ad8bf7-43b7-49f3-b29e-0b9c90bc44c5" name="Einheiten.diskreteGeschwindigkeit" range="0..45" />

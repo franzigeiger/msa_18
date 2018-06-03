@@ -51,7 +51,7 @@
       <variable Id="3e75571c-6dec-4e92-b102-b0e9f0617784" name="maxPosition" range="3060" />
     </programGraphHasVariables>
     <programGraphHasVariables Id="0237b28e-1b65-4764-8a94-a9e4b401d665">
-      <variable Id="1bace995-65cc-4824-b482-2bd398489cef" name="sendezeit" range="0..5" />
+      <variable Id="1bace995-65cc-4824-b482-2bd398489cef" name="sendezeitZFM" range="0..5" />
     </programGraphHasVariables>
     <programGraphHasVariables Id="8e4b521a-bc61-4b7e-aa74-b945b839dc5a">
       <variable Id="40fe246e-2649-4364-b0b9-5855efc6db80" name="wartezeit" range="0..70" />
@@ -67,6 +67,9 @@
     </programGraphHasVariables>
     <programGraphHasVariables Id="9a64a0d5-2503-469a-8809-bd565b0c70b8">
       <variable Id="dcab9f2a-ef70-43d6-8ceb-9ca0d2d3ad74" name="sp" range="3040" />
+    </programGraphHasVariables>
+    <programGraphHasVariables Id="3bc10301-b216-4c46-ad9d-f11389008a22">
+      <variable Id="5ca22ed6-9803-455e-9ca3-4ad9235a8795" name="sendezeitBFM" range="0..5" />
     </programGraphHasVariables>
   </variables>
 </programGraph>

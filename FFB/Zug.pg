@@ -3,14 +3,14 @@
   <states>
     <initialNode Id="c19c79b5-c85b-4db5-8669-b718c57dc2f0" name="InitialNode1">
       <successors>
-        <transition Id="3be53165-3e9a-4d4a-90b7-8a122c49ef06" guard="geschwindigkeit == 45 &amp;&amp; position == 100 " label="geschwindigkeit == 45 &amp;&amp; position == 100 ">
+        <transition Id="3be53165-3e9a-4d4a-90b7-8a122c49ef06" guard="geschwindigkeit == 45 &amp;&amp; position == 0 " label="geschwindigkeit == 45 &amp;&amp; position == 0 ">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Zug" />
         </transition>
       </successors>
     </initialNode>
     <state Id="73b17d66-ae44-402f-9896-3de0aa7b9b5c" name="Zug">
       <successors>
-        <transition Id="266c764c-1442-4f5f-892a-6f27a6db7e5a" action="geschwindigkeit := geschwindigkeit + bremskraft | position := position + geschwindigkeit" label="// geschwindigkeit := geschwindigkeit + bremskraft | position := position + geschwindigkeit" precondition="(bremskraft &lt; 0 &amp;&amp; geschwindigkeit &gt; -1*bremskraft &amp;&amp; position &lt;= 3015-geschwindigkeit ) || (bremskraft &gt;= 0 &amp;&amp; geschwindigkeit &lt;= maxGeschwindigkeit - bremskraft &amp;&amp; position &lt;= 3015 - geschwindigkeit)">
+        <transition Id="266c764c-1442-4f5f-892a-6f27a6db7e5a" action="geschwindigkeit := geschwindigkeit + bremskraft | position := position + geschwindigkeit" label="// geschwindigkeit := geschwindigkeit + bremskraft | position := position + geschwindigkeit" precondition="((((geschwindigkeit+bremskraft)&gt;=0)&amp;&amp;((geschwindigkeit+bremskraft)&lt;=45))&amp;&amp;(((position+geschwindigkeit)&gt;=0)&amp;&amp;((position+geschwindigkeit)&lt;=3015)))">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Zug" />
         </transition>
       </successors>
@@ -32,13 +32,13 @@
   </macros>
   <importedVariables>
     <programGraphHasImportedVariables Id="4cc3a0d3-4cd1-4cf0-8233-53fd06e745d1">
-      <importedVariable Id="d2801ed5-c52c-4097-a451-3064c84b4cfe" name="Einheiten.bremskraft" range="-5..5" />
+      <importedVariable Id="d2801ed5-c52c-4097-a451-3064c84b4cfe" name="Einheiten.bremskraft" range="-5..0" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="e525c483-ee75-4b87-be19-3b01dae10d57">
       <importedVariable Id="f0f63549-c551-4075-814e-aa6809331dc6" name="Einheiten.geschwindigkeit" range="0..45" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="4de62144-2fe5-4c3a-a206-f4355c371d0b">
-      <importedVariable Id="4e379124-fe7a-458d-8ec5-a8b4d2a906c2" name="Einheiten.position" range="0..3015" />
+      <importedVariable Id="4e379124-fe7a-458d-8ec5-a8b4d2a906c2" name="Einheiten.position" range="100..3060" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="2f8974b0-bc7c-41c9-8de6-2b41b512e550">
       <importedVariable Id="98c187ab-6b16-4c62-ac46-b6c25d175886" name="Einheiten.maxGeschwindigkeit" range="45" />

@@ -10,7 +10,7 @@
     </initialNode>
     <state Id="c4e4bfa2-4ccb-4952-9944-f60045e3a879" name="Bereit">
       <successors>
-        <transition Id="0eb6122b-c111-459f-868f-dadd411abc3c" guard="ZugSteuerung == Einschalten || ZugSteuerung == Anfragen" action="sendezeit := 0" label="ZugSteuerung == Einschalten || ZugSteuerung == Anfragen // sendezeit := 0" precondition="sendezeit &gt;= 0 &amp;&amp; sendezeit &lt;=5">
+        <transition Id="0eb6122b-c111-459f-868f-dadd411abc3c" guard="ZugSteuerung == Einschalten || ZugSteuerung == Anfragen" action="sendezeitZFM := 0" label="ZugSteuerung == Einschalten || ZugSteuerung == Anfragen // sendezeitZFM := 0" precondition="auto">
           <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Senden" />
         </transition>
         <transition Id="ee6c58d5-7714-43aa-b575-d68d5e48b484" guard="FunkKanal == BahnuebergangZuZug" label="FunkKanal == BahnuebergangZuZug">
@@ -20,13 +20,13 @@
     </state>
     <state Id="a6eab7c9-8264-49d2-84af-cbc48c4ca654" name="Senden">
       <successors>
-        <transition Id="8ceea5b3-ead5-4e80-bbde-1a85629b009c" guard="sendezeit &lt; maxSendezeit" action="sendezeit := sendezeit + 1" label="sendezeit &lt; maxSendezeit // sendezeit := sendezeit + 1" precondition="sendezeit &lt; maxSendezeit">
+        <transition Id="8ceea5b3-ead5-4e80-bbde-1a85629b009c" guard="sendezeitZFM &lt; maxSendezeit" action="sendezeitZFM := sendezeitZFM + 1" label="sendezeitZFM &lt; maxSendezeit // sendezeitZFM := sendezeitZFM + 1" precondition="auto">
           <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Senden" />
         </transition>
-        <transition Id="f28530e1-a8fd-4a2b-b4dc-ba3579c4f368" guard="sendezeit &lt; maxSendezeit" label="sendezeit &lt; maxSendezeit">
+        <transition Id="f28530e1-a8fd-4a2b-b4dc-ba3579c4f368" guard="sendezeitZFM &lt; maxSendezeit" label="sendezeitZFM &lt; maxSendezeit">
           <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/SendenAbgeschlossen" />
         </transition>
-        <transition Id="edc13f6a-bc57-4e99-b313-eda521710664" guard="sendezeit == maxSendezeit" label="sendezeit == maxSendezeit">
+        <transition Id="edc13f6a-bc57-4e99-b313-eda521710664" guard="sendezeitZFM == maxSendezeit" label="sendezeitZFM == maxSendezeit">
           <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Bereit" />
         </transition>
       </successors>
@@ -66,7 +66,7 @@
   </comments>
   <macros>
     <programGraphHasMacros Id="48c7a965-d141-44ce-b492-d4683b8bf34d">
-      <macro Id="b8eb032c-6503-451b-8bb3-43ed64969b1a" name="s_zfm_in" body="sendezeit" />
+      <macro Id="b8eb032c-6503-451b-8bb3-43ed64969b1a" name="s_zfm_in" body="sendezeitZFM" />
     </programGraphHasMacros>
     <programGraphHasMacros Id="4bb2d33c-ac67-439e-b1c2-b415490301a1">
       <macro Id="fcf3e46d-77fc-4ca8-b604-494b0fc4b02a" name="ms_zfm_in" body="maxSendezeit" />
@@ -83,7 +83,7 @@
       <importedVariable Id="93d22274-afa9-4635-b389-d005174171e9" name="FunkKanal" range="KeinFunk, ZugZuBahnuebergang, BahnuebergangZuZug" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="aad96cb1-bfe1-4b27-967b-1c838c3119f3">
-      <importedVariable Id="63ebe7ad-c02a-4f23-b1da-4b0e0eec741a" name="Einheiten.sendezeit" range="0..5" />
+      <importedVariable Id="63ebe7ad-c02a-4f23-b1da-4b0e0eec741a" name="Einheiten.sendezeitZFM" range="0..5" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="73cae198-fd19-4704-8a04-d4ecf13fa2ce">
       <importedVariable Id="86f9fb2b-4439-439d-ab0b-5fdadcda193c" name="Einheiten.maxSendezeit" range="5" />

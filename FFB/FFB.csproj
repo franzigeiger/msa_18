@@ -72,6 +72,11 @@
     <None Include="Hodometer.pg.diagram">
       <DependentUpon>Hodometer.pg</DependentUpon>
     </None>
+    <None Include="NuSMV2.smv">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NuSMV2.tt</DependentUpon>
+    </None>
     <None Include="SchrankenBaum.pg" />
     <None Include="SchrankenBaum.pg.diagram">
       <DependentUpon>SchrankenBaum.pg</DependentUpon>
@@ -136,6 +141,15 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NuSMV2.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NuSMV2.smv</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
