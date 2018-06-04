@@ -77,7 +77,7 @@
       <importedVariable Id="914ffb5f-88cc-47d2-a22f-44aefab9f364" name="BahnFunkModul" range="Bereit, Senden, SendenAbgeschlossen, Empfangen, EmpfangenAbgeschlossen" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="b33fb148-6293-4682-a876-c17a2a537351">
-      <importedVariable Id="3ae6018e-92f3-421d-94d6-a9c8469eb250" name="ZugSteuerung" range="Bereit, Einschalten, Anfragen, Zwangsbremsung, Eingeschaltet, Angefragt" />
+      <importedVariable Id="3ae6018e-92f3-421d-94d6-a9c8469eb250" name="ZugSteuerung" range="Bereit, Einschalten, Anfragen, Zwangsbremsung, Eingeschaltet, Angefragt, Uebergangsgesichert" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="303afd66-b8c1-409e-b672-cc8b8c8a3d84">
       <importedVariable Id="93d22274-afa9-4635-b389-d005174171e9" name="FunkKanal" range="KeinFunk, ZugZuBahnuebergang, BahnuebergangZuZug" />

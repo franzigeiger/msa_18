@@ -33,7 +33,7 @@
   </macros>
   <importedVariables>
     <programGraphHasImportedVariables Id="e8b1802e-458e-487a-ae6e-ef274b6c514e">
-      <importedVariable Id="bd0ce7df-c36c-4b50-a7c0-e9589620efa7" name="ZugSteuerung" range="Bereit, Einschalten, Anfragen, Zwangsbremsung, Eingeschaltet, Angefragt" />
+      <importedVariable Id="bd0ce7df-c36c-4b50-a7c0-e9589620efa7" name="ZugSteuerung" range="Bereit, Einschalten, Anfragen, Zwangsbremsung, Eingeschaltet, Angefragt, Uebergangsgesichert" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="8a57aada-456b-4976-827d-e16cc8869b20">
       <importedVariable Id="a0633c42-0c47-4817-a554-84e738db91df" name="Einheiten.diskreteGeschwindigkeit" range="0..45" />

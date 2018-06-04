@@ -10,24 +10,24 @@
     </initialNode>
     <state Id="0524992a-5edb-460f-9332-b1abdbe3f870" name="Bereit">
       <successors>
-        <transition Id="a0db0fa8-8f20-4ae1-8ce5-252d5925d75a" guard="diskretePosition &gt;= _EP &amp;&amp; diskretePosition &lt; _AP" label="diskretePosition &gt;= _EP &amp;&amp; diskretePosition &lt; _AP">
+        <transition Id="a0db0fa8-8f20-4ae1-8ce5-252d5925d75a" guard="diskretePosition &gt;= _EP" label="diskretePosition &gt;= _EP">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Einschalten" />
         </transition>
       </successors>
     </state>
     <state Id="1dbfac7b-2d34-44e7-bf51-b60f05fbffbf" name="Einschalten">
       <successors>
-        <transition Id="de485f5e-2cbd-44be-ba1d-00a8c18c9fdd" guard="ZugFunkModul==SendenAbgeschlossen" label="ZugFunkModul==SendenAbgeschlossen">
+        <transition Id="de485f5e-2cbd-44be-ba1d-00a8c18c9fdd" guard="ZugFunkModul==SendenAbgeschlossen  &amp;&amp; diskretePosition &lt; _BEP" label="ZugFunkModul==SendenAbgeschlossen  &amp;&amp; diskretePosition &lt; _BEP">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Eingeschaltet" />
+        </transition>
+        <transition Id="42ad6dcb-9f64-4740-a912-16c679d85599" guard="diskretePosition &gt;= _BEP" label="diskretePosition &gt;= _BEP">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Zwangsbremsung" />
         </transition>
       </successors>
     </state>
     <state Id="e70c3fad-93e9-4382-95ff-9b03e3fc5041" name="Anfragen">
       <successors>
-        <transition Id="13f37047-070e-42e0-8b6a-77abf9f38d6e" guard="ZugFunkModul == EmpfangenAbgeschlossen" label="ZugFunkModul == EmpfangenAbgeschlossen">
-          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Bereit" />
-        </transition>
-        <transition Id="1442e3bc-2860-4fc0-8faa-8794077e288f" guard="ZugFunkModul == EmpfangenAbgeschlossen" label="ZugFunkModul == EmpfangenAbgeschlossen">
+        <transition Id="1442e3bc-2860-4fc0-8faa-8794077e288f" guard="ZugFunkModul == SendenAbgeschlossen &amp;&amp; diskretePosition &lt; _BEP" label="ZugFunkModul == SendenAbgeschlossen &amp;&amp; diskretePosition &lt; _BEP">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Angefragt" />
         </transition>
         <transition Id="b432e566-7bae-4a4c-96cc-d05a7f295fee" guard="diskretePosition &gt;= _BEP" label="diskretePosition &gt;= _BEP">
@@ -38,8 +38,11 @@
     <state Id="66c641a6-5378-4e0d-ab44-17d543203564" name="Zwangsbremsung" />
     <state Id="631f7bc1-ac02-4269-a68d-d4bf93d2516d" name="Eingeschaltet">
       <successors>
-        <transition Id="f920165a-ef9a-4c71-aeac-c657124d40ac" guard="diskretePosition &gt;=_AP" label="diskretePosition &gt;=_AP">
+        <transition Id="f920165a-ef9a-4c71-aeac-c657124d40ac" guard="diskretePosition &gt;=_AP &amp;&amp; diskretePosition &lt; _BEP" label="diskretePosition &gt;=_AP &amp;&amp; diskretePosition &lt; _BEP">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Anfragen" />
+        </transition>
+        <transition Id="d85eacc8-7970-4145-b980-796f7694e479" guard="diskretePosition &gt;= _BEP" label="diskretePosition &gt;= _BEP">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Zwangsbremsung" />
         </transition>
       </successors>
     </state>
@@ -48,9 +51,18 @@
         <transition Id="1e2a8a69-b266-41bf-a36d-1aadf60c2868" guard="diskretePosition &gt;= _BEP" label="diskretePosition &gt;= _BEP">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Zwangsbremsung" />
         </transition>
+        <transition Id="d87e4c1a-1250-4141-b3e6-788bccb21c9d" guard="ZugFunkModul == EmpfangenAbgeschlossen  &amp;&amp; diskretePosition &lt; _BEP" label="ZugFunkModul == EmpfangenAbgeschlossen  &amp;&amp; diskretePosition &lt; _BEP">
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Uebergangsgesichert" />
+        </transition>
       </successors>
     </state>
+    <state Id="e0572eef-2f17-4a09-890c-1ee778b7fe07" name="Uebergangsgesichert" />
   </states>
+  <comments>
+    <programGraphHasComments Id="73d674ac-c567-4f08-b800-502151fec1bb">
+      <comment Id="42a479f6-6bbb-4ebd-93de-38d2752f3a08" text="Es soll nicht passieren dass der Zug EP und BEP in einem Takt überfährt" />
+    </programGraphHasComments>
+  </comments>
   <macros>
     <programGraphHasMacros Id="bfa95fed-9776-45cd-922d-2b5902b49608">
       <macro Id="a4b3edec-c592-4820-8057-17c8177312fc" name="_EP" body="_AP - diskreteGeschwindigkeit * ( t + c )" />

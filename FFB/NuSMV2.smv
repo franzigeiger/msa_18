@@ -15,7 +15,7 @@ MODULE _VARS
 		V_wartezeit : 0..70;
 		V_maxWartezeit : {70};
 		V_Bremse : {L_Aus, L_An};
-		V_ZugSteuerung : {L_Bereit, L_Einschalten, L_Anfragen, L_Zwangsbremsung, L_Eingeschaltet, L_Angefragt};
+		V_ZugSteuerung : {L_Bereit, L_Einschalten, L_Anfragen, L_Zwangsbremsung, L_Eingeschaltet, L_Angefragt, L_Uebergangsgesichert};
 		V_diskreteGeschwindigkeit : 0..45;
 		V_bremskraft : {-5, 0};
 		V_Einheiten : {L_Einheiten};
@@ -177,19 +177,22 @@ MODULE _P_ZugSteuerung(v)
 	INIT
 		(v.V_ZugSteuerung = L_Bereit) & (TRUE)
 	TRANS
-		 ( v.V_ZugSteuerung = L_Bereit & next(v.V_ZugSteuerung) = L_Einschalten & ((v.V_diskretePosition >= ((((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))) - ((2 * v.V_c) * v.V_diskreteGeschwindigkeit)) - (v.V_diskreteGeschwindigkeit * (v.V_t + v.V_c)))) & (v.V_diskretePosition < (((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))) - ((2 * v.V_c) * v.V_diskreteGeschwindigkeit)))) & (TRUE))  |
-		 ( v.V_ZugSteuerung = L_Einschalten & next(v.V_ZugSteuerung) = L_Eingeschaltet & (v.V_ZugFunkModul = L_SendenAbgeschlossen) & (TRUE))  |
-		 ( v.V_ZugSteuerung = L_Anfragen & next(v.V_ZugSteuerung) = L_Bereit & (v.V_ZugFunkModul = L_EmpfangenAbgeschlossen) & (TRUE))  |
-		 ( v.V_ZugSteuerung = L_Anfragen & next(v.V_ZugSteuerung) = L_Angefragt & (v.V_ZugFunkModul = L_EmpfangenAbgeschlossen) & (TRUE))  |
+		 ( v.V_ZugSteuerung = L_Bereit & next(v.V_ZugSteuerung) = L_Einschalten & (v.V_diskretePosition >= ((((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))) - ((2 * v.V_c) * v.V_diskreteGeschwindigkeit)) - (v.V_diskreteGeschwindigkeit * (v.V_t + v.V_c)))) & (TRUE))  |
+		 ( v.V_ZugSteuerung = L_Einschalten & next(v.V_ZugSteuerung) = L_Eingeschaltet & ((v.V_ZugFunkModul = L_SendenAbgeschlossen) & (v.V_diskretePosition < ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))))) & (TRUE))  |
+		 ( v.V_ZugSteuerung = L_Einschalten & next(v.V_ZugSteuerung) = L_Zwangsbremsung & (v.V_diskretePosition >= ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a)))) & (TRUE))  |
+		 ( v.V_ZugSteuerung = L_Anfragen & next(v.V_ZugSteuerung) = L_Angefragt & ((v.V_ZugFunkModul = L_SendenAbgeschlossen) & (v.V_diskretePosition < ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))))) & (TRUE))  |
 		 ( v.V_ZugSteuerung = L_Anfragen & next(v.V_ZugSteuerung) = L_Zwangsbremsung & (v.V_diskretePosition >= ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a)))) & (TRUE))  |
-		 ( v.V_ZugSteuerung = L_Eingeschaltet & next(v.V_ZugSteuerung) = L_Anfragen & (v.V_diskretePosition >= (((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))) - ((2 * v.V_c) * v.V_diskreteGeschwindigkeit))) & (TRUE))  |
+		 ( v.V_ZugSteuerung = L_Eingeschaltet & next(v.V_ZugSteuerung) = L_Anfragen & ((v.V_diskretePosition >= (((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))) - ((2 * v.V_c) * v.V_diskreteGeschwindigkeit))) & (v.V_diskretePosition < ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))))) & (TRUE))  |
+		 ( v.V_ZugSteuerung = L_Eingeschaltet & next(v.V_ZugSteuerung) = L_Zwangsbremsung & (v.V_diskretePosition >= ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a)))) & (TRUE))  |
 		 ( v.V_ZugSteuerung = L_Angefragt & next(v.V_ZugSteuerung) = L_Zwangsbremsung & (v.V_diskretePosition >= ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a)))) & (TRUE))  |
-		 ( v.V_ZugSteuerung = L_Bereit & next(v.V_ZugSteuerung) = L_Bereit & !((v.V_diskretePosition >= ((((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))) - ((2 * v.V_c) * v.V_diskreteGeschwindigkeit)) - (v.V_diskreteGeschwindigkeit * (v.V_t + v.V_c)))) & (v.V_diskretePosition < (((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))) - ((2 * v.V_c) * v.V_diskreteGeschwindigkeit)))) & (TRUE))  |
-		 ( v.V_ZugSteuerung = L_Einschalten & next(v.V_ZugSteuerung) = L_Einschalten & !(v.V_ZugFunkModul = L_SendenAbgeschlossen) & (TRUE))  |
-		 ( v.V_ZugSteuerung = L_Anfragen & next(v.V_ZugSteuerung) = L_Anfragen & (!(v.V_ZugFunkModul = L_EmpfangenAbgeschlossen) & (!(v.V_ZugFunkModul = L_EmpfangenAbgeschlossen) & !(v.V_diskretePosition >= ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a)))))) & (TRUE))  |
+		 ( v.V_ZugSteuerung = L_Angefragt & next(v.V_ZugSteuerung) = L_Uebergangsgesichert & ((v.V_ZugFunkModul = L_EmpfangenAbgeschlossen) & (v.V_diskretePosition < ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))))) & (TRUE))  |
+		 ( v.V_ZugSteuerung = L_Bereit & next(v.V_ZugSteuerung) = L_Bereit & !(v.V_diskretePosition >= ((((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))) - ((2 * v.V_c) * v.V_diskreteGeschwindigkeit)) - (v.V_diskreteGeschwindigkeit * (v.V_t + v.V_c)))) & (TRUE))  |
+		 ( v.V_ZugSteuerung = L_Einschalten & next(v.V_ZugSteuerung) = L_Einschalten & (!((v.V_ZugFunkModul = L_SendenAbgeschlossen) & (v.V_diskretePosition < ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))))) & !(v.V_diskretePosition >= ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))))) & (TRUE))  |
+		 ( v.V_ZugSteuerung = L_Anfragen & next(v.V_ZugSteuerung) = L_Anfragen & (!((v.V_ZugFunkModul = L_SendenAbgeschlossen) & (v.V_diskretePosition < ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))))) & !(v.V_diskretePosition >= ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))))) & (TRUE))  |
 		 ( v.V_ZugSteuerung = L_Zwangsbremsung & next(v.V_ZugSteuerung) = L_Zwangsbremsung & TRUE & (TRUE))  |
-		 ( v.V_ZugSteuerung = L_Eingeschaltet & next(v.V_ZugSteuerung) = L_Eingeschaltet & !(v.V_diskretePosition >= (((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))) - ((2 * v.V_c) * v.V_diskreteGeschwindigkeit))) & (TRUE))  |
-		 ( v.V_ZugSteuerung = L_Angefragt & next(v.V_ZugSteuerung) = L_Angefragt & !(v.V_diskretePosition >= ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a)))) & (TRUE));
+		 ( v.V_ZugSteuerung = L_Eingeschaltet & next(v.V_ZugSteuerung) = L_Eingeschaltet & (!((v.V_diskretePosition >= (((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))) - ((2 * v.V_c) * v.V_diskreteGeschwindigkeit))) & (v.V_diskretePosition < ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))))) & !(v.V_diskretePosition >= ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))))) & (TRUE))  |
+		 ( v.V_ZugSteuerung = L_Angefragt & next(v.V_ZugSteuerung) = L_Angefragt & (!(v.V_diskretePosition >= ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a)))) & !((v.V_ZugFunkModul = L_EmpfangenAbgeschlossen) & (v.V_diskretePosition < ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a)))))) & (TRUE))  |
+		 ( v.V_ZugSteuerung = L_Uebergangsgesichert & next(v.V_ZugSteuerung) = L_Uebergangsgesichert & TRUE & (TRUE));
 MODULE main
 	VAR
 		v : _VARS();
@@ -210,6 +213,7 @@ MODULE main
 		p_ZugSteuerung : _P_ZugSteuerung(v);
 
 
+
 	DEFINE
 		EP := ((((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))) - ((2 * v.V_c) * v.V_diskreteGeschwindigkeit)) - (v.V_diskreteGeschwindigkeit * (v.V_t + v.V_c)));
 		AP := (((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))) - ((2 * v.V_c) * v.V_diskreteGeschwindigkeit));
@@ -221,24 +225,46 @@ MODULE main
 
 LTLSPEC G(v.V_diskreteGeschwindigkeit <= 45)
 
+--1- Hodometer misst immer Position und Geschwindigkeit des Zugs
 LTLSPEC G(next(v.V_diskretePosition) = v.V_position & next(v.V_diskreteGeschwindigkeit) = v.V_geschwindigkeit)
 
+--2- Zugsensor misst immer, ob Zug an SP ist
 LTLSPEC G((v.V_position >= v.V_sp -> v.V_ZugSensor = L_ZugPassiert) | (v.V_position < v.V_sp -> v.V_ZugSensor = L_Bereit))
 
---wenn EP erreicht wird, wird eine Nachricht an die Bahnübergangssteuerung vor AP gesendet
+--3- wenn EP erreicht wird, wird eine Nachricht an die Bahnübergangssteuerung vor AP gesendet
 LTLSPEC F(v.V_position < AP) -> (((v.V_position >= EP & v.V_ZugSteuerung = L_Bereit)->(!(v.V_position < AP)U((v.V_ZugFunkModul = L_SendenAbgeschlossen) & !(v.V_position < AP))))U(v.V_position < AP))
 
---wenn Bahnübergangssteuerung im Zustand "Bereit" eine Nachricht erhält wird der Bahnübergang gesichert
+--4- wenn Bahnübergangssteuerung im Zustand "Bereit" eine Nachricht erhält wird der Bahnübergang gesichert
 LTLSPEC G((v.V_BahnUebergangsSteuerung = L_Bereit & v.V_BahnFunkModul = L_EmpfangenAbgeschlossen) -> F(v.V_BahnUebergang = L_Gesichert))
 
---Bahnübergang ist nur gesichert, wenn Schranke geschlossen ist
+--5- Bahnübergang ist nur gesichert, wenn Schranke geschlossen ist
 LTLSPEC G(v.V_BahnUebergang = L_Gesichert -> v.V_winkel = 0)
 
---Zug bremst zwischen EP und BEP nicht
+--6- Zug bremst zwischen EP und BEP nicht
 LTLSPEC G((v.V_position >= EP & v.V_position < BEP) -> v.V_Bremse = L_Aus)
 
--- GP erreicht nachdem Bahnübergang gesichert ist
+--7- GP erreicht nachdem Bahnübergang gesichert ist
 -- LTLSPEC (!(v.V_position >= v.V_gp)U(v.V_BahnUebergang=L_Gesichert)) | G (!(v.V_position >= v.V_gp))
 
--- GP nur erreicht wenn Bahnübergang gesichert ist
+--8- GP nur erreicht wenn Bahnübergang gesichert ist
 LTLSPEC G((v.V_position >= GP) -> v.V_BahnUebergang=L_Gesichert )
+
+--9- Die Einschaltpunkt und Anfragepunkt werden erreicht
+LTLSPEC F(v.V_diskretePosition >= EP) & F(v.V_diskretePosition >= AP)
+
+
+--10- FALSE: Bahnübergang während Zug zwischen EP und AP kann gesichert werden
+-- CTLSPEC AG(v.V_position >= EP -> EF(v.V_BahnUebergang = L_Gesichert & v.V_position < AP))
+
+--11- Wenn der Zug bestätigt wird nach Anfrage Punkt vor BEP, ist der Bahnübergang gesichert
+LTLSPEC G((v.V_position >= AP & v.V_position < BEP & v.V_ZugSteuerung = L_Uebergangsgesichert) -> v.V_BahnUebergang = L_Gesichert)
+
+--12- FALSE: Schranken bleiben nicht geschlossen
+-- LTLSPEC G(v.V_winkel = 90 -> F(v.V_winkel = 0) )
+
+
+--13- FALSE : Wenn BEP erreicht und Bahnübergang nicht gesichert dann bremsen
+-- LTLSPEC G((v.V_position >= BEP & v.V_BahnUebergang = L_Ungesichert ) -> X(v.V_ZugSteuerung = L_Zwangsbremsung))
+
+--14- GP wird nicht erreicht nach Zwangsbremsung
+LTLSPEC (v.V_ZugSteuerung = L_Zwangsbremsung -> G(!(v.V_position >= GP) ) )
