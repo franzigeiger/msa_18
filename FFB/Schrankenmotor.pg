@@ -10,24 +10,24 @@
     </initialNode>
     <state Id="7e98e588-0fa7-4da3-82a5-ed2233c88cfc" name="Aus">
       <successors>
-        <transition Id="35a13906-649d-4e1d-810a-21e1c30ad2bd" guard="BahnUebergangsSteuerung == Entsichern" action="winkelgeschwindigkeit := 10" label="BahnUebergangsSteuerung == Entsichern // winkelgeschwindigkeit := 10" precondition="winkelgeschwindigkeit == 0">
+        <transition Id="35a13906-649d-4e1d-810a-21e1c30ad2bd" guard="BahnUebergangsSteuerung == Entsichern" action="winkelgeschwindigkeit := 10" label="BahnUebergangsSteuerung == Entsichern // winkelgeschwindigkeit := 10" precondition="auto">
           <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Oeffnen" />
         </transition>
-        <transition Id="4f96cbbf-461c-4910-9558-586cea0ff4d0" guard="BahnUebergangsSteuerung == Sichern" action="winkelgeschwindigkeit := -10" label="BahnUebergangsSteuerung == Sichern // winkelgeschwindigkeit := -10" precondition="winkelgeschwindigkeit == 0">
+        <transition Id="4f96cbbf-461c-4910-9558-586cea0ff4d0" guard="BahnUebergangsSteuerung == Sichern" action="winkelgeschwindigkeit := -10" label="BahnUebergangsSteuerung == Sichern // winkelgeschwindigkeit := -10" precondition="auto">
           <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Schliessen" />
         </transition>
       </successors>
     </state>
     <state Id="470267a5-1adb-4501-9f80-694a82265bd7" name="Oeffnen">
       <successors>
-        <transition Id="40ec4018-4e65-42e7-8a59-b353da076aa4" guard="SchrankeOffenSensor == SchrankeOffen" action="winkelgeschwindigkeit := 0" label="SchrankeOffenSensor == SchrankeOffen // winkelgeschwindigkeit := 0" precondition="winkelgeschwindigkeit == 1">
+        <transition Id="40ec4018-4e65-42e7-8a59-b353da076aa4" guard="SchrankeOffenSensor == SchrankeOffen" action="winkelgeschwindigkeit := 0" label="SchrankeOffenSensor == SchrankeOffen // winkelgeschwindigkeit := 0" precondition="auto">
           <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Aus" />
         </transition>
       </successors>
     </state>
     <state Id="8a11a3e3-196a-47ab-be41-d56cf17047d3" name="Schliessen">
       <successors>
-        <transition Id="7b286bda-5f63-4efb-946c-82bec69f4236" guard="SchrankeGeschlossenSensor == SchrankeGeschlossen" action="winkelgeschwindigkeit := 0" label="SchrankeGeschlossenSensor == SchrankeGeschlossen // winkelgeschwindigkeit := 0" precondition="winkelgeschwindigkeit == -1">
+        <transition Id="7b286bda-5f63-4efb-946c-82bec69f4236" guard="SchrankeGeschlossenSensor == SchrankeGeschlossen" action="winkelgeschwindigkeit := 0" label="SchrankeGeschlossenSensor == SchrankeGeschlossen // winkelgeschwindigkeit := 0" precondition="auto">
           <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Aus" />
         </transition>
       </successors>

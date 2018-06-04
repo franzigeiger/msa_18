@@ -10,7 +10,7 @@
     </initialNode>
     <state Id="0b91f66b-8daa-4a51-b5f1-adb85dbf59ce" name="Gesichert">
       <successors>
-        <transition Id="47f3eb10-a4ee-4dde-aa0c-a5ddff8646a0" guard="winkel != 0" label="winkel != 0">
+        <transition Id="47f3eb10-a4ee-4dde-aa0c-a5ddff8646a0" guard="winkel != 0 || SchrankenMotor== Oeffnen" label="winkel != 0 || SchrankenMotor== Oeffnen">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Ungesichert" />
         </transition>
       </successors>
@@ -31,6 +31,9 @@
   <importedVariables>
     <programGraphHasImportedVariables Id="51bd5ed5-114d-484b-9680-b299e57ddc83">
       <importedVariable Id="68e60f1a-7c79-49f9-9773-d0a4e8dfa109" name="Einheiten.winkel" range="0..90" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="2bfa0949-f404-4a05-af57-c648c3d373be">
+      <importedVariable Id="1117ac62-e90f-45be-ac50-7a45d33b2b6e" name="SchrankenMotor" range="Aus, Oeffnen, Schliessen" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

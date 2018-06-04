@@ -9,6 +9,7 @@ MODULE _VARS
 		V_maxSendezeit : {2};
 		V_BahnUebergang : {L_Gesichert, L_Ungesichert};
 		V_winkel : 0..90;
+		V_SchrankenMotor : {L_Aus, L_Oeffnen, L_Schliessen};
 		V_SchrankeGeschlossenSensor : {L_SchrankeNichtGeschlossen, L_SchrankeGeschlossen};
 		V_SchrankeOffenSensor : {L_SchrankeOffen, L_SchrankeNichtOffen};
 		V_ZugSensor : {L_Bereit, L_ZugPassiert};
@@ -34,7 +35,6 @@ MODULE _VARS
 		V_sp : {1940};
 		V_Hodometer : {L_Hodometer};
 		V_SchrankenBaum : {L_Schranke};
-		V_SchrankenMotor : {L_Aus, L_Oeffnen, L_Schliessen};
 		V_Zug : {L_Zug};
 	TRANS
 		next(V_maxSendezeit) = V_maxSendezeit & next(V_maxWartezeit) = V_maxWartezeit & next(V_c) = V_c & next(V_t) = V_t & next(V_gp) = V_gp & next(V_a) = V_a & next(V_z) = V_z & next(V_sp) = V_sp;
@@ -58,9 +58,9 @@ MODULE _P_BahnUebergang(v)
 	INIT
 		(v.V_BahnUebergang = L_Ungesichert) & (TRUE)
 	TRANS
-		 ( v.V_BahnUebergang = L_Gesichert & next(v.V_BahnUebergang) = L_Ungesichert & (v.V_winkel != 0) & (TRUE))  |
+		 ( v.V_BahnUebergang = L_Gesichert & next(v.V_BahnUebergang) = L_Ungesichert & ((v.V_winkel != 0) | (v.V_SchrankenMotor = L_Oeffnen)) & (TRUE))  |
 		 ( v.V_BahnUebergang = L_Ungesichert & next(v.V_BahnUebergang) = L_Gesichert & (v.V_winkel = 0) & (TRUE))  |
-		 ( v.V_BahnUebergang = L_Gesichert & next(v.V_BahnUebergang) = L_Gesichert & !(v.V_winkel != 0) & (TRUE))  |
+		 ( v.V_BahnUebergang = L_Gesichert & next(v.V_BahnUebergang) = L_Gesichert & !((v.V_winkel != 0) | (v.V_SchrankenMotor = L_Oeffnen)) & (TRUE))  |
 		 ( v.V_BahnUebergang = L_Ungesichert & next(v.V_BahnUebergang) = L_Ungesichert & !(v.V_winkel = 0) & (TRUE));
 MODULE _P_BahnUebergangsSteuerung(v)
 	INIT
@@ -115,10 +115,10 @@ MODULE _P_SchrankeGeschlossenSensor(v)
 	INIT
 		(v.V_SchrankeGeschlossenSensor = L_SchrankeNichtGeschlossen) & (TRUE)
 	TRANS
-		 ( v.V_SchrankeGeschlossenSensor = L_SchrankeNichtGeschlossen & next(v.V_SchrankeGeschlossenSensor) = L_SchrankeGeschlossen & (v.V_winkel <= (2 * v.V_winkelgeschwindigkeit)) & (TRUE))  |
-		 ( v.V_SchrankeGeschlossenSensor = L_SchrankeGeschlossen & next(v.V_SchrankeGeschlossenSensor) = L_SchrankeNichtGeschlossen & (v.V_winkel > (2 * v.V_winkelgeschwindigkeit)) & (TRUE))  |
-		 ( v.V_SchrankeGeschlossenSensor = L_SchrankeNichtGeschlossen & next(v.V_SchrankeGeschlossenSensor) = L_SchrankeNichtGeschlossen & !(v.V_winkel <= (2 * v.V_winkelgeschwindigkeit)) & (TRUE))  |
-		 ( v.V_SchrankeGeschlossenSensor = L_SchrankeGeschlossen & next(v.V_SchrankeGeschlossenSensor) = L_SchrankeGeschlossen & !(v.V_winkel > (2 * v.V_winkelgeschwindigkeit)) & (TRUE));
+		 ( v.V_SchrankeGeschlossenSensor = L_SchrankeNichtGeschlossen & next(v.V_SchrankeGeschlossenSensor) = L_SchrankeGeschlossen & (v.V_winkel <= 20) & (TRUE))  |
+		 ( v.V_SchrankeGeschlossenSensor = L_SchrankeGeschlossen & next(v.V_SchrankeGeschlossenSensor) = L_SchrankeNichtGeschlossen & (v.V_winkel > 20) & (TRUE))  |
+		 ( v.V_SchrankeGeschlossenSensor = L_SchrankeNichtGeschlossen & next(v.V_SchrankeGeschlossenSensor) = L_SchrankeNichtGeschlossen & !(v.V_winkel <= 20) & (TRUE))  |
+		 ( v.V_SchrankeGeschlossenSensor = L_SchrankeGeschlossen & next(v.V_SchrankeGeschlossenSensor) = L_SchrankeGeschlossen & !(v.V_winkel > 20) & (TRUE));
 MODULE _P_SchrankenBaum(v)
 	INIT
 		(v.V_SchrankenBaum = L_Schranke) & ((v.V_winkel = 90))
@@ -129,21 +129,21 @@ MODULE _P_SchrankenMotor(v)
 	INIT
 		(v.V_SchrankenMotor = L_Aus) & ((v.V_winkelgeschwindigkeit = 0))
 	TRANS
-		 ( v.V_SchrankenMotor = L_Aus & next(v.V_SchrankenMotor) = L_Oeffnen & ((v.V_BahnUebergangsSteuerung = L_Entsichern) & (v.V_winkelgeschwindigkeit = 0)) & (next(v.V_winkelgeschwindigkeit) = 10))  |
-		 ( v.V_SchrankenMotor = L_Aus & next(v.V_SchrankenMotor) = L_Schliessen & ((v.V_BahnUebergangsSteuerung = L_Sichern) & (v.V_winkelgeschwindigkeit = 0)) & (next(v.V_winkelgeschwindigkeit) = -10))  |
-		 ( v.V_SchrankenMotor = L_Oeffnen & next(v.V_SchrankenMotor) = L_Aus & ((v.V_SchrankeOffenSensor = L_SchrankeOffen) & (v.V_winkelgeschwindigkeit = 1)) & (next(v.V_winkelgeschwindigkeit) = 0))  |
-		 ( v.V_SchrankenMotor = L_Schliessen & next(v.V_SchrankenMotor) = L_Aus & ((v.V_SchrankeGeschlossenSensor = L_SchrankeGeschlossen) & (v.V_winkelgeschwindigkeit = -1)) & (next(v.V_winkelgeschwindigkeit) = 0))  |
-		 ( v.V_SchrankenMotor = L_Aus & next(v.V_SchrankenMotor) = L_Aus & (!((v.V_BahnUebergangsSteuerung = L_Entsichern) & (v.V_winkelgeschwindigkeit = 0)) & !((v.V_BahnUebergangsSteuerung = L_Sichern) & (v.V_winkelgeschwindigkeit = 0))) & (next(v.V_winkelgeschwindigkeit) = v.V_winkelgeschwindigkeit))  |
-		 ( v.V_SchrankenMotor = L_Oeffnen & next(v.V_SchrankenMotor) = L_Oeffnen & !((v.V_SchrankeOffenSensor = L_SchrankeOffen) & (v.V_winkelgeschwindigkeit = 1)) & (next(v.V_winkelgeschwindigkeit) = v.V_winkelgeschwindigkeit))  |
-		 ( v.V_SchrankenMotor = L_Schliessen & next(v.V_SchrankenMotor) = L_Schliessen & !((v.V_SchrankeGeschlossenSensor = L_SchrankeGeschlossen) & (v.V_winkelgeschwindigkeit = -1)) & (next(v.V_winkelgeschwindigkeit) = v.V_winkelgeschwindigkeit));
+		 ( v.V_SchrankenMotor = L_Aus & next(v.V_SchrankenMotor) = L_Oeffnen & (v.V_BahnUebergangsSteuerung = L_Entsichern) & (next(v.V_winkelgeschwindigkeit) = 10))  |
+		 ( v.V_SchrankenMotor = L_Aus & next(v.V_SchrankenMotor) = L_Schliessen & (v.V_BahnUebergangsSteuerung = L_Sichern) & (next(v.V_winkelgeschwindigkeit) = -10))  |
+		 ( v.V_SchrankenMotor = L_Oeffnen & next(v.V_SchrankenMotor) = L_Aus & (v.V_SchrankeOffenSensor = L_SchrankeOffen) & (next(v.V_winkelgeschwindigkeit) = 0))  |
+		 ( v.V_SchrankenMotor = L_Schliessen & next(v.V_SchrankenMotor) = L_Aus & (v.V_SchrankeGeschlossenSensor = L_SchrankeGeschlossen) & (next(v.V_winkelgeschwindigkeit) = 0))  |
+		 ( v.V_SchrankenMotor = L_Aus & next(v.V_SchrankenMotor) = L_Aus & (!(v.V_BahnUebergangsSteuerung = L_Entsichern) & !(v.V_BahnUebergangsSteuerung = L_Sichern)) & (next(v.V_winkelgeschwindigkeit) = v.V_winkelgeschwindigkeit))  |
+		 ( v.V_SchrankenMotor = L_Oeffnen & next(v.V_SchrankenMotor) = L_Oeffnen & !(v.V_SchrankeOffenSensor = L_SchrankeOffen) & (next(v.V_winkelgeschwindigkeit) = v.V_winkelgeschwindigkeit))  |
+		 ( v.V_SchrankenMotor = L_Schliessen & next(v.V_SchrankenMotor) = L_Schliessen & !(v.V_SchrankeGeschlossenSensor = L_SchrankeGeschlossen) & (next(v.V_winkelgeschwindigkeit) = v.V_winkelgeschwindigkeit));
 MODULE _P_SchrankeOffenSensor(v)
 	INIT
 		(v.V_SchrankeOffenSensor = L_SchrankeOffen) & (TRUE)
 	TRANS
-		 ( v.V_SchrankeOffenSensor = L_SchrankeOffen & next(v.V_SchrankeOffenSensor) = L_SchrankeNichtOffen & (v.V_winkel < (90 - (2 * v.V_winkelgeschwindigkeit))) & (TRUE))  |
-		 ( v.V_SchrankeOffenSensor = L_SchrankeNichtOffen & next(v.V_SchrankeOffenSensor) = L_SchrankeOffen & (v.V_winkel >= (90 - (2 * v.V_winkelgeschwindigkeit))) & (TRUE))  |
-		 ( v.V_SchrankeOffenSensor = L_SchrankeOffen & next(v.V_SchrankeOffenSensor) = L_SchrankeOffen & !(v.V_winkel < (90 - (2 * v.V_winkelgeschwindigkeit))) & (TRUE))  |
-		 ( v.V_SchrankeOffenSensor = L_SchrankeNichtOffen & next(v.V_SchrankeOffenSensor) = L_SchrankeNichtOffen & !(v.V_winkel >= (90 - (2 * v.V_winkelgeschwindigkeit))) & (TRUE));
+		 ( v.V_SchrankeOffenSensor = L_SchrankeOffen & next(v.V_SchrankeOffenSensor) = L_SchrankeNichtOffen & (v.V_winkel < (90 - 20)) & (TRUE))  |
+		 ( v.V_SchrankeOffenSensor = L_SchrankeNichtOffen & next(v.V_SchrankeOffenSensor) = L_SchrankeOffen & (v.V_winkel >= (90 - 20)) & (TRUE))  |
+		 ( v.V_SchrankeOffenSensor = L_SchrankeOffen & next(v.V_SchrankeOffenSensor) = L_SchrankeOffen & !(v.V_winkel < (90 - 20)) & (TRUE))  |
+		 ( v.V_SchrankeOffenSensor = L_SchrankeNichtOffen & next(v.V_SchrankeOffenSensor) = L_SchrankeNichtOffen & !(v.V_winkel >= (90 - 20)) & (TRUE));
 MODULE _P_Zug(v)
 	INIT
 		(v.V_Zug = L_Zug) & (((v.V_geschwindigkeit = v.V_maxGeschwindigkeit) & (v.V_position = 0)))
@@ -214,11 +214,13 @@ MODULE main
 
 
 
+
 	DEFINE
 		EP := ((((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))) - ((2 * v.V_c) * v.V_diskreteGeschwindigkeit)) - (v.V_diskreteGeschwindigkeit * (v.V_t + v.V_c)));
 		AP := (((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))) - ((2 * v.V_c) * v.V_diskreteGeschwindigkeit));
 		BEP:= ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a)));
 		GP := v.V_gp;
+		SP := v.V_sp;
 
 
 
@@ -237,8 +239,8 @@ LTLSPEC F(v.V_position < AP) -> (((v.V_position >= EP & v.V_ZugSteuerung = L_Ber
 --4- wenn Bahnübergangssteuerung im Zustand "Bereit" eine Nachricht erhält wird der Bahnübergang gesichert
 LTLSPEC G((v.V_BahnUebergangsSteuerung = L_Bereit & v.V_BahnFunkModul = L_EmpfangenAbgeschlossen) -> F(v.V_BahnUebergang = L_Gesichert))
 
---5- Bahnübergang ist nur gesichert, wenn Schranke geschlossen ist
-LTLSPEC G(v.V_BahnUebergang = L_Gesichert -> v.V_winkel = 0)
+--5- FALSE: Bahnübergang ist nur gesichert, wenn Schranke geschlossen ist
+LTLSPEC G(v.V_BahnUebergang = L_Gesichert -> (v.V_winkel = 0 ))
 
 --6- Zug bremst zwischen EP und BEP nicht
 LTLSPEC G((v.V_position >= EP & v.V_position < BEP) -> v.V_Bremse = L_Aus)
@@ -247,7 +249,7 @@ LTLSPEC G((v.V_position >= EP & v.V_position < BEP) -> v.V_Bremse = L_Aus)
 -- LTLSPEC (!(v.V_position >= v.V_gp)U(v.V_BahnUebergang=L_Gesichert)) | G (!(v.V_position >= v.V_gp))
 
 --8- GP nur erreicht wenn Bahnübergang gesichert ist
-LTLSPEC G((v.V_position >= GP) -> v.V_BahnUebergang=L_Gesichert )
+LTLSPEC G((v.V_position >= GP & v.V_position < SP) -> v.V_BahnUebergang=L_Gesichert )
 
 --9- Die Einschaltpunkt und Anfragepunkt werden erreicht
 LTLSPEC F(v.V_diskretePosition >= EP) & F(v.V_diskretePosition >= AP)
@@ -259,8 +261,8 @@ LTLSPEC F(v.V_diskretePosition >= EP) & F(v.V_diskretePosition >= AP)
 --11- Wenn der Zug bestätigt wird nach Anfrage Punkt vor BEP, ist der Bahnübergang gesichert
 LTLSPEC G((v.V_position >= AP & v.V_position < BEP & v.V_ZugSteuerung = L_Uebergangsgesichert) -> v.V_BahnUebergang = L_Gesichert)
 
---12- FALSE: Schranken bleiben nicht geschlossen
--- LTLSPEC G(v.V_winkel = 90 -> F(v.V_winkel = 0) )
+--12- : Schranken bleiben nicht geschlossen
+LTLSPEC G(v.V_winkel = 0 -> F(v.V_winkel = 90) )
 
 
 --13- FALSE : Wenn BEP erreicht und Bahnübergang nicht gesichert dann bremsen

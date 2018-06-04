@@ -10,14 +10,14 @@
     </initialNode>
     <state Id="6ae6c0ab-bd07-4f12-9555-4a863245cb5b" name="SchrankeOffen">
       <successors>
-        <transition Id="af3bbde8-2d42-4831-a4a4-2736f905df04" guard="winkel  &lt; 90 - (2*winkelgeschwindigkeit)" label="winkel  &lt; 90 - (2*winkelgeschwindigkeit)">
+        <transition Id="af3bbde8-2d42-4831-a4a4-2736f905df04" guard="winkel  &lt; 90 - 20" label="winkel  &lt; 90 - 20">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/SchrankeNichtOffen" />
         </transition>
       </successors>
     </state>
     <state Id="b29bed69-547d-4edf-9eee-14ee46cfe319" name="SchrankeNichtOffen">
       <successors>
-        <transition Id="4e831af7-a7df-4f0b-9130-669f843d4566" guard="winkel &gt;= 90 - (2*winkelgeschwindigkeit)" label="winkel &gt;= 90 - (2*winkelgeschwindigkeit)">
+        <transition Id="4e831af7-a7df-4f0b-9130-669f843d4566" guard="winkel &gt;= 90 - 20" label="winkel &gt;= 90 - 20">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/SchrankeOffen" />
         </transition>
       </successors>
