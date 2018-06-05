@@ -10,14 +10,14 @@
     </initialNode>
     <state Id="d996149b-7a02-4986-90af-f1738896a221" name="SchrankeNichtGeschlossen">
       <successors>
-        <transition Id="352045f5-da90-41a5-82ed-bb29b4d1ee97" guard="winkel &lt;= 20" label="winkel &lt;= 20">
+        <transition Id="352045f5-da90-41a5-82ed-bb29b4d1ee97" guard="winkel &lt;= 2 * maxWinkelgeschwindigkeit" label="winkel &lt;= 2 * maxWinkelgeschwindigkeit">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/SchrankeGeschlossen" />
         </transition>
       </successors>
     </state>
     <state Id="96ab215a-4f7d-4067-914f-dc26d41edd45" name="SchrankeGeschlossen">
       <successors>
-        <transition Id="c22a6bb7-9531-4db8-99e0-f7fd2ade9b55" guard="winkel &gt; 20" label="winkel &gt; 20">
+        <transition Id="c22a6bb7-9531-4db8-99e0-f7fd2ade9b55" guard="winkel &gt; 2 * maxWinkelgeschwindigkeit" label="winkel &gt; 2 * maxWinkelgeschwindigkeit">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/SchrankeNichtGeschlossen" />
         </transition>
       </successors>
@@ -28,12 +28,20 @@
       <comment Id="78327eb0-455d-42b2-b20b-f0261ca28c34" text="Ich habe die Sensoren angepasst, damit die Winkelgrenzen nicht überschritten werden. Im SchrankeGeschlossenSensor wird umgeschaltet, sobald noch 2 Iterationen bis vollständig geschlossen fehlen, da der Sensor selbst eine Iteration benötigt um den Zustand zu wechseln und der Schrankenmotor auch noch eine um sich abzuschalten. Erst dann hört die Schranke auf sich zu schließen." />
     </programGraphHasComments>
   </comments>
+  <macros>
+    <programGraphHasMacros Id="78fcf0a9-fb41-4f45-9028-948095230187">
+      <macro Id="6b50d642-fc80-4fef-972c-14f5ca0833e7" name="mw_sgs_in" body="maxWinkelgeschwindigkeit" />
+    </programGraphHasMacros>
+  </macros>
   <importedVariables>
     <programGraphHasImportedVariables Id="40637120-5ac1-450c-907f-994f48edd5ea">
       <importedVariable Id="758af65c-2e78-481e-aeac-b124dea64501" name="Einheiten.winkel" range="0..90" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="e9bc9724-4641-4bcb-a411-bf4f4e01cb89">
       <importedVariable Id="b4ffc6ae-7a29-43dd-a306-41efad11d09e" name="Einheiten.winkelgeschwindigkeit" range="-10,0,10" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="eda89a4e-58b8-4ff0-81fe-e7e262d3a7d9">
+      <importedVariable Id="af7f19e9-e096-4086-b7a3-0e04af78d8c2" name="Einheiten.maxWinkelgeschwindigkeit" range="10" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

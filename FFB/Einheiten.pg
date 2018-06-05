@@ -71,5 +71,8 @@
     <programGraphHasVariables Id="3bc10301-b216-4c46-ad9d-f11389008a22">
       <variable Id="5ca22ed6-9803-455e-9ca3-4ad9235a8795" name="sendezeitBFM" range="0..5" />
     </programGraphHasVariables>
+    <programGraphHasVariables Id="f9143f88-fd26-42bf-a25e-5a3bfec03708">
+      <variable Id="0cb8a996-3e92-49cc-8fc0-ae77aa47c91d" name="maxWinkelgeschwindigkeit" range="10" />
+    </programGraphHasVariables>
   </variables>
 </programGraph>

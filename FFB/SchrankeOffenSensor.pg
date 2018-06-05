@@ -10,14 +10,14 @@
     </initialNode>
     <state Id="6ae6c0ab-bd07-4f12-9555-4a863245cb5b" name="SchrankeOffen">
       <successors>
-        <transition Id="af3bbde8-2d42-4831-a4a4-2736f905df04" guard="winkel  &lt; 90 - 20" label="winkel  &lt; 90 - 20">
+        <transition Id="af3bbde8-2d42-4831-a4a4-2736f905df04" guard="winkel  &lt; 90 - 2*maxWinkelgeschwindigkeit" label="winkel  &lt; 90 - 2*maxWinkelgeschwindigkeit">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/SchrankeNichtOffen" />
         </transition>
       </successors>
     </state>
     <state Id="b29bed69-547d-4edf-9eee-14ee46cfe319" name="SchrankeNichtOffen">
       <successors>
-        <transition Id="4e831af7-a7df-4f0b-9130-669f843d4566" guard="winkel &gt;= 90 - 20" label="winkel &gt;= 90 - 20">
+        <transition Id="4e831af7-a7df-4f0b-9130-669f843d4566" guard="winkel &gt;= 90 - 2*maxWinkelgeschwindigkeit" label="winkel &gt;= 90 - 2*maxWinkelgeschwindigkeit">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/SchrankeOffen" />
         </transition>
       </successors>
@@ -32,6 +32,9 @@
     <programGraphHasMacros Id="bfa95fed-9776-45cd-922d-2b5902b49608">
       <macro Id="a4b3edec-c592-4820-8057-17c8177312fc" name="w_sos_in" body="winkel" />
     </programGraphHasMacros>
+    <programGraphHasMacros Id="7c40641c-7bc5-4f35-a11c-b921124428f3">
+      <macro Id="5699532e-6636-4dfb-be2a-c361778f81da" name="mwg_sos_in" body="maxWinkelgeschwindigkeit" />
+    </programGraphHasMacros>
   </macros>
   <importedVariables>
     <programGraphHasImportedVariables Id="5e9d0b11-cd82-44a4-a5b7-a349e10600af">
@@ -39,6 +42,9 @@
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="506109fc-a7b2-4125-8c5c-014db022d4ce">
       <importedVariable Id="991fd1b7-b916-4ec9-b860-f22ec9d7ba53" name="Einheiten.winkelgeschwindigkeit" range="-10,0,10" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="3eb2ed22-25a5-482e-b7fa-fcb3f662ef7e">
+      <importedVariable Id="d0810e70-85d9-4165-a03d-98983003bca2" name="Einheiten.maxWinkelgeschwindigkeit" range="10" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>
