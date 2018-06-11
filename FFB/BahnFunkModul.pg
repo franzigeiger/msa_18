@@ -68,11 +68,5 @@
     <programGraphHasImportedVariables Id="fb7b4403-bfba-4e48-8975-e16a4f70039a">
       <importedVariable Id="0578e7aa-1e1c-4f48-a238-777caa72ca07" name="BahnUebergangsSteuerung" range="Bereit, Sichern, Bestaetigen, Warten, Entsichern" />
     </programGraphHasImportedVariables>
-    <programGraphHasImportedVariables Id="fb109e9b-91a0-4de8-b5aa-5e836ed062eb">
-      <importedVariable Id="718b1668-c991-4354-9da0-69f45bc2265c" name="Einheiten.sendezeitBFM" range="0..5" />
-    </programGraphHasImportedVariables>
-    <programGraphHasImportedVariables Id="b8d434b3-3805-45b0-a6ba-534d5b648486">
-      <importedVariable Id="77a9d08b-c1bd-4393-954a-b8d6cf1384b8" name="Einheiten.maxSendezeit" range="2" />
-    </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

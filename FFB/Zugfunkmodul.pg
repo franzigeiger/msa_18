@@ -79,12 +79,6 @@
     <programGraphHasImportedVariables Id="303afd66-b8c1-409e-b672-cc8b8c8a3d84">
       <importedVariable Id="93d22274-afa9-4635-b389-d005174171e9" name="FunkKanal" range="KeinFunk, ZugZuBahnuebergang, BahnuebergangZuZug" />
     </programGraphHasImportedVariables>
-    <programGraphHasImportedVariables Id="aad96cb1-bfe1-4b27-967b-1c838c3119f3">
-      <importedVariable Id="63ebe7ad-c02a-4f23-b1da-4b0e0eec741a" name="Einheiten.sendezeitZFM" range="0..5" />
-    </programGraphHasImportedVariables>
-    <programGraphHasImportedVariables Id="73cae198-fd19-4704-8a04-d4ecf13fa2ce">
-      <importedVariable Id="86f9fb2b-4439-439d-ab0b-5fdadcda193c" name="Einheiten.maxSendezeit" range="2" />
-    </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="e4ce0556-79dc-4ed8-8702-81b2ce40c455">
       <importedVariable Id="08559698-8596-4b13-b9fa-680e0c3deda6" name="AusfallZugFunkModul" range="Nein, Ja" />
     </programGraphHasImportedVariables>
