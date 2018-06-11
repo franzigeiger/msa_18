@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="5d94a3b3-e3d8-47a9-8c81-72ae498d1b20" name="FailureBrakes" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="5d94a3b3-e3d8-47a9-8c81-72ae498d1b20" name="AusfallBremse" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
   <states>
     <state Id="ab9a084e-f024-48cb-93c1-104dc95b2998" name="Nein">
       <successors>

@@ -64,21 +64,21 @@
     <None Include="Einheiten.pg.diagram">
       <DependentUpon>Einheiten.pg</DependentUpon>
     </None>
-    <None Include="FailureBrakes.pg" />
-    <None Include="FailureBrakes.pg.diagram">
-      <DependentUpon>FailureBrakes.pg</DependentUpon>
+    <None Include="AusfallBrakes.pg" />
+    <None Include="AusfallBrakes.pg.diagram">
+      <DependentUpon>AusfallBrakes.pg</DependentUpon>
     </None>
-    <None Include="FailureHodometer.pg" />
-    <None Include="FailureHodometer.pg.diagram">
-      <DependentUpon>FailureHodometer.pg</DependentUpon>
+    <None Include="AusfallHodometer.pg" />
+    <None Include="AusfallHodometer.pg.diagram">
+      <DependentUpon>AusfallHodometer.pg</DependentUpon>
     </None>
-    <None Include="FailureSchrankeGeschlossen.pg" />
-    <None Include="FailureSchrankeGeschlossen.pg.diagram">
-      <DependentUpon>FailureSchrankeGeschlossen.pg</DependentUpon>
+    <None Include="AusfallSchrankeGeschlossen.pg" />
+    <None Include="AusfallSchrankeGeschlossen.pg.diagram">
+      <DependentUpon>AusfallSchrankeGeschlossen.pg</DependentUpon>
     </None>
-    <None Include="FailureZugSensor.pg" />
-    <None Include="FailureZugSensor.pg.diagram">
-      <DependentUpon>FailureZugSensor.pg</DependentUpon>
+    <None Include="AusfallZugSensor.pg" />
+    <None Include="AusfallZugSensor.pg.diagram">
+      <DependentUpon>AusfallZugSensor.pg</DependentUpon>
     </None>
     <None Include="FunkKanal.pg" />
     <None Include="FunkKanal.pg.diagram">
@@ -88,9 +88,9 @@
     <None Include="Hodometer.pg.diagram">
       <DependentUpon>Hodometer.pg</DependentUpon>
     </None>
-    <None Include="FailureMotor.pg" />
-    <None Include="FailureMotor.pg.diagram">
-      <DependentUpon>FailureMotor.pg</DependentUpon>
+    <None Include="AusfallMotor.pg" />
+    <None Include="AusfallMotor.pg.diagram">
+      <DependentUpon>AusfallMotor.pg</DependentUpon>
     </None>
     <None Include="NuSMV2.smv">
       <AutoGen>True</AutoGen>

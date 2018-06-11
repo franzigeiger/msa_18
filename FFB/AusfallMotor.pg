@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="1229fd38-7ebd-4bcc-a515-d7f7c371cd47" name="MotorFailure" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="1229fd38-7ebd-4bcc-a515-d7f7c371cd47" name="AusfallMotor" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
   <states>
     <state Id="6b7d01fe-3d5d-4e21-be2c-5c0a1e11c648" name="Nein">
       <successors>

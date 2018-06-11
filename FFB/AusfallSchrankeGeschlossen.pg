@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="7cdf2ca0-6941-4d57-9857-7255fbc0873e" name="FailureSchrankeGeschlossen" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="7cdf2ca0-6941-4d57-9857-7255fbc0873e" name="AusfallSchrankeGeschlossen" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
   <states>
     <state Id="d0ca64ac-367b-495c-bec4-53f23becda6b" name="Nein">
       <successors>

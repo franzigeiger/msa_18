@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="00f8d54a-60f6-406e-886c-dfd224be72a2" name="FailureZugSensor" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="00f8d54a-60f6-406e-886c-dfd224be72a2" name="AusfallZugSensor" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
   <states>
     <state Id="eeb403e3-b2bc-403e-a567-61ad23fd14e5" name="Nein">
       <successors>

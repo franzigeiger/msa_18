@@ -10,7 +10,7 @@
     </initialNode>
     <state Id="159a861f-8ca8-4406-8920-6d0405ca4bc7" name="Bereit">
       <successors>
-        <transition Id="27febe9c-7139-49a0-bb51-d3e2ba0773b4" guard="position &gt;= sp || FailureZugSensor != Nein" label="position &gt;= sp || FailureZugSensor != Nein">
+        <transition Id="27febe9c-7139-49a0-bb51-d3e2ba0773b4" guard="position &gt;= sp || AusfallZugSensor != Nein" label="position &gt;= sp || AusfallZugSensor != Nein">
           <stateMoniker name="/c3864fa7-33f3-4793-81a8-a7fb8ae6f675/ZugPassiert" />
         </transition>
       </successors>
@@ -28,7 +28,7 @@
       <importedVariable Id="d1a1c59c-1d20-458e-86f6-437b85186ab0" name="Einheiten.position" range="0..2000" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="0db3d87f-429c-45e3-ba95-4c31952f9230">
-      <importedVariable Id="310189d3-82b4-45da-a0dc-dc7db746094a" name="FailureZugSensor" range="Nein, Ja" />
+      <importedVariable Id="310189d3-82b4-45da-a0dc-dc7db746094a" name="AusfallZugSensor" range="Nein, Ja" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

@@ -17,7 +17,7 @@
     </state>
     <state Id="96ab215a-4f7d-4067-914f-dc26d41edd45" name="SchrankeGeschlossen">
       <successors>
-        <transition Id="c22a6bb7-9531-4db8-99e0-f7fd2ade9b55" guard="winkel &gt; 2 * maxWinkelgeschwindigkeit &amp;&amp; FailureSchrankeGeschlossen == Nein" label="winkel &gt; 2 * maxWinkelgeschwindigkeit &amp;&amp; FailureSchrankeGeschlossen == Nein">
+        <transition Id="c22a6bb7-9531-4db8-99e0-f7fd2ade9b55" guard="winkel &gt; 2 * maxWinkelgeschwindigkeit &amp;&amp; AusfallSchrankeGeschlossen == Nein" label="winkel &gt; 2 * maxWinkelgeschwindigkeit &amp;&amp; AusfallSchrankeGeschlossen == Nein">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/SchrankeNichtGeschlossen" />
         </transition>
       </successors>
@@ -44,7 +44,7 @@
       <importedVariable Id="af7f19e9-e096-4086-b7a3-0e04af78d8c2" name="Einheiten.maxWinkelgeschwindigkeit" range="10" />
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="8f165853-a222-4934-bec0-4cc50352569e">
-      <importedVariable Id="be0ee864-a31b-4112-9f16-c2b03ce94ffd" name="FailureSchrankeGeschlossen" range="Nein, Ja" />
+      <importedVariable Id="be0ee864-a31b-4112-9f16-c2b03ce94ffd" name="AusfallSchrankeGeschlossen" range="Nein, Ja" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>
