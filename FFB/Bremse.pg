@@ -10,7 +10,7 @@
     </initialNode>
     <state Id="6475bbb5-9e50-4127-94b7-0383697877d0" name="Aus">
       <successors>
-        <transition Id="b7325ac3-a020-4d2c-9ddb-55c56bc4b53f" guard="ZugSteuerung == Zwangsbremsung" action="bremskraft := -5" label="ZugSteuerung == Zwangsbremsung // bremskraft := -5" precondition="bremskraft == 0">
+        <transition Id="b7325ac3-a020-4d2c-9ddb-55c56bc4b53f" guard="ZugSteuerung == Zwangsbremsung &amp;&amp; FailureBrakes == Nein" action="bremskraft := -5" label="ZugSteuerung == Zwangsbremsung &amp;&amp; FailureBrakes == Nein // bremskraft := -5" precondition="bremskraft == 0">
           <stateMoniker name="/ce66fc5a-740c-416a-bc8e-4ded24cfceb0/An" />
         </transition>
       </successors>
@@ -40,6 +40,9 @@
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="840e4135-5c83-4b3a-a940-fbdeee8de44b">
       <importedVariable Id="549f9792-dac0-4fba-ad69-0442a13e65fe" name="Einheiten.bremskraft" range="-5,0" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="6b98fd93-9c18-466f-840a-ad6bba88b85e">
+      <importedVariable Id="78acdce4-eff2-4d44-a0f2-fc4d635a90a4" name="FailureBrakes" range="Nein, Ja" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

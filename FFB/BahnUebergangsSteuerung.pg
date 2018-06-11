@@ -20,7 +20,7 @@
         <transition Id="ee471b0a-e42d-48d8-b443-fc3a3254f47c" guard="SchrankeGeschlossenSensor == SchrankeGeschlossen &amp;&amp; BahnFunkModul == EmpfangenAbgeschlossen" label="SchrankeGeschlossenSensor == SchrankeGeschlossen &amp;&amp; BahnFunkModul == EmpfangenAbgeschlossen">
           <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/Bestaetigen" />
         </transition>
-        <transition Id="51c99822-4f5c-4de6-884f-0a01bb1997f3" guard="wartezeit &lt; maxWartezeit" action="wartezeit := wartezeit + 1" label="wartezeit &lt; maxWartezeit // wartezeit := wartezeit + 1" precondition="wartezeit &lt; maxWartezeit &amp;&amp; wartezeit &gt;= 0">
+        <transition Id="51c99822-4f5c-4de6-884f-0a01bb1997f3" guard="wartezeit &lt; maxWartezeit &amp;&amp; SchrankeGeschlossenSensor != SchrankeGeschlossen &amp;&amp; BahnFunkModul != EmpfangenAbgeschlossen" action="wartezeit := wartezeit + 1" label="wartezeit &lt; maxWartezeit &amp;&amp; SchrankeGeschlossenSensor != SchrankeGeschlossen &amp;&amp; BahnFunkModul != EmpfangenAbgeschlossen // wartezeit := wartezeit + 1" precondition="wartezeit &lt; maxWartezeit &amp;&amp; wartezeit &gt;= 0">
           <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/Sichern" />
         </transition>
         <transition Id="8008dace-8408-4ce6-be74-34c295078a37" guard="wartezeit == maxWartezeit" label="wartezeit == maxWartezeit">

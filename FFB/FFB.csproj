@@ -64,6 +64,22 @@
     <None Include="Einheiten.pg.diagram">
       <DependentUpon>Einheiten.pg</DependentUpon>
     </None>
+    <None Include="FailureBrakes.pg" />
+    <None Include="FailureBrakes.pg.diagram">
+      <DependentUpon>FailureBrakes.pg</DependentUpon>
+    </None>
+    <None Include="FailureHodometer.pg" />
+    <None Include="FailureHodometer.pg.diagram">
+      <DependentUpon>FailureHodometer.pg</DependentUpon>
+    </None>
+    <None Include="FailureSchrankeGeschlossen.pg" />
+    <None Include="FailureSchrankeGeschlossen.pg.diagram">
+      <DependentUpon>FailureSchrankeGeschlossen.pg</DependentUpon>
+    </None>
+    <None Include="FailureZugSensor.pg" />
+    <None Include="FailureZugSensor.pg.diagram">
+      <DependentUpon>FailureZugSensor.pg</DependentUpon>
+    </None>
     <None Include="FunkKanal.pg" />
     <None Include="FunkKanal.pg.diagram">
       <DependentUpon>FunkKanal.pg</DependentUpon>
@@ -71,6 +87,10 @@
     <None Include="Hodometer.pg" />
     <None Include="Hodometer.pg.diagram">
       <DependentUpon>Hodometer.pg</DependentUpon>
+    </None>
+    <None Include="FailureMotor.pg" />
+    <None Include="FailureMotor.pg.diagram">
+      <DependentUpon>FailureMotor.pg</DependentUpon>
     </None>
     <None Include="NuSMV2.smv">
       <AutoGen>True</AutoGen>

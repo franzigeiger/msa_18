@@ -20,14 +20,14 @@
     </state>
     <state Id="470267a5-1adb-4501-9f80-694a82265bd7" name="Oeffnen">
       <successors>
-        <transition Id="40ec4018-4e65-42e7-8a59-b353da076aa4" guard="SchrankeOffenSensor == SchrankeOffen" action="winkelgeschwindigkeit := 0" label="SchrankeOffenSensor == SchrankeOffen // winkelgeschwindigkeit := 0" precondition="auto">
+        <transition Id="40ec4018-4e65-42e7-8a59-b353da076aa4" guard="SchrankeOffenSensor == SchrankeOffen &amp;&amp; MotorFailure == Nein" action="winkelgeschwindigkeit := 0" label="SchrankeOffenSensor == SchrankeOffen &amp;&amp; MotorFailure == Nein // winkelgeschwindigkeit := 0" precondition="auto">
           <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Aus" />
         </transition>
       </successors>
     </state>
     <state Id="8a11a3e3-196a-47ab-be41-d56cf17047d3" name="Schliessen">
       <successors>
-        <transition Id="7b286bda-5f63-4efb-946c-82bec69f4236" guard="SchrankeGeschlossenSensor == SchrankeGeschlossen" action="winkelgeschwindigkeit := 0" label="SchrankeGeschlossenSensor == SchrankeGeschlossen // winkelgeschwindigkeit := 0" precondition="auto">
+        <transition Id="7b286bda-5f63-4efb-946c-82bec69f4236" guard="SchrankeGeschlossenSensor == SchrankeGeschlossen &amp;&amp; MotorFailure == Nein" action="winkelgeschwindigkeit := 0" label="SchrankeGeschlossenSensor == SchrankeGeschlossen &amp;&amp; MotorFailure == Nein // winkelgeschwindigkeit := 0" precondition="auto">
           <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Aus" />
         </transition>
       </successors>
@@ -50,6 +50,9 @@
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="811d5ab7-47b7-4779-8b89-5501bb9fcb8d">
       <importedVariable Id="400294b1-6d07-4ecb-bd12-8ea5e803de6e" name="Einheiten.winkelgeschwindigkeit" range="-10,0,10" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="c6c66a1d-23d7-4b65-8cfa-d0aa62c05796">
+      <importedVariable Id="9e505ac6-8d21-42fc-96f8-0d82a806662f" name="MotorFailure" range="Nein, Ja" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>
