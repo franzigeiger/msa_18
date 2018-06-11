@@ -23,14 +23,11 @@
     <programGraphHasVariables Id="80be6a9d-2daf-44ef-a2a5-3e6abc4a5154">
       <variable Id="d1dc6a8f-b1ee-48e8-94b5-c61307e7c370" name="bremskraft" range="-5,0" />
     </programGraphHasVariables>
-    <programGraphHasVariables Id="e3d5ae75-0d8d-4bff-a02c-0d5b37498ef3">
-      <variable Id="a80a3032-891b-40e0-83ac-03aa7f21f21c" name="maxSendezeit" range="2" />
-    </programGraphHasVariables>
     <programGraphHasVariables Id="f59024c8-656c-4dce-8db4-55e4f025e141">
       <variable Id="edd083a2-aba9-452c-93bb-11d34a03c641" name="maxWartezeit" range="70" />
     </programGraphHasVariables>
     <programGraphHasVariables Id="797b1d6b-9ea0-4b40-b4ff-e039ee498b96">
-      <variable Id="bc8e7b42-bf67-4e02-8589-e7209eebf3f4" name="c" range="8" />
+      <variable Id="bc8e7b42-bf67-4e02-8589-e7209eebf3f4" name="c" range="6" />
     </programGraphHasVariables>
     <programGraphHasVariables Id="e7d10418-1ea8-4d4c-a0d7-62c800b16b2f">
       <variable Id="88ff4df5-056f-4d0c-98b6-481afb20410e" name="t" range="9" />
@@ -50,9 +47,6 @@
     <programGraphHasVariables Id="f69aa6cb-432f-4b48-931c-193d538ca857">
       <variable Id="3e75571c-6dec-4e92-b102-b0e9f0617784" name="maxPosition" range="2000" />
     </programGraphHasVariables>
-    <programGraphHasVariables Id="0237b28e-1b65-4764-8a94-a9e4b401d665">
-      <variable Id="1bace995-65cc-4824-b482-2bd398489cef" name="sendezeitZFM" range="0..5" />
-    </programGraphHasVariables>
     <programGraphHasVariables Id="8e4b521a-bc61-4b7e-aa74-b945b839dc5a">
       <variable Id="40fe246e-2649-4364-b0b9-5855efc6db80" name="wartezeit" range="0..70" />
     </programGraphHasVariables>
@@ -67,9 +61,6 @@
     </programGraphHasVariables>
     <programGraphHasVariables Id="9a64a0d5-2503-469a-8809-bd565b0c70b8">
       <variable Id="dcab9f2a-ef70-43d6-8ceb-9ca0d2d3ad74" name="sp" range="1940" />
-    </programGraphHasVariables>
-    <programGraphHasVariables Id="3bc10301-b216-4c46-ad9d-f11389008a22">
-      <variable Id="5ca22ed6-9803-455e-9ca3-4ad9235a8795" name="sendezeitBFM" range="0..5" />
     </programGraphHasVariables>
     <programGraphHasVariables Id="f9143f88-fd26-42bf-a25e-5a3bfec03708">
       <variable Id="0cb8a996-3e92-49cc-8fc0-ae77aa47c91d" name="maxWinkelgeschwindigkeit" range="10" />

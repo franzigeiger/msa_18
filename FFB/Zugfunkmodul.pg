@@ -10,7 +10,7 @@
     </initialNode>
     <state Id="c4e4bfa2-4ccb-4952-9944-f60045e3a879" name="Bereit">
       <successors>
-        <transition Id="0eb6122b-c111-459f-868f-dadd411abc3c" guard="ZugSteuerung == Einschalten || ZugSteuerung == Anfragen" action="sendezeitZFM := 0" label="ZugSteuerung == Einschalten || ZugSteuerung == Anfragen // sendezeitZFM := 0" precondition="auto">
+        <transition Id="0eb6122b-c111-459f-868f-dadd411abc3c" guard="ZugSteuerung == Einschalten || ZugSteuerung == Anfragen" label="ZugSteuerung == Einschalten || ZugSteuerung == Anfragen" precondition="auto">
           <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Senden" />
         </transition>
         <transition Id="ee6c58d5-7714-43aa-b575-d68d5e48b484" guard="FunkKanal == BahnuebergangZuZug" label="FunkKanal == BahnuebergangZuZug">
@@ -20,13 +20,10 @@
     </state>
     <state Id="a6eab7c9-8264-49d2-84af-cbc48c4ca654" name="Senden">
       <successors>
-        <transition Id="8ceea5b3-ead5-4e80-bbde-1a85629b009c" guard="sendezeitZFM &lt; maxSendezeit" action="sendezeitZFM := sendezeitZFM + 1" label="sendezeitZFM &lt; maxSendezeit // sendezeitZFM := sendezeitZFM + 1" precondition="auto">
-          <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Senden" />
-        </transition>
-        <transition Id="f28530e1-a8fd-4a2b-b4dc-ba3579c4f368" guard="sendezeitZFM &lt; maxSendezeit" label="sendezeitZFM &lt; maxSendezeit">
+        <transition Id="f28530e1-a8fd-4a2b-b4dc-ba3579c4f368" guard="AusfallZugFunkModul == Nein" label="AusfallZugFunkModul == Nein">
           <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/SendenAbgeschlossen" />
         </transition>
-        <transition Id="edc13f6a-bc57-4e99-b313-eda521710664" guard="sendezeitZFM == maxSendezeit" label="sendezeitZFM == maxSendezeit">
+        <transition Id="008e8c1e-6400-4b65-8f6b-e3d42ca4a8d9" guard="AusfallZugFunkModul == Ja" label="AusfallZugFunkModul == Ja">
           <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Bereit" />
         </transition>
       </successors>
@@ -40,10 +37,10 @@
     </state>
     <state Id="2d1b813b-b7eb-4dd1-9ce7-a4ba60f66b93" name="Empfangen">
       <successors>
-        <transition Id="63a478c6-a5ba-42df-9c8a-e94634b4996b" guard="BahnFunkModul == SendenAbgeschlossen" label="BahnFunkModul == SendenAbgeschlossen">
+        <transition Id="63a478c6-a5ba-42df-9c8a-e94634b4996b" guard="AusfallZugFunkModul == Nein" label="AusfallZugFunkModul == Nein">
           <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/EmpfangenAbgeschlossen" />
         </transition>
-        <transition Id="a3e24460-60f4-4416-8125-f9c4ed4c894a" guard="BahnFunkModul == Bereit" label="BahnFunkModul == Bereit">
+        <transition Id="a3e24460-60f4-4416-8125-f9c4ed4c894a" guard="AusfallZugFunkModul == Ja || BahnFunkModul == Bereit" label="AusfallZugFunkModul == Ja || BahnFunkModul == Bereit">
           <stateMoniker name="/d4f3ee95-dd06-4d1f-b8db-2f97f2d22b61/Bereit" />
         </transition>
       </successors>
@@ -82,11 +79,8 @@
     <programGraphHasImportedVariables Id="303afd66-b8c1-409e-b672-cc8b8c8a3d84">
       <importedVariable Id="93d22274-afa9-4635-b389-d005174171e9" name="FunkKanal" range="KeinFunk, ZugZuBahnuebergang, BahnuebergangZuZug" />
     </programGraphHasImportedVariables>
-    <programGraphHasImportedVariables Id="aad96cb1-bfe1-4b27-967b-1c838c3119f3">
-      <importedVariable Id="63ebe7ad-c02a-4f23-b1da-4b0e0eec741a" name="Einheiten.sendezeitZFM" range="0..5" />
-    </programGraphHasImportedVariables>
-    <programGraphHasImportedVariables Id="73cae198-fd19-4704-8a04-d4ecf13fa2ce">
-      <importedVariable Id="86f9fb2b-4439-439d-ab0b-5fdadcda193c" name="Einheiten.maxSendezeit" range="2" />
+    <programGraphHasImportedVariables Id="e4ce0556-79dc-4ed8-8702-81b2ce40c455">
+      <importedVariable Id="08559698-8596-4b13-b9fa-680e0c3deda6" name="AusfallZugFunkModul" range="Nein, Ja" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

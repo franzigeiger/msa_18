@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<programGraphDslDiagram dslVersion="1.0.0.0" Id="2ff48e2a-3390-416c-aaae-10089fab790b" absoluteBounds="0, 0, 11, 8.5" name="AusfallBahnUebergangSecured">
+  <programGraphMoniker Id="66d0558f-668e-4fe7-a508-e6e9016c483b" />
+  <nestedChildShapes>
+    <initialStateShape Id="bb7a2c99-4b6a-476d-af4c-d1449b3ae0e1" absoluteBounds="4.75, 2.25, 0.125, 0.125">
+      <initialNodeMoniker name="/66d0558f-668e-4fe7-a508-e6e9016c483b/InitialNode1" />
+    </initialStateShape>
+    <stateShape Id="bfc40d43-fa0b-4b93-bfc4-71e6dc26c3b5" absoluteBounds="4.375, 2.875, 1, 0.5">
+      <stateMoniker name="/66d0558f-668e-4fe7-a508-e6e9016c483b/Nein" />
+    </stateShape>
+    <stateShape Id="1331cf8b-400d-45c2-a70b-c56eb51b03fe" absoluteBounds="6.75, 2.875, 1, 0.5">
+      <stateMoniker name="/66d0558f-668e-4fe7-a508-e6e9016c483b/Ja" />
+    </stateShape>
+    <transitionConnector Id="768c1269-3a12-4f8d-b1b3-9a86f9d03796" edgePoints="[(4.72153846153846 : 3.375); (4.72153846153846 : 3.625); (5.03576923076923 : 3.625); (5.03576923076923 : 3.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <transitionMoniker Id="9c70efc0-aabf-40e6-8553-64f5c94de048" />
+      <relativeChildShapes />
+      <nodes>
+        <stateShapeMoniker Id="bfc40d43-fa0b-4b93-bfc4-71e6dc26c3b5" />
+        <stateShapeMoniker Id="bfc40d43-fa0b-4b93-bfc4-71e6dc26c3b5" />
+      </nodes>
+    </transitionConnector>
+    <transitionConnector Id="4657ac30-066e-44ce-92fb-faa8fc2f7093" edgePoints="[(4.8125 : 2.375); (4.8125 : 2.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <transitionMoniker Id="6c3d47a5-7bf7-469a-aa0b-c8d57b7f9e05" />
+      <relativeChildShapes />
+      <nodes>
+        <initialStateShapeMoniker Id="bb7a2c99-4b6a-476d-af4c-d1449b3ae0e1" />
+        <stateShapeMoniker Id="bfc40d43-fa0b-4b93-bfc4-71e6dc26c3b5" />
+      </nodes>
+    </transitionConnector>
+    <transitionConnector Id="11e64ac7-0cde-4b4b-bb4d-740cf2f077be" edgePoints="[(5.375 : 2.9375); (6.75 : 2.9375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <transitionMoniker Id="9e459200-7e81-4b91-8554-bfba77ce1dc6" />
+      <relativeChildShapes />
+      <nodes>
+        <stateShapeMoniker Id="bfc40d43-fa0b-4b93-bfc4-71e6dc26c3b5" />
+        <stateShapeMoniker Id="1331cf8b-400d-45c2-a70b-c56eb51b03fe" />
+      </nodes>
+    </transitionConnector>
+  </nestedChildShapes>
+</programGraphDslDiagram>

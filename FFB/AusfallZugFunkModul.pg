@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="fdff1ce1-6b20-4278-a64c-29339fa4f0f0" name="AusfallZugFunkModul" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+  <states>
+    <initialNode Id="74b59cc4-307b-4ec2-a109-cba81f6fca71" name="InitialNode1">
+      <successors>
+        <transition Id="f9c32a8d-ab27-4b03-84c1-a2482a93f7d1">
+          <stateMoniker name="/fdff1ce1-6b20-4278-a64c-29339fa4f0f0/Nein" />
+        </transition>
+      </successors>
+    </initialNode>
+    <state Id="22fc1f07-a60a-4dbf-831b-ec603499da65" name="Nein">
+      <successors>
+        <transition Id="76e8f97e-6cf2-4ca0-ab71-bd5db2bf9e07">
+          <stateMoniker name="/fdff1ce1-6b20-4278-a64c-29339fa4f0f0/Ja" />
+        </transition>
+        <transition Id="dce3f26a-6cc6-4d4e-a754-0efa01a97736">
+          <stateMoniker name="/fdff1ce1-6b20-4278-a64c-29339fa4f0f0/Nein" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="bb1e5a1d-a648-4dc8-a30c-bae1de116b8b" name="Ja">
+      <successors>
+        <transition Id="7b902570-16a6-436b-baf2-c1336c3cfb19">
+          <stateMoniker name="/fdff1ce1-6b20-4278-a64c-29339fa4f0f0/Nein" />
+        </transition>
+        <transition Id="8d87dff5-4d88-4dca-9741-142733dd7d90">
+          <stateMoniker name="/fdff1ce1-6b20-4278-a64c-29339fa4f0f0/Ja" />
+        </transition>
+      </successors>
+    </state>
+  </states>
+</programGraph>
