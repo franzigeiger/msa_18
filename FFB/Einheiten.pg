@@ -30,7 +30,7 @@
       <variable Id="edd083a2-aba9-452c-93bb-11d34a03c641" name="maxWartezeit" range="70" />
     </programGraphHasVariables>
     <programGraphHasVariables Id="797b1d6b-9ea0-4b40-b4ff-e039ee498b96">
-      <variable Id="bc8e7b42-bf67-4e02-8589-e7209eebf3f4" name="c" range="8" />
+      <variable Id="bc8e7b42-bf67-4e02-8589-e7209eebf3f4" name="c" range="6" />
     </programGraphHasVariables>
     <programGraphHasVariables Id="e7d10418-1ea8-4d4c-a0d7-62c800b16b2f">
       <variable Id="88ff4df5-056f-4d0c-98b6-481afb20410e" name="t" range="9" />

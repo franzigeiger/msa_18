@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<programGraph xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="66d0558f-668e-4fe7-a508-e6e9016c483b" name="AusfallSecured" xmlns="http://schemas.microsoft.com/dsltools/ProgramGraphDsl">
+  <states>
+    <initialNode Id="7a0fa90f-0993-496d-954c-1414d5357303" name="InitialNode1">
+      <successors>
+        <transition Id="6c3d47a5-7bf7-469a-aa0b-c8d57b7f9e05">
+          <stateMoniker name="/66d0558f-668e-4fe7-a508-e6e9016c483b/Nein" />
+        </transition>
+      </successors>
+    </initialNode>
+    <state Id="6dfbf01d-c4bd-47ec-bb50-76fc0a3e0701" name="Nein">
+      <successors>
+        <transition Id="9e459200-7e81-4b91-8554-bfba77ce1dc6">
+          <stateMoniker name="/66d0558f-668e-4fe7-a508-e6e9016c483b/Ja" />
+        </transition>
+        <transition Id="9c70efc0-aabf-40e6-8553-64f5c94de048">
+          <stateMoniker name="/66d0558f-668e-4fe7-a508-e6e9016c483b/Nein" />
+        </transition>
+      </successors>
+    </state>
+    <state Id="21477502-660a-40d4-8b91-2cc5de0f6c49" name="Ja" />
+  </states>
+</programGraph>

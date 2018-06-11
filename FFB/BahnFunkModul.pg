@@ -10,7 +10,7 @@
     </initialNode>
     <state Id="450cab47-e2db-401a-9463-ff0befb532f7" name="Bereit">
       <successors>
-        <transition Id="027e75dc-4711-475d-a208-61715d12ecd9" guard="BahnUebergangsSteuerung == Bestaetigen" action="sendezeitBFM := 0" label="BahnUebergangsSteuerung == Bestaetigen // sendezeitBFM := 0" precondition="auto">
+        <transition Id="027e75dc-4711-475d-a208-61715d12ecd9" guard="BahnUebergangsSteuerung == Bestaetigen" label="BahnUebergangsSteuerung == Bestaetigen" precondition="auto">
           <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Senden" />
         </transition>
         <transition Id="e779e041-6cf8-4cc3-a4e4-7bb80d9e6b52" guard="FunkKanal == ZugZuBahnuebergang" label="FunkKanal == ZugZuBahnuebergang">
@@ -20,14 +20,8 @@
     </state>
     <state Id="0eb690d3-bb9d-4b40-b3b2-1e61d64b078b" name="Senden">
       <successors>
-        <transition Id="3e22a03f-e031-42df-adf2-71f2dcce968d" guard="sendezeitBFM == maxSendezeit" label="sendezeitBFM == maxSendezeit">
-          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Bereit" />
-        </transition>
-        <transition Id="20c32e55-79f8-4f19-9ef4-c8511075c374" guard="sendezeitBFM &lt; maxSendezeit" label="sendezeitBFM &lt; maxSendezeit">
+        <transition Id="20c32e55-79f8-4f19-9ef4-c8511075c374">
           <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/SendenAbgeschlossen" />
-        </transition>
-        <transition Id="05dcb9e1-6688-45cb-9b36-fee39578dfe0" guard="sendezeitBFM &lt; maxSendezeit" action="sendezeitBFM := sendezeitBFM + 1" label="sendezeitBFM &lt; maxSendezeit // sendezeitBFM := sendezeitBFM + 1" precondition="auto">
-          <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Senden" />
         </transition>
       </successors>
     </state>
