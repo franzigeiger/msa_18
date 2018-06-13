@@ -32,9 +32,6 @@
     </programGraphHasMacros>
   </macros>
   <importedVariables>
-    <programGraphHasImportedVariables Id="e8b1802e-458e-487a-ae6e-ef274b6c514e">
-      <importedVariable Id="bd0ce7df-c36c-4b50-a7c0-e9589620efa7" name="ZugSteuerung" range="Bereit, Einschalten, Anfragen, Zwangsbremsung, Eingeschaltet, Angefragt, Uebergangsgesichert" />
-    </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="8a57aada-456b-4976-827d-e16cc8869b20">
       <importedVariable Id="a0633c42-0c47-4817-a554-84e738db91df" name="Einheiten.diskreteGeschwindigkeit" range="0..45" />
     </programGraphHasImportedVariables>
@@ -43,6 +40,9 @@
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="6b98fd93-9c18-466f-840a-ad6bba88b85e">
       <importedVariable Id="78acdce4-eff2-4d44-a0f2-fc4d635a90a4" name="AusfallBremse" range="Nein, Ja" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="4c97aaf7-0b66-4f45-952d-38ae6566e220">
+      <importedVariable Id="49acc469-5028-42d8-b386-7ea8abc5a44b" name="ZugSteuerung" range="Bereit, Einschalten, Anfragen, Zwangsbremsung, Eingeschaltet, Angefragt, UebergangGesichert" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>

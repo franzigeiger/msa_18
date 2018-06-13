@@ -21,9 +21,9 @@ MODULE _VARS
 		V_wartezeit : 0..70;
 		V_maxWartezeit : {70};
 		V_Bremse : {L_Aus, L_An};
-		V_ZugSteuerung : {L_Bereit, L_Einschalten, L_Anfragen, L_Zwangsbremsung, L_Eingeschaltet, L_Angefragt, L_Uebergangsgesichert};
 		V_diskreteGeschwindigkeit : 0..45;
 		V_bremskraft : {-5, 0};
+		V_ZugSteuerung : {L_Bereit, L_Einschalten, L_Anfragen, L_Zwangsbremsung, L_Eingeschaltet, L_Angefragt, L_UebergangGesichert};
 		V_Einheiten : {L_Einheiten};
 		V_geschwindigkeit : 0..45;
 		V_position : 0..2000;
@@ -139,9 +139,9 @@ MODULE _P_Bremse(v)
 		(v.V_Bremse = L_Aus) & ((v.V_bremskraft = 0))
 	TRANS
 		 ( v.V_Bremse = L_Aus & next(v.V_Bremse) = L_An & (((v.V_ZugSteuerung = L_Zwangsbremsung) & (v.V_AusfallBremse = L_Nein)) & (v.V_bremskraft = 0)) & (next(v.V_bremskraft) = -5))  |
-		 ( v.V_Bremse = L_An & next(v.V_Bremse) = L_Aus & (((v.V_ZugSteuerung != L_Zwangsbremsung) | (v.V_diskreteGeschwindigkeit = 0)) & (v.V_bremskraft = 1)) & (next(v.V_bremskraft) = 0))  |
+		 ( v.V_Bremse = L_An & next(v.V_Bremse) = L_Aus & ((((v.V_ZugSteuerung != L_Zwangsbremsung) | (v.V_diskreteGeschwindigkeit = 0)) | (v.V_AusfallBremse != L_Nein)) & (v.V_bremskraft = 1)) & (next(v.V_bremskraft) = 0))  |
 		 ( v.V_Bremse = L_Aus & next(v.V_Bremse) = L_Aus & !(((v.V_ZugSteuerung = L_Zwangsbremsung) & (v.V_AusfallBremse = L_Nein)) & (v.V_bremskraft = 0)) & (next(v.V_bremskraft) = v.V_bremskraft))  |
-		 ( v.V_Bremse = L_An & next(v.V_Bremse) = L_An & !(((v.V_ZugSteuerung != L_Zwangsbremsung) | (v.V_diskreteGeschwindigkeit = 0)) & (v.V_bremskraft = 1)) & (next(v.V_bremskraft) = v.V_bremskraft));
+		 ( v.V_Bremse = L_An & next(v.V_Bremse) = L_An & !((((v.V_ZugSteuerung != L_Zwangsbremsung) | (v.V_diskreteGeschwindigkeit = 0)) | (v.V_AusfallBremse != L_Nein)) & (v.V_bremskraft = 1)) & (next(v.V_bremskraft) = v.V_bremskraft));
 MODULE _P_Einheiten(v)
 	INIT
 		(v.V_Einheiten = L_Einheiten) & (TRUE)
@@ -153,25 +153,25 @@ MODULE _P_FunkKanal(v)
 	TRANS
 		 ( v.V_FunkKanal = L_KeinFunk & next(v.V_FunkKanal) = L_ZugZuBahnuebergang & (v.V_ZugFunkModul = L_Senden) & (TRUE))  |
 		 ( v.V_FunkKanal = L_KeinFunk & next(v.V_FunkKanal) = L_BahnuebergangZuZug & (v.V_BahnFunkModul = L_Senden) & (TRUE))  |
-		 ( v.V_FunkKanal = L_ZugZuBahnuebergang & next(v.V_FunkKanal) = L_KeinFunk & ((v.V_ZugFunkModul = L_Bereit) | (v.V_ZugFunkModul = L_SendenAbgeschlossen)) & (TRUE))  |
-		 ( v.V_FunkKanal = L_BahnuebergangZuZug & next(v.V_FunkKanal) = L_KeinFunk & ((v.V_BahnFunkModul = L_Bereit) | (v.V_BahnFunkModul = L_SendenAbgeschlossen)) & (TRUE))  |
+		 ( v.V_FunkKanal = L_ZugZuBahnuebergang & next(v.V_FunkKanal) = L_KeinFunk & (v.V_ZugFunkModul != L_Senden) & (TRUE))  |
+		 ( v.V_FunkKanal = L_BahnuebergangZuZug & next(v.V_FunkKanal) = L_KeinFunk & (v.V_BahnFunkModul != L_Senden) & (TRUE))  |
 		 ( v.V_FunkKanal = L_KeinFunk & next(v.V_FunkKanal) = L_KeinFunk & (!(v.V_ZugFunkModul = L_Senden) & !(v.V_BahnFunkModul = L_Senden)) & (TRUE))  |
-		 ( v.V_FunkKanal = L_ZugZuBahnuebergang & next(v.V_FunkKanal) = L_ZugZuBahnuebergang & !((v.V_ZugFunkModul = L_Bereit) | (v.V_ZugFunkModul = L_SendenAbgeschlossen)) & (TRUE))  |
-		 ( v.V_FunkKanal = L_BahnuebergangZuZug & next(v.V_FunkKanal) = L_BahnuebergangZuZug & !((v.V_BahnFunkModul = L_Bereit) | (v.V_BahnFunkModul = L_SendenAbgeschlossen)) & (TRUE));
+		 ( v.V_FunkKanal = L_ZugZuBahnuebergang & next(v.V_FunkKanal) = L_ZugZuBahnuebergang & !(v.V_ZugFunkModul != L_Senden) & (TRUE))  |
+		 ( v.V_FunkKanal = L_BahnuebergangZuZug & next(v.V_FunkKanal) = L_BahnuebergangZuZug & !(v.V_BahnFunkModul != L_Senden) & (TRUE));
 MODULE _P_Hodometer(v)
 	INIT
 		(v.V_Hodometer = L_Hodometer) & (((v.V_diskreteGeschwindigkeit = 45) & (v.V_diskretePosition = 0)))
 	TRANS
 		 ( v.V_Hodometer = L_Hodometer & next(v.V_Hodometer) = L_Hodometer & ((v.V_AusfallHodometer = L_Nein) & (((v.V_geschwindigkeit >= 0) & (v.V_geschwindigkeit <= 45)) & ((v.V_position >= 0) & (v.V_position <= 3060)))) & (next(v.V_diskretePosition) = v.V_position & next(v.V_diskreteGeschwindigkeit) = v.V_geschwindigkeit))  |
-		 ( v.V_Hodometer = L_Hodometer & next(v.V_Hodometer) = L_Hodometer & ((v.V_AusfallHodometer != L_Nein) & (((v.V_geschwindigkeit >= 0) & (v.V_geschwindigkeit <= 45)) & ((v.V_position >= 100) & (v.V_position <= 3060)))) & (next(v.V_diskretePosition) = (v.V_position - 100) & next(v.V_diskreteGeschwindigkeit) = v.V_geschwindigkeit))  |
+		 ( v.V_Hodometer = L_Hodometer & next(v.V_Hodometer) = L_Hodometer & ((v.V_AusfallHodometer != L_Nein) & (((v.V_geschwindigkeit >= 0) & (v.V_geschwindigkeit <= 45)) & ((v.V_position >= 100) & (v.V_position <= 3060)))) & (next(v.V_diskretePosition) = 0 & next(v.V_diskreteGeschwindigkeit) = v.V_geschwindigkeit))  |
 		 ( v.V_Hodometer = L_Hodometer & next(v.V_Hodometer) = L_Hodometer & (!((v.V_AusfallHodometer = L_Nein) & (((v.V_geschwindigkeit >= 0) & (v.V_geschwindigkeit <= 45)) & ((v.V_position >= 0) & (v.V_position <= 3060)))) & !((v.V_AusfallHodometer != L_Nein) & (((v.V_geschwindigkeit >= 0) & (v.V_geschwindigkeit <= 45)) & ((v.V_position >= 100) & (v.V_position <= 3060))))) & (next(v.V_diskreteGeschwindigkeit) = v.V_diskreteGeschwindigkeit & next(v.V_diskretePosition) = v.V_diskretePosition));
 MODULE _P_SchrankeGeschlossenSensor(v)
 	INIT
 		(v.V_SchrankeGeschlossenSensor = L_SchrankeNichtGeschlossen) & (TRUE)
 	TRANS
-		 ( v.V_SchrankeGeschlossenSensor = L_SchrankeNichtGeschlossen & next(v.V_SchrankeGeschlossenSensor) = L_SchrankeGeschlossen & (v.V_winkel <= (2 * v.V_maxWinkelgeschwindigkeit)) & (TRUE))  |
+		 ( v.V_SchrankeGeschlossenSensor = L_SchrankeNichtGeschlossen & next(v.V_SchrankeGeschlossenSensor) = L_SchrankeGeschlossen & ((v.V_winkel <= (2 * v.V_maxWinkelgeschwindigkeit)) | (v.V_AusfallSchrankeGeschlossen != L_Nein)) & (TRUE))  |
 		 ( v.V_SchrankeGeschlossenSensor = L_SchrankeGeschlossen & next(v.V_SchrankeGeschlossenSensor) = L_SchrankeNichtGeschlossen & ((v.V_winkel > (2 * v.V_maxWinkelgeschwindigkeit)) & (v.V_AusfallSchrankeGeschlossen = L_Nein)) & (TRUE))  |
-		 ( v.V_SchrankeGeschlossenSensor = L_SchrankeNichtGeschlossen & next(v.V_SchrankeGeschlossenSensor) = L_SchrankeNichtGeschlossen & !(v.V_winkel <= (2 * v.V_maxWinkelgeschwindigkeit)) & (TRUE))  |
+		 ( v.V_SchrankeGeschlossenSensor = L_SchrankeNichtGeschlossen & next(v.V_SchrankeGeschlossenSensor) = L_SchrankeNichtGeschlossen & !((v.V_winkel <= (2 * v.V_maxWinkelgeschwindigkeit)) | (v.V_AusfallSchrankeGeschlossen != L_Nein)) & (TRUE))  |
 		 ( v.V_SchrankeGeschlossenSensor = L_SchrankeGeschlossen & next(v.V_SchrankeGeschlossenSensor) = L_SchrankeGeschlossen & !((v.V_winkel > (2 * v.V_maxWinkelgeschwindigkeit)) & (v.V_AusfallSchrankeGeschlossen = L_Nein)) & (TRUE));
 MODULE _P_SchrankenBaum(v)
 	INIT
@@ -183,11 +183,11 @@ MODULE _P_SchrankenMotor(v)
 	INIT
 		(v.V_SchrankenMotor = L_Aus) & ((v.V_winkelgeschwindigkeit = 0))
 	TRANS
-		 ( v.V_SchrankenMotor = L_Aus & next(v.V_SchrankenMotor) = L_Oeffnen & (v.V_BahnUebergangsSteuerung = L_Entsichern) & (next(v.V_winkelgeschwindigkeit) = 10))  |
-		 ( v.V_SchrankenMotor = L_Aus & next(v.V_SchrankenMotor) = L_Schliessen & (v.V_BahnUebergangsSteuerung = L_Sichern) & (next(v.V_winkelgeschwindigkeit) = -10))  |
+		 ( v.V_SchrankenMotor = L_Aus & next(v.V_SchrankenMotor) = L_Oeffnen & ((v.V_BahnUebergangsSteuerung = L_Entsichern) & (v.V_SchrankeOffenSensor != L_SchrankeOffen)) & (next(v.V_winkelgeschwindigkeit) = 10))  |
+		 ( v.V_SchrankenMotor = L_Aus & next(v.V_SchrankenMotor) = L_Schliessen & ((v.V_BahnUebergangsSteuerung = L_Sichern) & (v.V_SchrankeGeschlossenSensor != L_SchrankeGeschlossen)) & (next(v.V_winkelgeschwindigkeit) = -10))  |
 		 ( v.V_SchrankenMotor = L_Oeffnen & next(v.V_SchrankenMotor) = L_Aus & ((v.V_SchrankeOffenSensor = L_SchrankeOffen) & (v.V_AusfallMotor = L_Nein)) & (next(v.V_winkelgeschwindigkeit) = 0))  |
 		 ( v.V_SchrankenMotor = L_Schliessen & next(v.V_SchrankenMotor) = L_Aus & ((v.V_SchrankeGeschlossenSensor = L_SchrankeGeschlossen) & (v.V_AusfallMotor = L_Nein)) & (next(v.V_winkelgeschwindigkeit) = 0))  |
-		 ( v.V_SchrankenMotor = L_Aus & next(v.V_SchrankenMotor) = L_Aus & (!(v.V_BahnUebergangsSteuerung = L_Entsichern) & !(v.V_BahnUebergangsSteuerung = L_Sichern)) & (next(v.V_winkelgeschwindigkeit) = v.V_winkelgeschwindigkeit))  |
+		 ( v.V_SchrankenMotor = L_Aus & next(v.V_SchrankenMotor) = L_Aus & (!((v.V_BahnUebergangsSteuerung = L_Entsichern) & (v.V_SchrankeOffenSensor != L_SchrankeOffen)) & !((v.V_BahnUebergangsSteuerung = L_Sichern) & (v.V_SchrankeGeschlossenSensor != L_SchrankeGeschlossen))) & (next(v.V_winkelgeschwindigkeit) = v.V_winkelgeschwindigkeit))  |
 		 ( v.V_SchrankenMotor = L_Oeffnen & next(v.V_SchrankenMotor) = L_Oeffnen & !((v.V_SchrankeOffenSensor = L_SchrankeOffen) & (v.V_AusfallMotor = L_Nein)) & (next(v.V_winkelgeschwindigkeit) = v.V_winkelgeschwindigkeit))  |
 		 ( v.V_SchrankenMotor = L_Schliessen & next(v.V_SchrankenMotor) = L_Schliessen & !((v.V_SchrankeGeschlossenSensor = L_SchrankeGeschlossen) & (v.V_AusfallMotor = L_Nein)) & (next(v.V_winkelgeschwindigkeit) = v.V_winkelgeschwindigkeit));
 MODULE _P_SchrankeOffenSensor(v)
@@ -211,14 +211,14 @@ MODULE _P_ZugFunkModul(v)
 		 ( v.V_ZugFunkModul = L_Bereit & next(v.V_ZugFunkModul) = L_Senden & ((v.V_ZugSteuerung = L_Einschalten) | (v.V_ZugSteuerung = L_Anfragen)) & (TRUE))  |
 		 ( v.V_ZugFunkModul = L_Bereit & next(v.V_ZugFunkModul) = L_Empfangen & (v.V_FunkKanal = L_BahnuebergangZuZug) & (TRUE))  |
 		 ( v.V_ZugFunkModul = L_Senden & next(v.V_ZugFunkModul) = L_SendenAbgeschlossen & (v.V_AusfallZugFunkModul = L_Nein) & (TRUE))  |
-		 ( v.V_ZugFunkModul = L_Senden & next(v.V_ZugFunkModul) = L_Bereit & (v.V_AusfallZugFunkModul = L_Ja) & (TRUE))  |
+		 ( v.V_ZugFunkModul = L_Senden & next(v.V_ZugFunkModul) = L_Bereit & (v.V_AusfallZugFunkModul != L_Nein) & (TRUE))  |
 		 ( v.V_ZugFunkModul = L_SendenAbgeschlossen & next(v.V_ZugFunkModul) = L_Bereit & TRUE & (TRUE))  |
 		 ( v.V_ZugFunkModul = L_Empfangen & next(v.V_ZugFunkModul) = L_EmpfangenAbgeschlossen & (v.V_AusfallZugFunkModul = L_Nein) & (TRUE))  |
-		 ( v.V_ZugFunkModul = L_Empfangen & next(v.V_ZugFunkModul) = L_Bereit & ((v.V_AusfallZugFunkModul = L_Ja) | (v.V_BahnFunkModul = L_Bereit)) & (TRUE))  |
+		 ( v.V_ZugFunkModul = L_Empfangen & next(v.V_ZugFunkModul) = L_Bereit & (v.V_AusfallZugFunkModul != L_Nein) & (TRUE))  |
 		 ( v.V_ZugFunkModul = L_EmpfangenAbgeschlossen & next(v.V_ZugFunkModul) = L_Bereit & TRUE & (TRUE))  |
 		 ( v.V_ZugFunkModul = L_Bereit & next(v.V_ZugFunkModul) = L_Bereit & (!((v.V_ZugSteuerung = L_Einschalten) | (v.V_ZugSteuerung = L_Anfragen)) & !(v.V_FunkKanal = L_BahnuebergangZuZug)) & (TRUE))  |
-		 ( v.V_ZugFunkModul = L_Senden & next(v.V_ZugFunkModul) = L_Senden & (!(v.V_AusfallZugFunkModul = L_Nein) & !(v.V_AusfallZugFunkModul = L_Ja)) & (TRUE))  |
-		 ( v.V_ZugFunkModul = L_Empfangen & next(v.V_ZugFunkModul) = L_Empfangen & (!(v.V_AusfallZugFunkModul = L_Nein) & !((v.V_AusfallZugFunkModul = L_Ja) | (v.V_BahnFunkModul = L_Bereit))) & (TRUE));
+		 ( v.V_ZugFunkModul = L_Senden & next(v.V_ZugFunkModul) = L_Senden & (!(v.V_AusfallZugFunkModul = L_Nein) & !(v.V_AusfallZugFunkModul != L_Nein)) & (TRUE))  |
+		 ( v.V_ZugFunkModul = L_Empfangen & next(v.V_ZugFunkModul) = L_Empfangen & (!(v.V_AusfallZugFunkModul = L_Nein) & !(v.V_AusfallZugFunkModul != L_Nein)) & (TRUE));
 MODULE _P_ZugSensor(v)
 	INIT
 		(v.V_ZugSensor = L_Bereit) & (TRUE)
@@ -238,14 +238,14 @@ MODULE _P_ZugSteuerung(v)
 		 ( v.V_ZugSteuerung = L_Eingeschaltet & next(v.V_ZugSteuerung) = L_Anfragen & ((v.V_diskretePosition >= (((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))) - ((2 * v.V_c) * v.V_diskreteGeschwindigkeit))) & (v.V_diskretePosition < ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))))) & (TRUE))  |
 		 ( v.V_ZugSteuerung = L_Eingeschaltet & next(v.V_ZugSteuerung) = L_Zwangsbremsung & (v.V_diskretePosition >= ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a)))) & (TRUE))  |
 		 ( v.V_ZugSteuerung = L_Angefragt & next(v.V_ZugSteuerung) = L_Zwangsbremsung & (v.V_diskretePosition >= ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a)))) & (TRUE))  |
-		 ( v.V_ZugSteuerung = L_Angefragt & next(v.V_ZugSteuerung) = L_Uebergangsgesichert & ((v.V_ZugFunkModul = L_EmpfangenAbgeschlossen) & (v.V_diskretePosition < ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))))) & (TRUE))  |
+		 ( v.V_ZugSteuerung = L_Angefragt & next(v.V_ZugSteuerung) = L_UebergangGesichert & ((v.V_ZugFunkModul = L_EmpfangenAbgeschlossen) & (v.V_diskretePosition < ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))))) & (TRUE))  |
 		 ( v.V_ZugSteuerung = L_Bereit & next(v.V_ZugSteuerung) = L_Bereit & !(v.V_diskretePosition >= ((((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))) - ((2 * v.V_c) * v.V_diskreteGeschwindigkeit)) - (v.V_diskreteGeschwindigkeit * (v.V_t + v.V_c)))) & (TRUE))  |
 		 ( v.V_ZugSteuerung = L_Einschalten & next(v.V_ZugSteuerung) = L_Einschalten & (!((v.V_ZugFunkModul = L_SendenAbgeschlossen) & (v.V_diskretePosition < ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))))) & !(v.V_diskretePosition >= ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))))) & (TRUE))  |
 		 ( v.V_ZugSteuerung = L_Anfragen & next(v.V_ZugSteuerung) = L_Anfragen & (!((v.V_ZugFunkModul = L_SendenAbgeschlossen) & (v.V_diskretePosition < ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))))) & !(v.V_diskretePosition >= ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))))) & (TRUE))  |
 		 ( v.V_ZugSteuerung = L_Zwangsbremsung & next(v.V_ZugSteuerung) = L_Zwangsbremsung & TRUE & (TRUE))  |
 		 ( v.V_ZugSteuerung = L_Eingeschaltet & next(v.V_ZugSteuerung) = L_Eingeschaltet & (!((v.V_diskretePosition >= (((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))) - ((2 * v.V_c) * v.V_diskreteGeschwindigkeit))) & (v.V_diskretePosition < ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))))) & !(v.V_diskretePosition >= ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))))) & (TRUE))  |
 		 ( v.V_ZugSteuerung = L_Angefragt & next(v.V_ZugSteuerung) = L_Angefragt & (!(v.V_diskretePosition >= ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a)))) & !((v.V_ZugFunkModul = L_EmpfangenAbgeschlossen) & (v.V_diskretePosition < ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a)))))) & (TRUE))  |
-		 ( v.V_ZugSteuerung = L_Uebergangsgesichert & next(v.V_ZugSteuerung) = L_Uebergangsgesichert & TRUE & (TRUE));
+		 ( v.V_ZugSteuerung = L_UebergangGesichert & next(v.V_ZugSteuerung) = L_UebergangGesichert & TRUE & (TRUE));
 MODULE main
 	VAR
 		v : _VARS();
@@ -322,7 +322,7 @@ LTLSPEC G(noFaults) -> (F(v.V_diskretePosition >= EP) & F(v.V_diskretePosition >
 -- CTLSPEC AG((v.V_position >= EP  & v.V_position < AP) -> EF(v.V_BahnUebergang = L_Gesichert & v.V_position < AP))
 
 --11- Wenn der Zug best?gt wird nach Anfrage Punkt vor BEP, ist der Bahn??gang gesichert
-LTLSPEC G(noFaults) -> G((v.V_position >= AP & v.V_position < BEP & v.V_ZugSteuerung = L_Uebergangsgesichert) -> v.V_BahnUebergang = L_Gesichert)
+LTLSPEC G(noFaults) -> G((v.V_position >= AP & v.V_position < BEP & v.V_ZugSteuerung = L_UebergangGesichert) -> v.V_BahnUebergang = L_Gesichert)
 
 --12- : Schranken bleiben nicht geschlossen
 LTLSPEC G(noFaults) -> G(v.V_winkel = 0 -> F(v.V_winkel = 90) )
@@ -359,12 +359,12 @@ LTLSPEC  (G(v.V_AusfallBremse = L_Nein & v.V_AusfallHodometer = L_Nein &
 		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
 		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallSecured != L_Nein)) -> G(Hazard)
 
--- V_AusfallBremse : SINGLE POINT OF FALURE 
+-- V_AusfallBremse 
 LTLSPEC  (G(v.V_AusfallSecured = L_Nein & v.V_AusfallHodometer = L_Nein & 
 		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
 		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallBremse != L_Nein)) -> G(Hazard)
 
--- V_AusfallHodometer : SINGLE POINT OF FALURE 
+-- V_AusfallHodometer : SINGLE POINT OF FAILURE 
 LTLSPEC  (G( v.V_AusfallSecured = L_Nein & v.V_AusfallBremse = L_Nein & 
 		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
 		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallHodometer != L_Nein) ) -> G(Hazard)
@@ -374,7 +374,7 @@ LTLSPEC  (G(v.V_AusfallSecured = L_Nein & v.V_AusfallHodometer = L_Nein &
 		v.V_AusfallBremse = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
 		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallMotor != L_Nein)) -> G(Hazard)
 
--- V_AusfallSchrankeGeschlossen
+-- V_AusfallSchrankeGeschlossen : SINGLE POINT OF FAILURE
 LTLSPEC  (G(v.V_AusfallSecured = L_Nein & v.V_AusfallHodometer = L_Nein & 
 		v.V_AusfallBremse = L_Nein & v.V_AusfallMotor = L_Nein & v.V_AusfallZugFunkModul = L_Nein
 		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallSchrankeGeschlossen != L_Nein)) -> G(Hazard)
@@ -384,7 +384,42 @@ LTLSPEC  (G(v.V_AusfallSecured = L_Nein & v.V_AusfallHodometer = L_Nein &
 		v.V_AusfallBremse = L_Nein & v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein
 		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallZugFunkModul != L_Nein)) -> G(Hazard)
 		
--- V_AusfallZugSensor		
+-- V_AusfallZugSensor : SINGLE POINT OF FAILURE		
 LTLSPEC  (G(v.V_AusfallSecured = L_Nein & v.V_AusfallHodometer = L_Nein & 
 		v.V_AusfallBremse = L_Nein & v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein
 		& v.V_AusfallZugFunkModul = L_Nein) & F(v.V_AusfallZugSensor != L_Nein)) -> G(Hazard)
+		
+		
+		
+		
+-- 	Testing 2 Failures (excluding single points of failure)	
+
+-- V_AusfallSecured & V_AusfallBremse
+LTLSPEC  (G(v.V_AusfallHodometer = L_Nein & 
+		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
+		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallSecured != L_Nein) & F(v.V_AusfallBremse != L_Nein)) -> G(Hazard)
+
+-- V_AusfallSecured & V_AusfallMotor
+LTLSPEC  (G(v.V_AusfallBremse = L_Nein & v.V_AusfallHodometer = L_Nein & 
+		v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
+		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallSecured != L_Nein) & F(v.V_AusfallMotor != L_Nein)) -> G(Hazard)
+
+-- V_AusfallSecured & V_AusfallZugFunkModul
+LTLSPEC  (G(v.V_AusfallBremse = L_Nein & v.V_AusfallHodometer = L_Nein & 
+		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein
+		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallSecured != L_Nein) & F(v.V_AusfallZugFunkModul != L_Nein)) -> G(Hazard)
+		
+-- V_AusfallBremse & V_AusfallMotor
+LTLSPEC  (G(v.V_AusfallSecured = L_Nein & v.V_AusfallHodometer = L_Nein & 
+		v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
+		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallBremse != L_Nein) & F(v.V_AusfallMotor != L_Nein)) -> G(Hazard)
+		
+-- V_AusfallBremse & V_AusfallZugFunkModul
+LTLSPEC  (G(v.V_AusfallSecured = L_Nein & v.V_AusfallHodometer = L_Nein & 
+		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein 
+		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallBremse != L_Nein) & F(v.V_AusfallZugFunkModul != L_Nein)) -> G(Hazard)
+		
+-- V_AusfallMotor & V_AusfallZugFunkModul
+LTLSPEC  (G(v.V_AusfallSecured = L_Nein & v.V_AusfallHodometer = L_Nein & 
+		v.V_AusfallBremse = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein 
+		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallMotor != L_Nein) & F(v.V_AusfallZugFunkModul != L_Nein)) -> G(Hazard)

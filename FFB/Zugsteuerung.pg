@@ -52,11 +52,11 @@
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Zwangsbremsung" />
         </transition>
         <transition Id="d87e4c1a-1250-4141-b3e6-788bccb21c9d" guard="ZugFunkModul == EmpfangenAbgeschlossen  &amp;&amp; diskretePosition &lt; _BEP" label="ZugFunkModul == EmpfangenAbgeschlossen  &amp;&amp; diskretePosition &lt; _BEP">
-          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Uebergangsgesichert" />
+          <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/UebergangGesichert" />
         </transition>
       </successors>
     </state>
-    <state Id="e0572eef-2f17-4a09-890c-1ee778b7fe07" name="Uebergangsgesichert" />
+    <state Id="e0572eef-2f17-4a09-890c-1ee778b7fe07" name="UebergangGesichert" />
   </states>
   <comments>
     <programGraphHasComments Id="73d674ac-c567-4f08-b800-502151fec1bb">

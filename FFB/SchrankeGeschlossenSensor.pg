@@ -10,7 +10,7 @@
     </initialNode>
     <state Id="d996149b-7a02-4986-90af-f1738896a221" name="SchrankeNichtGeschlossen">
       <successors>
-        <transition Id="352045f5-da90-41a5-82ed-bb29b4d1ee97" guard="winkel &lt;= 2 * maxWinkelgeschwindigkeit" label="winkel &lt;= 2 * maxWinkelgeschwindigkeit">
+        <transition Id="352045f5-da90-41a5-82ed-bb29b4d1ee97" guard="winkel &lt;= 2 * maxWinkelgeschwindigkeit || AusfallSchrankeGeschlossen != Nein" label="winkel &lt;= 2 * maxWinkelgeschwindigkeit || AusfallSchrankeGeschlossen != Nein">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/SchrankeGeschlossen" />
         </transition>
       </successors>

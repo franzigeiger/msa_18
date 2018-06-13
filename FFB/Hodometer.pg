@@ -13,7 +13,7 @@
         <transition Id="5f7b4242-b098-443d-ab31-705e1a51793c" guard="AusfallHodometer == Nein" action="diskreteGeschwindigkeit := geschwindigkeit | diskretePosition := position" label="AusfallHodometer == Nein // diskreteGeschwindigkeit := geschwindigkeit | diskretePosition := position" precondition="(((geschwindigkeit&gt;=0)&amp;&amp;(geschwindigkeit&lt;=45))&amp;&amp;((position&gt;=0)&amp;&amp;(position&lt;=3060)))">
           <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Hodometer" />
         </transition>
-        <transition Id="1a8059f6-4e09-41c9-9d3c-0e2d145ebbb9" guard="AusfallHodometer != Nein" action="diskreteGeschwindigkeit := geschwindigkeit | diskretePosition := position - 100" label="AusfallHodometer != Nein // diskreteGeschwindigkeit := geschwindigkeit | diskretePosition := position - 100" precondition="(((geschwindigkeit&gt;=0)&amp;&amp;(geschwindigkeit&lt;=45))&amp;&amp;((position&gt;=100)&amp;&amp;(position&lt;=3060)))">
+        <transition Id="1a8059f6-4e09-41c9-9d3c-0e2d145ebbb9" guard="AusfallHodometer != Nein" action="diskreteGeschwindigkeit := geschwindigkeit | diskretePosition := 0" label="AusfallHodometer != Nein // diskreteGeschwindigkeit := geschwindigkeit | diskretePosition := 0" precondition="(((geschwindigkeit&gt;=0)&amp;&amp;(geschwindigkeit&lt;=45))&amp;&amp;((position&gt;=100)&amp;&amp;(position&lt;=3060)))">
           <stateMoniker name="/847cbdc1-9aa8-4422-95d0-cb91c466b3a7/Hodometer" />
         </transition>
       </successors>
