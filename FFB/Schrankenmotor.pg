@@ -10,10 +10,10 @@
     </initialNode>
     <state Id="7e98e588-0fa7-4da3-82a5-ed2233c88cfc" name="Aus">
       <successors>
-        <transition Id="35a13906-649d-4e1d-810a-21e1c30ad2bd" guard="BahnUebergangsSteuerung == Entsichern &amp;&amp; SchrankeOffenSensor != SchrankeOffen" action="winkelgeschwindigkeit := 10" label="BahnUebergangsSteuerung == Entsichern &amp;&amp; SchrankeOffenSensor != SchrankeOffen // winkelgeschwindigkeit := 10" precondition="auto">
+        <transition Id="35a13906-649d-4e1d-810a-21e1c30ad2bd" guard="BahnUebergangsSteuerung == Entsichern &amp;&amp; SchrankeOffenSensor != SchrankeOffen &amp;&amp; AusfallMotor != Nein" action="winkelgeschwindigkeit := 10" label="BahnUebergangsSteuerung == Entsichern &amp;&amp; SchrankeOffenSensor != SchrankeOffen &amp;&amp; AusfallMotor != Nein // winkelgeschwindigkeit := 10" precondition="auto">
           <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Oeffnen" />
         </transition>
-        <transition Id="4f96cbbf-461c-4910-9558-586cea0ff4d0" guard="BahnUebergangsSteuerung == Sichern &amp;&amp; SchrankeGeschlossenSensor != SchrankeGeschlossen" action="winkelgeschwindigkeit := -10" label="BahnUebergangsSteuerung == Sichern &amp;&amp; SchrankeGeschlossenSensor != SchrankeGeschlossen // winkelgeschwindigkeit := -10" precondition="auto">
+        <transition Id="4f96cbbf-461c-4910-9558-586cea0ff4d0" guard="BahnUebergangsSteuerung == Sichern &amp;&amp; SchrankeGeschlossenSensor != SchrankeGeschlossen &amp;&amp; AusfallMotor != Nein" action="winkelgeschwindigkeit := -10" label="BahnUebergangsSteuerung == Sichern &amp;&amp; SchrankeGeschlossenSensor != SchrankeGeschlossen &amp;&amp; AusfallMotor != Nein // winkelgeschwindigkeit := -10" precondition="auto">
           <stateMoniker name="/2cfb5ced-7971-4926-b832-0b53197c75d0/Schliessen" />
         </transition>
       </successors>
