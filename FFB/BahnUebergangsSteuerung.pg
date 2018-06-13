@@ -17,10 +17,10 @@
     </state>
     <state Id="46d0bae3-0ee1-4b64-8fd7-86ffafe686b0" name="Sichern">
       <successors>
-        <transition Id="ee471b0a-e42d-48d8-b443-fc3a3254f47c" guard="(SchrankeGeschlossenSensor == SchrankeGeschlossen || AusfallSecured == Ja) &amp;&amp; BahnFunkModul == EmpfangenAbgeschlossen" label="(SchrankeGeschlossenSensor == SchrankeGeschlossen || AusfallSecured == Ja) &amp;&amp; BahnFunkModul == EmpfangenAbgeschlossen">
+        <transition Id="ee471b0a-e42d-48d8-b443-fc3a3254f47c" guard="(SchrankeGeschlossenSensor == SchrankeGeschlossen || AusfallSecured != Nein) &amp;&amp; BahnFunkModul == EmpfangenAbgeschlossen" label="(SchrankeGeschlossenSensor == SchrankeGeschlossen || AusfallSecured != Nein) &amp;&amp; BahnFunkModul == EmpfangenAbgeschlossen">
           <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/Bestaetigen" />
         </transition>
-        <transition Id="51c99822-4f5c-4de6-884f-0a01bb1997f3" guard="wartezeit &lt; maxWartezeit &amp;&amp; SchrankeGeschlossenSensor != SchrankeGeschlossen &amp;&amp; BahnFunkModul != EmpfangenAbgeschlossen" action="wartezeit := wartezeit + 1" label="wartezeit &lt; maxWartezeit &amp;&amp; SchrankeGeschlossenSensor != SchrankeGeschlossen &amp;&amp; BahnFunkModul != EmpfangenAbgeschlossen // wartezeit := wartezeit + 1" precondition="wartezeit &lt; maxWartezeit &amp;&amp; wartezeit &gt;= 0">
+        <transition Id="51c99822-4f5c-4de6-884f-0a01bb1997f3" guard="wartezeit &lt; maxWartezeit &amp;&amp; SchrankeGeschlossenSensor != SchrankeGeschlossen &amp;&amp; BahnFunkModul != EmpfangenAbgeschlossen &amp;&amp; AusfallSecured == Nein" action="wartezeit := wartezeit + 1" label="wartezeit &lt; maxWartezeit &amp;&amp; SchrankeGeschlossenSensor != SchrankeGeschlossen &amp;&amp; BahnFunkModul != EmpfangenAbgeschlossen &amp;&amp; AusfallSecured == Nein // wartezeit := wartezeit + 1" precondition="wartezeit &lt; maxWartezeit &amp;&amp; wartezeit &gt;= 0">
           <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/Sichern" />
         </transition>
         <transition Id="8008dace-8408-4ce6-be74-34c295078a37" guard="wartezeit == maxWartezeit" label="wartezeit == maxWartezeit">
@@ -33,7 +33,7 @@
         <transition Id="e745a241-7e0a-4443-a455-8244c31e9a38" guard="BahnFunkModul == SendenAbgeschlossen" label="BahnFunkModul == SendenAbgeschlossen">
           <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/Warten" />
         </transition>
-        <transition Id="3dad9ada-e414-4a73-8805-b1c02a31e3d9" guard="wartezeit &lt; maxWartezeit" action="wartezeit := wartezeit + 1" label="wartezeit &lt; maxWartezeit // wartezeit := wartezeit + 1" precondition="wartezeit &lt; maxWartezeit &amp;&amp; wartezeit &gt;= 0">
+        <transition Id="3dad9ada-e414-4a73-8805-b1c02a31e3d9" guard="wartezeit &lt; maxWartezeit &amp;&amp; BahnFunkModul != SendenAbgeschlossen" action="wartezeit := wartezeit + 1" label="wartezeit &lt; maxWartezeit &amp;&amp; BahnFunkModul != SendenAbgeschlossen // wartezeit := wartezeit + 1" precondition="wartezeit &lt; maxWartezeit &amp;&amp; wartezeit &gt;= 0">
           <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/Bestaetigen" />
         </transition>
         <transition Id="e8ac46c3-ad43-406c-b179-10b717f12915" guard="wartezeit == maxWartezeit" label="wartezeit == maxWartezeit">
@@ -46,7 +46,7 @@
         <transition Id="6ed8befb-94ec-44b4-a6c4-edc7d6fc3948" guard="wartezeit == maxWartezeit || ZugSensor == ZugPassiert" label="wartezeit == maxWartezeit || ZugSensor == ZugPassiert">
           <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/Entsichern" />
         </transition>
-        <transition Id="9c3d251a-6242-4d2e-85d0-3ae46b5e3571" guard="wartezeit &lt; maxWartezeit" action="wartezeit := wartezeit + 1" label="wartezeit &lt; maxWartezeit // wartezeit := wartezeit + 1" precondition="wartezeit &lt; maxWartezeit &amp;&amp; wartezeit &gt;= 0">
+        <transition Id="9c3d251a-6242-4d2e-85d0-3ae46b5e3571" guard="wartezeit &lt; maxWartezeit &amp;&amp; ZugSensor != ZugPassiert" action="wartezeit := wartezeit + 1" label="wartezeit &lt; maxWartezeit &amp;&amp; ZugSensor != ZugPassiert // wartezeit := wartezeit + 1" precondition="wartezeit &lt; maxWartezeit &amp;&amp; wartezeit &gt;= 0">
           <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/Warten" />
         </transition>
       </successors>
