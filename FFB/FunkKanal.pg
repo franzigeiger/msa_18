@@ -20,14 +20,14 @@
     </state>
     <state Id="c0131544-ecdb-486d-b473-62e7c2d97b49" name="ZugZuBahnuebergang">
       <successors>
-        <transition Id="4fa501c2-ac84-47be-a5b5-7737461daa43" guard="ZugFunkModul == Bereit || ZugFunkModul == SendenAbgeschlossen" label="ZugFunkModul == Bereit || ZugFunkModul == SendenAbgeschlossen">
+        <transition Id="4fa501c2-ac84-47be-a5b5-7737461daa43" guard="ZugFunkModul != Senden" label="ZugFunkModul != Senden">
           <stateMoniker name="/98c1b09a-f6ee-4d5c-8c34-bf48f3d06173/KeinFunk" />
         </transition>
       </successors>
     </state>
     <state Id="2d2ac1a8-75d9-4350-b4f4-c6965bdd795e" name="BahnuebergangZuZug">
       <successors>
-        <transition Id="8ebcf0a2-b3b8-403d-a956-a6d7af2f4f09" guard="BahnFunkModul == Bereit || BahnFunkModul == SendenAbgeschlossen" label="BahnFunkModul == Bereit || BahnFunkModul == SendenAbgeschlossen">
+        <transition Id="8ebcf0a2-b3b8-403d-a956-a6d7af2f4f09" guard="BahnFunkModul != Senden" label="BahnFunkModul != Senden">
           <stateMoniker name="/98c1b09a-f6ee-4d5c-8c34-bf48f3d06173/KeinFunk" />
         </transition>
       </successors>
