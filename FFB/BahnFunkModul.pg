@@ -34,10 +34,10 @@
     </state>
     <state Id="e1dee179-2dbb-4b83-a063-e38c61b32be3" name="Empfangen">
       <successors>
-        <transition Id="190a68fb-c0db-4fbe-9680-b5d4ada907a6" guard="ZugFunkModul == SendenAbgeschlossen" label="ZugFunkModul == SendenAbgeschlossen">
+        <transition Id="190a68fb-c0db-4fbe-9680-b5d4ada907a6" guard="AusfallZugFunkModul == Nein" label="AusfallZugFunkModul == Nein">
           <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/EmpfangenAbgeschlossen" />
         </transition>
-        <transition Id="bb0c39c0-3e6c-4443-9ab5-db6c23fc7ed0" guard="ZugFunkModul == Bereit" label="ZugFunkModul == Bereit">
+        <transition Id="bb0c39c0-3e6c-4443-9ab5-db6c23fc7ed0" guard="AusfallZugFunkModul != Nein" label="AusfallZugFunkModul != Nein">
           <stateMoniker name="/6be636bb-a7a5-460d-a7ef-6061c0687c98/Bereit" />
         </transition>
       </successors>
@@ -67,6 +67,9 @@
     </programGraphHasImportedVariables>
     <programGraphHasImportedVariables Id="fb7b4403-bfba-4e48-8975-e16a4f70039a">
       <importedVariable Id="0578e7aa-1e1c-4f48-a238-777caa72ca07" name="BahnUebergangsSteuerung" range="Bereit, Sichern, Bestaetigen, Warten, Entsichern" />
+    </programGraphHasImportedVariables>
+    <programGraphHasImportedVariables Id="5dc7166d-310b-44d0-a662-c4e78144293e">
+      <importedVariable Id="a06928eb-07e8-4655-82c1-f7bb2a9dd407" name="AusfallZugFunkModul" range="Nein, Ja" />
     </programGraphHasImportedVariables>
   </importedVariables>
 </programGraph>
