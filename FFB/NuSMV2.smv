@@ -183,13 +183,13 @@ MODULE _P_SchrankenMotor(v)
 	INIT
 		(v.V_SchrankenMotor = L_Aus) & ((v.V_winkelgeschwindigkeit = 0))
 	TRANS
-		 ( v.V_SchrankenMotor = L_Aus & next(v.V_SchrankenMotor) = L_Oeffnen & ((v.V_BahnUebergangsSteuerung = L_Entsichern) & (v.V_SchrankeOffenSensor != L_SchrankeOffen)) & (next(v.V_winkelgeschwindigkeit) = 10))  |
-		 ( v.V_SchrankenMotor = L_Aus & next(v.V_SchrankenMotor) = L_Schliessen & ((v.V_BahnUebergangsSteuerung = L_Sichern) & (v.V_SchrankeGeschlossenSensor != L_SchrankeGeschlossen)) & (next(v.V_winkelgeschwindigkeit) = -10))  |
-		 ( v.V_SchrankenMotor = L_Oeffnen & next(v.V_SchrankenMotor) = L_Aus & ((v.V_SchrankeOffenSensor = L_SchrankeOffen) & (v.V_AusfallMotor = L_Nein)) & (next(v.V_winkelgeschwindigkeit) = 0))  |
-		 ( v.V_SchrankenMotor = L_Schliessen & next(v.V_SchrankenMotor) = L_Aus & ((v.V_SchrankeGeschlossenSensor = L_SchrankeGeschlossen) & (v.V_AusfallMotor = L_Nein)) & (next(v.V_winkelgeschwindigkeit) = 0))  |
-		 ( v.V_SchrankenMotor = L_Aus & next(v.V_SchrankenMotor) = L_Aus & (!((v.V_BahnUebergangsSteuerung = L_Entsichern) & (v.V_SchrankeOffenSensor != L_SchrankeOffen)) & !((v.V_BahnUebergangsSteuerung = L_Sichern) & (v.V_SchrankeGeschlossenSensor != L_SchrankeGeschlossen))) & (next(v.V_winkelgeschwindigkeit) = v.V_winkelgeschwindigkeit))  |
-		 ( v.V_SchrankenMotor = L_Oeffnen & next(v.V_SchrankenMotor) = L_Oeffnen & !((v.V_SchrankeOffenSensor = L_SchrankeOffen) & (v.V_AusfallMotor = L_Nein)) & (next(v.V_winkelgeschwindigkeit) = v.V_winkelgeschwindigkeit))  |
-		 ( v.V_SchrankenMotor = L_Schliessen & next(v.V_SchrankenMotor) = L_Schliessen & !((v.V_SchrankeGeschlossenSensor = L_SchrankeGeschlossen) & (v.V_AusfallMotor = L_Nein)) & (next(v.V_winkelgeschwindigkeit) = v.V_winkelgeschwindigkeit));
+		 ( v.V_SchrankenMotor = L_Aus & next(v.V_SchrankenMotor) = L_Oeffnen & (((v.V_BahnUebergangsSteuerung = L_Entsichern) & (v.V_SchrankeOffenSensor != L_SchrankeOffen)) & (v.V_AusfallMotor = L_Nein)) & (next(v.V_winkelgeschwindigkeit) = 10))  |
+		 ( v.V_SchrankenMotor = L_Aus & next(v.V_SchrankenMotor) = L_Schliessen & (((v.V_BahnUebergangsSteuerung = L_Sichern) & (v.V_SchrankeGeschlossenSensor != L_SchrankeGeschlossen)) & (v.V_AusfallMotor = L_Nein)) & (next(v.V_winkelgeschwindigkeit) = -10))  |
+		 ( v.V_SchrankenMotor = L_Oeffnen & next(v.V_SchrankenMotor) = L_Aus & ((v.V_SchrankeOffenSensor = L_SchrankeOffen) | (v.V_AusfallMotor != L_Nein)) & (next(v.V_winkelgeschwindigkeit) = 0))  |
+		 ( v.V_SchrankenMotor = L_Schliessen & next(v.V_SchrankenMotor) = L_Aus & ((v.V_SchrankeGeschlossenSensor = L_SchrankeGeschlossen) | (v.V_AusfallMotor != L_Nein)) & (next(v.V_winkelgeschwindigkeit) = 0))  |
+		 ( v.V_SchrankenMotor = L_Aus & next(v.V_SchrankenMotor) = L_Aus & (!(((v.V_BahnUebergangsSteuerung = L_Entsichern) & (v.V_SchrankeOffenSensor != L_SchrankeOffen)) & (v.V_AusfallMotor = L_Nein)) & !(((v.V_BahnUebergangsSteuerung = L_Sichern) & (v.V_SchrankeGeschlossenSensor != L_SchrankeGeschlossen)) & (v.V_AusfallMotor = L_Nein))) & (next(v.V_winkelgeschwindigkeit) = v.V_winkelgeschwindigkeit))  |
+		 ( v.V_SchrankenMotor = L_Oeffnen & next(v.V_SchrankenMotor) = L_Oeffnen & !((v.V_SchrankeOffenSensor = L_SchrankeOffen) | (v.V_AusfallMotor != L_Nein)) & (next(v.V_winkelgeschwindigkeit) = v.V_winkelgeschwindigkeit))  |
+		 ( v.V_SchrankenMotor = L_Schliessen & next(v.V_SchrankenMotor) = L_Schliessen & !((v.V_SchrankeGeschlossenSensor = L_SchrankeGeschlossen) | (v.V_AusfallMotor != L_Nein)) & (next(v.V_winkelgeschwindigkeit) = v.V_winkelgeschwindigkeit));
 MODULE _P_SchrankeOffenSensor(v)
 	INIT
 		(v.V_SchrankeOffenSensor = L_SchrankeOffen) & (TRUE)
