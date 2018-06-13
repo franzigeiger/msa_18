@@ -10,14 +10,14 @@
     </initialNode>
     <state Id="0b91f66b-8daa-4a51-b5f1-adb85dbf59ce" name="Gesichert">
       <successors>
-        <transition Id="47f3eb10-a4ee-4dde-aa0c-a5ddff8646a0" guard="winkel != 0 || SchrankenMotor== Oeffnen" label="winkel != 0 || SchrankenMotor== Oeffnen">
+        <transition Id="47f3eb10-a4ee-4dde-aa0c-a5ddff8646a0" guard="winkel &gt; 20 " label="winkel &gt; 20 ">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Ungesichert" />
         </transition>
       </successors>
     </state>
     <state Id="a49039ec-4157-4062-a502-38a36b60b3ec" name="Ungesichert">
       <successors>
-        <transition Id="f6364536-d0ec-4ff3-86da-743848c0ee09" guard="winkel == 0" label="winkel == 0">
+        <transition Id="f6364536-d0ec-4ff3-86da-743848c0ee09" guard="winkel &lt;= 20" label="winkel &lt;= 20">
           <stateMoniker name="/05707b4c-a06c-4e0b-9b05-a1cd7eb4af96/Gesichert" />
         </transition>
       </successors>
