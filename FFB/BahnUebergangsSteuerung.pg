@@ -17,7 +17,7 @@
     </state>
     <state Id="46d0bae3-0ee1-4b64-8fd7-86ffafe686b0" name="Sichern">
       <successors>
-        <transition Id="ee471b0a-e42d-48d8-b443-fc3a3254f47c" guard="(SchrankeGeschlossenSensor == SchrankeGeschlossen &amp;&amp; BahnFunkModul == EmpfangenAbgeschlossen) || AusfallSecured != Nein" label="(SchrankeGeschlossenSensor == SchrankeGeschlossen &amp;&amp; BahnFunkModul == EmpfangenAbgeschlossen) || AusfallSecured != Nein">
+        <transition Id="ee471b0a-e42d-48d8-b443-fc3a3254f47c" guard="(SchrankeGeschlossenSensor == SchrankeGeschlossen || AusfallSecured != Nein) &amp;&amp; BahnFunkModul == EmpfangenAbgeschlossen" label="(SchrankeGeschlossenSensor == SchrankeGeschlossen || AusfallSecured != Nein) &amp;&amp; BahnFunkModul == EmpfangenAbgeschlossen">
           <stateMoniker name="/f4af3e14-d9f4-4764-a2a5-9420417fe2fa/Bestaetigen" />
         </transition>
         <transition Id="51c99822-4f5c-4de6-884f-0a01bb1997f3" guard="wartezeit &lt; maxWartezeit &amp;&amp; SchrankeGeschlossenSensor != SchrankeGeschlossen &amp;&amp; BahnFunkModul != EmpfangenAbgeschlossen &amp;&amp; AusfallSecured == Nein" action="wartezeit := wartezeit + 1" label="wartezeit &lt; maxWartezeit &amp;&amp; SchrankeGeschlossenSensor != SchrankeGeschlossen &amp;&amp; BahnFunkModul != EmpfangenAbgeschlossen &amp;&amp; AusfallSecured == Nein // wartezeit := wartezeit + 1" precondition="wartezeit &lt; maxWartezeit &amp;&amp; wartezeit &gt;= 0">

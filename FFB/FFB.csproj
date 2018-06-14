@@ -60,6 +60,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="AusfallBahnUebergangSecured.pg" />
+    <None Include="AusfallBahnUebergangSecured.pg.diagram">
+      <DependentUpon>AusfallBahnUebergangSecured.pg</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AusfallZugFunkModul.pg" />
+    <None Include="AusfallZugFunkModul.pg.diagram">
+      <DependentUpon>AusfallZugFunkModul.pg</DependentUpon>
+    </None>
     <None Include="Einheiten.pg" />
     <None Include="Einheiten.pg.diagram">
       <DependentUpon>Einheiten.pg</DependentUpon>
