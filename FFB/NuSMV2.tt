@@ -3,3 +3,125 @@
 <#@ assembly Name="Safety.ProgramGraphDsl.dll" #>
 
 <#=  TransformToNuSMV() #>
+
+
+
+
+	DEFINE
+		EP := ((((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))) - ((2 * v.V_c) * v.V_diskreteGeschwindigkeit)) - (v.V_diskreteGeschwindigkeit * (v.V_t + v.V_c)));
+		AP := (((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))) - ((2 * v.V_c) * v.V_diskreteGeschwindigkeit));
+		BEP:= ((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a)));
+		GP := v.V_gp;
+		SP := v.V_sp;
+		
+		Hazard := (v.V_position >= GP & v.V_position < SP & v.V_BahnUebergang !=L_Gesichert );
+		
+		noFaults := v.V_AusfallSecured = L_Nein & v.V_AusfallBremse = L_Nein & v.V_AusfallHodometer = L_Nein & 
+		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
+		& v.V_AusfallZugSensor = L_Nein ;
+
+		
+-- Aufgabe 8
+
+--1- Geschwindigkeit des Zuges ??steigt nie 160 km/h bzw. 45 m/s
+LTLSPEC G(noFaults) -> G(v.V_diskreteGeschwindigkeit <= 45)
+
+--2- Hodometer misst immer Position und Geschwindigkeit des Zugs
+LTLSPEC G(noFaults) -> G(next(v.V_diskretePosition) = v.V_position & next(v.V_diskreteGeschwindigkeit) = v.V_geschwindigkeit)
+
+--3- Zugsensor misst immer, ob Zug an SP ist
+LTLSPEC G(noFaults) -> G((v.V_position >= v.V_sp -> v.V_ZugSensor = L_ZugPassiert) | (v.V_position < v.V_sp -> v.V_ZugSensor = L_Bereit))
+
+--4- wenn EP erreicht wird, wird eine Nachricht an die Bahn??gangssteuerung vor AP gesendet
+LTLSPEC G(noFaults) -> (F(v.V_position < AP) -> (((v.V_position >= EP & v.V_ZugSteuerung = L_Bereit)->(!(v.V_position < AP)U((v.V_ZugFunkModul = L_SendenAbgeschlossen) & !(v.V_position < AP))))U(v.V_position < AP)))
+
+--5- wenn Bahn??gangssteuerung im Zustand "Bereit" eine Nachricht erh? wird der Bahn??gang gesichert
+LTLSPEC G(noFaults) -> G((v.V_BahnUebergangsSteuerung = L_Bereit & v.V_BahnFunkModul = L_EmpfangenAbgeschlossen) -> F(v.V_BahnUebergang = L_Gesichert))
+
+--6- : Bahn??gang ist nur gesichert, wenn Schranke geschlossen ist
+LTLSPEC G(noFaults) -> G(v.V_BahnUebergang = L_Gesichert -> (v.V_winkel <= 30 ))
+
+--7- Zug bremst zwischen EP und BEP nicht
+LTLSPEC G(noFaults) -> G((v.V_position >= EP & v.V_position < BEP) -> v.V_Bremse = L_Aus)
+
+
+--8- GP nur erreicht wenn Bahn??gang gesichert ist HAZARD  --
+LTLSPEC G(noFaults) -> G(!Hazard)
+
+--9- Die Einschaltpunkt und Anfragepunkt werden erreicht
+LTLSPEC G(noFaults) -> (F(v.V_diskretePosition >= EP) & F(v.V_diskretePosition >= AP))
+
+
+--10- FALSE: Bahn??gang w?end Zug zwischen EP und AP kann gesichert werden
+-- CTLSPEC AG((v.V_position >= EP  & v.V_position < AP) -> EF(v.V_BahnUebergang = L_Gesichert & v.V_position < AP))
+
+--11- Wenn der Zug best?gt wird nach Anfrage Punkt vor BEP, ist der Bahn??gang gesichert
+LTLSPEC G(noFaults) -> G((v.V_position >= AP & v.V_position < BEP & v.V_ZugSteuerung = L_UebergangGesichert) -> v.V_BahnUebergang = L_Gesichert)
+
+--12- : Schranken bleiben nicht geschlossen
+LTLSPEC G(noFaults) -> G(v.V_winkel = 0 -> F(v.V_winkel = 90) )
+
+
+--13- : Wenn BEP erreicht und Bahn??gang bevor Zug SP erreicht nicht gesichert dann bremsen
+LTLSPEC G(noFaults) -> G((v.V_diskretePosition >= BEP & v.V_diskretePosition < SP & v.V_BahnUebergang = L_Ungesichert ) -> X(v.V_ZugSteuerung = L_Zwangsbremsung))
+
+--14- GP wird nicht erreicht nach Zwangsbremsung
+LTLSPEC G(noFaults) -> (v.V_ZugSteuerung = L_Zwangsbremsung -> G(!(v.V_position >= GP) ) )
+
+
+--15- Wenn die Bremse nie aktiviert wird passiert der Zug irgendwann den Bahnuebergang
+LTLSPEC G(noFaults) -> (G(v.V_Bremse = L_Aus) -> F(v.V_position >= v.V_sp))
+
+--16- Wenn die Bremse irgendwann aktiviert wird erreicht der Zug nie den Gefahrenpunkt:
+LTLSPEC G(noFaults) -> ( (F(v.V_Bremse = L_An)) -> G!(v.V_position >= GP) )
+
+--17- Wenn der Bahnuebergang nie gesichert wird erreicht der Zug nie den GP:
+LTLSPEC G(noFaults) -> (G(v.V_BahnUebergang = L_Ungesichert) -> G(v.V_position < GP) )
+
+--18- Wenn die Bremse aktiviert wird h? der Zug in einem spaeteren Schritt an:
+LTLSPEC G(noFaults) -> G(v.V_Bremse = L_An -> F(v.V_geschwindigkeit = 0))
+
+--19- Wenn die Bahnuebergangssteuerung von Bereit zu sichern wechselt, wird der Schrankenmotor im n?sten Schritt aktiviert
+LTLSPEC G(noFaults) -> G(v.V_BahnUebergangsSteuerung = L_Bereit & X(v.V_BahnUebergangsSteuerung = L_Sichern) -> X(v.V_SchrankenMotor = L_Aus & X(v.V_SchrankenMotor = L_Schliessen)))
+
+-- Aufgabe 9
+
+LTLSPEC  !(noFaults U (Hazard))
+
+-- V.V_AusfallZugSensor  
+LTLSPEC !( (v.V_AusfallSecured = L_Nein & v.V_AusfallBremse = L_Nein & 
+		v.V_AusfallMotor = L_Nein & v.V_AusfallHodometer = L_Nein & v.V_AusfallZugFunkModul = L_Nein
+		& v.V_SchrankeGeschlossenSensor = L_Nein ) U (Hazard) )
+
+		
+-- Kritische Menge (bis jetzt)
+
+
+-- V.V_AusfallHodometer
+LTLSPEC !( (v.V_AusfallSecured = L_Nein & v.V_AusfallBremse = L_Nein & 
+		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
+		& v.V_AusfallZugSensor = L_Nein ) U (Hazard) )
+		
+-- V.V_SchrankeGeschlossenSensor 
+LTLSPEC !( (v.V_AusfallSecured = L_Nein & v.V_AusfallBremse = L_Nein & 
+		v.V_AusfallMotor = L_Nein & v.V_AusfallHodometer = L_Nein & v.V_AusfallZugFunkModul = L_Nein
+		& v.V_AusfallZugSensor = L_Nein ) U (Hazard) )
+		
+		
+
+		
+		
+-- V.V_AusfallBremse & V.V_AusfallMotor 
+LTLSPEC !( (v.V_AusfallSecured = L_Nein  & v.V_AusfallHodometer = L_Nein 
+		& v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
+		& v.V_AusfallZugSensor = L_Nein ) U (Hazard) )
+		
+-- V_AusfallSecured & V_AusfallMotor		
+LTLSPEC !(( v.V_AusfallBremse = L_Nein & v.V_AusfallHodometer = L_Nein & 
+		v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
+		& v.V_AusfallZugSensor = L_Nein ) U (Hazard) )
+		
+-- V_AusfallSecured & V_AusfallBremse & v.V_AusfallZugFunkModul
+LTLSPEC !((v.V_AusfallHodometer = L_Nein & 
+		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein
+		& v.V_AusfallZugSensor = L_Nein) U (Hazard))

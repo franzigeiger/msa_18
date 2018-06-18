@@ -120,7 +120,7 @@ MODULE _P_BahnUebergangsSteuerung(v)
 		(v.V_BahnUebergangsSteuerung = L_Bereit) & (TRUE)
 	TRANS
 		 ( v.V_BahnUebergangsSteuerung = L_Bereit & next(v.V_BahnUebergangsSteuerung) = L_Sichern & ((v.V_BahnFunkModul = L_EmpfangenAbgeschlossen) & ((v.V_wartezeit >= 0) & (v.V_wartezeit <= v.V_maxWartezeit))) & (next(v.V_wartezeit) = 0))  |
-		 ( v.V_BahnUebergangsSteuerung = L_Sichern & next(v.V_BahnUebergangsSteuerung) = L_Bestaetigen & (((v.V_SchrankeGeschlossenSensor = L_SchrankeGeschlossen) & (v.V_BahnFunkModul = L_EmpfangenAbgeschlossen)) | (v.V_AusfallSecured != L_Nein)) & (next(v.V_wartezeit) = v.V_wartezeit))  |
+		 ( v.V_BahnUebergangsSteuerung = L_Sichern & next(v.V_BahnUebergangsSteuerung) = L_Bestaetigen & (((v.V_SchrankeGeschlossenSensor = L_SchrankeGeschlossen) | (v.V_AusfallSecured != L_Nein)) & (v.V_BahnFunkModul = L_EmpfangenAbgeschlossen)) & (next(v.V_wartezeit) = v.V_wartezeit))  |
 		 ( v.V_BahnUebergangsSteuerung = L_Sichern & next(v.V_BahnUebergangsSteuerung) = L_Sichern & (((((v.V_wartezeit < v.V_maxWartezeit) & (v.V_SchrankeGeschlossenSensor != L_SchrankeGeschlossen)) & (v.V_BahnFunkModul != L_EmpfangenAbgeschlossen)) & (v.V_AusfallSecured = L_Nein)) & ((v.V_wartezeit < v.V_maxWartezeit) & (v.V_wartezeit >= 0))) & (next(v.V_wartezeit) = (v.V_wartezeit + 1)))  |
 		 ( v.V_BahnUebergangsSteuerung = L_Sichern & next(v.V_BahnUebergangsSteuerung) = L_Entsichern & (v.V_wartezeit = v.V_maxWartezeit) & (next(v.V_wartezeit) = v.V_wartezeit))  |
 		 ( v.V_BahnUebergangsSteuerung = L_Bestaetigen & next(v.V_BahnUebergangsSteuerung) = L_Warten & (v.V_BahnFunkModul = L_SendenAbgeschlossen) & (next(v.V_wartezeit) = v.V_wartezeit))  |
@@ -130,7 +130,7 @@ MODULE _P_BahnUebergangsSteuerung(v)
 		 ( v.V_BahnUebergangsSteuerung = L_Warten & next(v.V_BahnUebergangsSteuerung) = L_Warten & (((v.V_wartezeit < v.V_maxWartezeit) & (v.V_ZugSensor != L_ZugPassiert)) & ((v.V_wartezeit < v.V_maxWartezeit) & (v.V_wartezeit >= 0))) & (next(v.V_wartezeit) = (v.V_wartezeit + 1)))  |
 		 ( v.V_BahnUebergangsSteuerung = L_Entsichern & next(v.V_BahnUebergangsSteuerung) = L_Bereit & (v.V_SchrankeOffenSensor = L_SchrankeOffen) & (next(v.V_wartezeit) = v.V_wartezeit))  |
 		 ( v.V_BahnUebergangsSteuerung = L_Bereit & next(v.V_BahnUebergangsSteuerung) = L_Bereit & !((v.V_BahnFunkModul = L_EmpfangenAbgeschlossen) & ((v.V_wartezeit >= 0) & (v.V_wartezeit <= v.V_maxWartezeit))) & (next(v.V_wartezeit) = v.V_wartezeit))  |
-		 ( v.V_BahnUebergangsSteuerung = L_Sichern & next(v.V_BahnUebergangsSteuerung) = L_Sichern & (!(((v.V_SchrankeGeschlossenSensor = L_SchrankeGeschlossen) & (v.V_BahnFunkModul = L_EmpfangenAbgeschlossen)) | (v.V_AusfallSecured != L_Nein)) & (!(((((v.V_wartezeit < v.V_maxWartezeit) & (v.V_SchrankeGeschlossenSensor != L_SchrankeGeschlossen)) & (v.V_BahnFunkModul != L_EmpfangenAbgeschlossen)) & (v.V_AusfallSecured = L_Nein)) & ((v.V_wartezeit < v.V_maxWartezeit) & (v.V_wartezeit >= 0))) & !(v.V_wartezeit = v.V_maxWartezeit))) & (next(v.V_wartezeit) = v.V_wartezeit))  |
+		 ( v.V_BahnUebergangsSteuerung = L_Sichern & next(v.V_BahnUebergangsSteuerung) = L_Sichern & (!(((v.V_SchrankeGeschlossenSensor = L_SchrankeGeschlossen) | (v.V_AusfallSecured != L_Nein)) & (v.V_BahnFunkModul = L_EmpfangenAbgeschlossen)) & (!(((((v.V_wartezeit < v.V_maxWartezeit) & (v.V_SchrankeGeschlossenSensor != L_SchrankeGeschlossen)) & (v.V_BahnFunkModul != L_EmpfangenAbgeschlossen)) & (v.V_AusfallSecured = L_Nein)) & ((v.V_wartezeit < v.V_maxWartezeit) & (v.V_wartezeit >= 0))) & !(v.V_wartezeit = v.V_maxWartezeit))) & (next(v.V_wartezeit) = v.V_wartezeit))  |
 		 ( v.V_BahnUebergangsSteuerung = L_Bestaetigen & next(v.V_BahnUebergangsSteuerung) = L_Bestaetigen & (!(v.V_BahnFunkModul = L_SendenAbgeschlossen) & (!(((v.V_wartezeit < v.V_maxWartezeit) & (v.V_BahnFunkModul != L_SendenAbgeschlossen)) & ((v.V_wartezeit < v.V_maxWartezeit) & (v.V_wartezeit >= 0))) & !(v.V_wartezeit = v.V_maxWartezeit))) & (next(v.V_wartezeit) = v.V_wartezeit))  |
 		 ( v.V_BahnUebergangsSteuerung = L_Warten & next(v.V_BahnUebergangsSteuerung) = L_Warten & (!((v.V_wartezeit = v.V_maxWartezeit) | (v.V_ZugSensor = L_ZugPassiert)) & !(((v.V_wartezeit < v.V_maxWartezeit) & (v.V_ZugSensor != L_ZugPassiert)) & ((v.V_wartezeit < v.V_maxWartezeit) & (v.V_wartezeit >= 0)))) & (next(v.V_wartezeit) = v.V_wartezeit))  |
 		 ( v.V_BahnUebergangsSteuerung = L_Entsichern & next(v.V_BahnUebergangsSteuerung) = L_Entsichern & !(v.V_SchrankeOffenSensor = L_SchrankeOffen) & (next(v.V_wartezeit) = v.V_wartezeit));
@@ -274,6 +274,10 @@ MODULE main
 
 
 
+
+
+
+
 	DEFINE
 		EP := ((((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))) - ((2 * v.V_c) * v.V_diskreteGeschwindigkeit)) - (v.V_diskreteGeschwindigkeit * (v.V_t + v.V_c)));
 		AP := (((v.V_gp - v.V_z) - ((v.V_diskreteGeschwindigkeit * v.V_diskreteGeschwindigkeit) / (2 * v.V_a))) - ((2 * v.V_c) * v.V_diskreteGeschwindigkeit));
@@ -281,12 +285,13 @@ MODULE main
 		GP := v.V_gp;
 		SP := v.V_sp;
 		
-		Hazard := ((v.V_position >= GP & v.V_position < SP) -> v.V_BahnUebergang=L_Gesichert );
+		Hazard := (v.V_position >= GP & v.V_position < SP & v.V_BahnUebergang !=L_Gesichert );
 		
 		noFaults := v.V_AusfallSecured = L_Nein & v.V_AusfallBremse = L_Nein & v.V_AusfallHodometer = L_Nein & 
 		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
 		& v.V_AusfallZugSensor = L_Nein ;
 
+		
 -- Aufgabe 8
 
 --1- Geschwindigkeit des Zuges ??steigt nie 160 km/h bzw. 45 m/s
@@ -312,7 +317,7 @@ LTLSPEC G(noFaults) -> G((v.V_position >= EP & v.V_position < BEP) -> v.V_Bremse
 
 
 --8- GP nur erreicht wenn Bahn??gang gesichert ist HAZARD  --
-LTLSPEC G(noFaults) -> G(Hazard)
+LTLSPEC G(noFaults) -> G(!Hazard)
 
 --9- Die Einschaltpunkt und Anfragepunkt werden erreicht
 LTLSPEC G(noFaults) -> (F(v.V_diskretePosition >= EP) & F(v.V_diskretePosition >= AP))
@@ -352,83 +357,42 @@ LTLSPEC G(noFaults) -> G(v.V_BahnUebergangsSteuerung = L_Bereit & X(v.V_BahnUebe
 
 -- Aufgabe 9
 
--- Transient: V_AusfallZugFunkModul , V_AusfallHodometer . Hence, use F
+LTLSPEC  !(noFaults U (Hazard))
 
--- V_AusfallSecured
-LTLSPEC  (G(v.V_AusfallBremse = L_Nein & v.V_AusfallHodometer = L_Nein & 
+-- V.V_AusfallZugSensor  
+LTLSPEC !( (v.V_AusfallSecured = L_Nein & v.V_AusfallBremse = L_Nein & 
+		v.V_AusfallMotor = L_Nein & v.V_AusfallHodometer = L_Nein & v.V_AusfallZugFunkModul = L_Nein
+		& v.V_SchrankeGeschlossenSensor = L_Nein ) U (Hazard) )
+
+		
+-- Kritische Menge (bis jetzt)
+
+
+-- V.V_AusfallHodometer
+LTLSPEC !( (v.V_AusfallSecured = L_Nein & v.V_AusfallBremse = L_Nein & 
 		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
-		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallSecured != L_Nein)) -> G(Hazard)
-
--- V_AusfallBremse 
-LTLSPEC  (G(v.V_AusfallSecured = L_Nein & v.V_AusfallHodometer = L_Nein & 
-		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
-		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallBremse != L_Nein)) -> G(Hazard)
-
--- V_AusfallHodometer : SINGLE POINT OF FAILURE 
-LTLSPEC  (G( v.V_AusfallSecured = L_Nein & v.V_AusfallBremse = L_Nein & 
-		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
-		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallHodometer != L_Nein) ) -> G(Hazard)
-
--- V_AusfallMotor
-LTLSPEC  (G(v.V_AusfallSecured = L_Nein & v.V_AusfallHodometer = L_Nein & 
-		v.V_AusfallBremse = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
-		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallMotor != L_Nein)) -> G(Hazard)
-
--- V_AusfallSchrankeGeschlossen : SINGLE POINT OF FAILURE
-LTLSPEC  (G(v.V_AusfallSecured = L_Nein & v.V_AusfallHodometer = L_Nein & 
-		v.V_AusfallBremse = L_Nein & v.V_AusfallMotor = L_Nein & v.V_AusfallZugFunkModul = L_Nein
-		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallSchrankeGeschlossen != L_Nein)) -> G(Hazard)
+		& v.V_AusfallZugSensor = L_Nein ) U (Hazard) )
 		
--- V_AusfallZugFunkModul
-LTLSPEC  (G(v.V_AusfallSecured = L_Nein & v.V_AusfallHodometer = L_Nein & 
-		v.V_AusfallBremse = L_Nein & v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein
-		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallZugFunkModul != L_Nein)) -> G(Hazard)
-		
--- V_AusfallZugSensor : SINGLE POINT OF FAILURE		
-LTLSPEC  (G(v.V_AusfallSecured = L_Nein & v.V_AusfallHodometer = L_Nein & 
-		v.V_AusfallBremse = L_Nein & v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein
-		& v.V_AusfallZugFunkModul = L_Nein) & F(v.V_AusfallZugSensor != L_Nein)) -> G(Hazard)
+-- V.V_SchrankeGeschlossenSensor 
+LTLSPEC !( (v.V_AusfallSecured = L_Nein & v.V_AusfallBremse = L_Nein & 
+		v.V_AusfallMotor = L_Nein & v.V_AusfallHodometer = L_Nein & v.V_AusfallZugFunkModul = L_Nein
+		& v.V_AusfallZugSensor = L_Nein ) U (Hazard) )
 		
 		
+
 		
 		
--- 	Testing 2 Failures (excluding single points of failure)	
-
--- V_AusfallSecured & V_AusfallBremse
-LTLSPEC  (G(v.V_AusfallHodometer = L_Nein & 
-		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
-		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallSecured != L_Nein) & F(v.V_AusfallBremse != L_Nein)) -> G(Hazard)
-
--- V_AusfallSecured & V_AusfallMotor
-LTLSPEC  (G(v.V_AusfallBremse = L_Nein & v.V_AusfallHodometer = L_Nein & 
+-- V.V_AusfallBremse & V.V_AusfallMotor 
+LTLSPEC !( (v.V_AusfallSecured = L_Nein  & v.V_AusfallHodometer = L_Nein 
+		& v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
+		& v.V_AusfallZugSensor = L_Nein ) U (Hazard) )
+		
+-- V_AusfallSecured & V_AusfallMotor		
+LTLSPEC !(( v.V_AusfallBremse = L_Nein & v.V_AusfallHodometer = L_Nein & 
 		v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
-		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallSecured != L_Nein) & F(v.V_AusfallMotor != L_Nein)) -> G(Hazard)
-
--- V_AusfallSecured & V_AusfallZugFunkModul
-LTLSPEC  (G(v.V_AusfallBremse = L_Nein & v.V_AusfallHodometer = L_Nein & 
+		& v.V_AusfallZugSensor = L_Nein ) U (Hazard) )
+		
+-- V_AusfallSecured & V_AusfallBremse & v.V_AusfallZugFunkModul
+LTLSPEC !((v.V_AusfallHodometer = L_Nein & 
 		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein
-		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallSecured != L_Nein) & F(v.V_AusfallZugFunkModul != L_Nein)) -> G(Hazard)
-		
--- V_AusfallBremse & V_AusfallMotor
-LTLSPEC  (G(v.V_AusfallSecured = L_Nein & v.V_AusfallHodometer = L_Nein & 
-		v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
-		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallBremse != L_Nein) & F(v.V_AusfallMotor != L_Nein)) -> G(Hazard)
-		
--- V_AusfallBremse & V_AusfallZugFunkModul
-LTLSPEC  (G(v.V_AusfallSecured = L_Nein & v.V_AusfallHodometer = L_Nein & 
-		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein 
-		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallBremse != L_Nein) & F(v.V_AusfallZugFunkModul != L_Nein)) -> G(Hazard)
-		
--- V_AusfallMotor & V_AusfallZugFunkModul
-LTLSPEC  (G(v.V_AusfallSecured = L_Nein & v.V_AusfallHodometer = L_Nein & 
-		v.V_AusfallBremse = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein 
-		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallMotor != L_Nein) & F(v.V_AusfallZugFunkModul != L_Nein)) -> G(Hazard)
-		
-		
-		
--- Testing 3 Failures
-
--- V_AusfallSecured & V_AusfallBremse & AusfallZugFunkModul
-LTLSPEC  (G(v.V_AusfallHodometer = L_Nein & 
-		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein 
-		& v.V_AusfallZugSensor = L_Nein) & F(v.V_AusfallSecured != L_Nein) & F(v.V_AusfallBremse != L_Nein) & F(v.V_AusfallZugFunkModul = L_Nein)) -> G(Hazard)
+		& v.V_AusfallZugSensor = L_Nein) U (Hazard))
