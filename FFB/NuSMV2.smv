@@ -383,7 +383,18 @@ LTLSPEC !( (v.V_AusfallSecured = L_Nein & v.V_AusfallBremse = L_Nein & v.V_Ausfa
 		& v.V_AusfallZugSensor = L_Nein ) U (Hazard))
 
 
-
+-- V.V_AusfallZugFunModul & V_AusfallMotor
+LTLSPEC !( ( v.V_AusfallBremse = L_Nein & v.V_AusfallHodometer = L_Nein & 
+		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein 
+		& v.V_AusfallZugSensor = L_Nein ) U (Hazard))
+		
+-- Bremse ist mit den anderen nicht kritischen Ausf?lle kombiniren (au?er motor) f?hrt zu keinem Hazrad
+-- V.V_Bremse & V_AusfallSecured
+LTLSPEC !( ( v.V_AusfallHodometer = L_Nein & 
+		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
+		& v.V_AusfallZugSensor = L_Nein ) U (Hazard))
+		
+		
 -- Kritische Menge (bis jetzt)
 
 -- Single Points of Failures		
@@ -392,24 +403,28 @@ LTLSPEC !( ( v.V_AusfallSecured = L_Nein & v.V_AusfallBremse = L_Nein & v.V_Ausf
 		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein ) U (Hazard) )
 
 
--- V.V_AusfallHodometer
-LTLSPEC !( (v.V_AusfallSecured = L_Nein & v.V_AusfallBremse = L_Nein & 
-		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
-		& v.V_AusfallZugSensor = L_Nein ) U (Hazard) )
-		
 -- V.V_SchrankeGeschlossenSensor 
 LTLSPEC !( (v.V_AusfallSecured = L_Nein & v.V_AusfallBremse = L_Nein & 
 		v.V_AusfallMotor = L_Nein & v.V_AusfallHodometer = L_Nein & v.V_AusfallZugFunkModul = L_Nein
 		& v.V_AusfallZugSensor = L_Nein ) U (Hazard) )
-				
+
+-- V.V_AusfallHodometer
+LTLSPEC !( (v.V_AusfallSecured = L_Nein & v.V_AusfallBremse = L_Nein & 
+		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
+		& v.V_AusfallZugSensor = L_Nein ) U (Hazard) )
+
+-- V.V_Bremse & V_AusfallZugFunkModul
+LTLSPEC !( ( v.V_AusfallHodometer = L_Nein & 
+		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallSecured = L_Nein
+		& v.V_AusfallZugSensor = L_Nein ) U (Hazard))
 		
 -- V.V_AusfallBremse & V.V_AusfallMotor 
 LTLSPEC !( (v.V_AusfallSecured = L_Nein  & v.V_AusfallHodometer = L_Nein 
 		& v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
 		& v.V_AusfallZugSensor = L_Nein ) U (Hazard) )
 		
--- V_AusfallSecured & V_AusfallMotor		
-LTLSPEC !(( v.V_AusfallBremse = L_Nein & v.V_AusfallHodometer = L_Nein & 
+-- V_AusfallSecured & V_AusfallMotor
+LTLSPEC (TRUE) &  !(( v.V_AusfallBremse = L_Nein & v.V_AusfallHodometer = L_Nein & 
 		v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
 		& v.V_AusfallZugSensor = L_Nein ) U (Hazard) )
 		
