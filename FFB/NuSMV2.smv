@@ -424,7 +424,7 @@ LTLSPEC !( (v.V_AusfallSecured = L_Nein  & v.V_AusfallHodometer = L_Nein
 		& v.V_AusfallZugSensor = L_Nein ) U (Hazard) )
 		
 -- V_AusfallSecured & V_AusfallMotor
-LTLSPEC (TRUE) &  !(( v.V_AusfallBremse = L_Nein & v.V_AusfallHodometer = L_Nein & 
+LTLSPEC !(( v.V_AusfallBremse = L_Nein & v.V_AusfallHodometer = L_Nein & 
 		v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
 		& v.V_AusfallZugSensor = L_Nein ) U (Hazard) )
 		
