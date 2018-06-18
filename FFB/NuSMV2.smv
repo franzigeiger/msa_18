@@ -316,8 +316,8 @@ LTLSPEC G(noFaults) -> G(v.V_BahnUebergang = L_Gesichert -> (v.V_winkel <= 30 ))
 LTLSPEC G(noFaults) -> G((v.V_position >= EP & v.V_position < BEP) -> v.V_Bremse = L_Aus)
 
 
---8- GP nur erreicht wenn Bahn??gang gesichert ist HAZARD  --
-LTLSPEC G(noFaults) -> G(!Hazard)
+--8- GP nur erreicht wenn BahnUebergang gesichert ist (HAZARD) --
+LTLSPEC G(noFaults) -> G((v.V_position >= GP & v.V_position < SP) -> v.V_BahnUebergang = L_Gesichert )
 
 --9- Die Einschaltpunkt und Anfragepunkt werden erreicht
 LTLSPEC G(noFaults) -> (F(v.V_diskretePosition >= EP) & F(v.V_diskretePosition >= AP))
@@ -359,13 +359,37 @@ LTLSPEC G(noFaults) -> G(v.V_BahnUebergangsSteuerung = L_Bereit & X(v.V_BahnUebe
 
 LTLSPEC  !(noFaults U (Hazard))
 
--- V.V_AusfallZugSensor  
-LTLSPEC !( (v.V_AusfallSecured = L_Nein & v.V_AusfallBremse = L_Nein & 
-		v.V_AusfallMotor = L_Nein & v.V_AusfallHodometer = L_Nein & v.V_AusfallZugFunkModul = L_Nein
-		& v.V_SchrankeGeschlossenSensor = L_Nein ) U (Hazard) )
-
+-- V.V_AusfallSecured
+LTLSPEC !( (v.V_AusfallBremse = L_Nein & v.V_AusfallHodometer = L_Nein & 
+		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
+		& v.V_AusfallZugSensor = L_Nein ) U (Hazard))
 		
+
+-- V.V_AusfallBremse
+LTLSPEC !( (v.V_AusfallSecured = L_Nein  & v.V_AusfallHodometer = L_Nein & 
+		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
+		& v.V_AusfallZugSensor = L_Nein ) U (Hazard))
+
+-- V.V_AusfallMotor
+
+LTLSPEC !( (v.V_AusfallSecured = L_Nein & v.V_AusfallBremse = L_Nein & v.V_AusfallHodometer = L_Nein & 
+		 v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein
+		& v.V_AusfallZugSensor = L_Nein ) U (Hazard))
+
+-- V.V_AusfallZugFunModul
+
+LTLSPEC !( (v.V_AusfallSecured = L_Nein & v.V_AusfallBremse = L_Nein & v.V_AusfallHodometer = L_Nein & 
+		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein 
+		& v.V_AusfallZugSensor = L_Nein ) U (Hazard))
+
+
+
 -- Kritische Menge (bis jetzt)
+
+-- Single Points of Failures		
+-- V.V_AusfallZugSensor
+LTLSPEC !( ( v.V_AusfallSecured = L_Nein & v.V_AusfallBremse = L_Nein & v.V_AusfallHodometer = L_Nein & 
+		v.V_AusfallMotor = L_Nein & v.V_AusfallSchrankeGeschlossen = L_Nein & v.V_AusfallZugFunkModul = L_Nein ) U (Hazard) )
 
 
 -- V.V_AusfallHodometer
@@ -377,10 +401,7 @@ LTLSPEC !( (v.V_AusfallSecured = L_Nein & v.V_AusfallBremse = L_Nein &
 LTLSPEC !( (v.V_AusfallSecured = L_Nein & v.V_AusfallBremse = L_Nein & 
 		v.V_AusfallMotor = L_Nein & v.V_AusfallHodometer = L_Nein & v.V_AusfallZugFunkModul = L_Nein
 		& v.V_AusfallZugSensor = L_Nein ) U (Hazard) )
-		
-		
-
-		
+				
 		
 -- V.V_AusfallBremse & V.V_AusfallMotor 
 LTLSPEC !( (v.V_AusfallSecured = L_Nein  & v.V_AusfallHodometer = L_Nein 
